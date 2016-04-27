@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_grn/Issue
+END
+kg_dep_issue.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_grn/Issue/kg_dep_issue.py
+END
+kg_dep_issue_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_grn/Issue/kg_dep_issue_view.xml
+END

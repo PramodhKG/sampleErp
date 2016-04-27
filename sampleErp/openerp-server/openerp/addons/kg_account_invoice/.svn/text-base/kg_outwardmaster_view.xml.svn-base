@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="kg_outwardmaster_form_view" model="ir.ui.view">
+			<field name="name">kg.outwardmaster.form</field>
+			<field name="model">kg.outwardmaster</field>
+			<field name="arch" type="xml">
+				<form string="Inward Master" version="7.0">
+				
+		<group>
+			<field name="name"/>
+			<field name="date"/>
+			<field name="bill"/>
+			<field name="return"/>
+			<field name="valid"/>
+			<field name="active"/>
+
+		</group>
+				   
+					</form>
+			</field> 
+	  
+
+		</record>
+		
+		<record id="kg_outwardmaster_tree_view" model="ir.ui.view">
+			<field name="name">kg.outwardmaster.tree</field>
+			<field name="model">kg.outwardmaster</field>
+			<field name="arch" type="xml">
+				<tree toolbar="True" string="Outward Categories">
+					<field name="name"/>
+					<field name="date"/>
+				</tree>
+			</field>
+		</record>
+		
+		 <record id="outwardmaster_action_form" model="ir.actions.act_window">
+			<field name="name">Outward Master</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.outwardmaster</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_outwardmaster_tree_view"/>
+		</record>
+
+	<menuitem action="outwardmaster_action_form" id="menu_kg_brandmaster_action_form" parent="kg_depmaster.kg_depmaster_parent_menu" sequence="6"/>
+
+</data>
+	</openerp>

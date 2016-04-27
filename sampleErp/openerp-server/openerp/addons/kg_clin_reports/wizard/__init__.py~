@@ -1,0 +1,4 @@
+import kg_salary_master_wiz	
+import kg_leave_summary_wiz
+import kg_salary_revision_wiz
+import kg_employee_payslip_wiz

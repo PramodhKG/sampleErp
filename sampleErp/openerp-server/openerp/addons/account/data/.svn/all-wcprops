@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/data
+END
+account_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/data/account_data.xml
+END
+data_account_type.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/data/data_account_type.xml
+END
+configurable_account_chart.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/data/configurable_account_chart.xml
+END

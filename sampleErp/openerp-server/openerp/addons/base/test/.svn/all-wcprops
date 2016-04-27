@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test
+END
+base_test.yml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/base_test.yml
+END
+bug_lp541545.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/bug_lp541545.xml
+END
+test_auth.yml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/test_auth.yml
+END
+test_ir_rule.yml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/test_ir_rule.yml
+END
+test_context.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/test_context.xml
+END
+test_osv_expression.yml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/test_osv_expression.yml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/test/__init__.py
+END

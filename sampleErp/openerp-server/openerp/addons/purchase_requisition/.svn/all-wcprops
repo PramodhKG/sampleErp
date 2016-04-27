@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/__init__.py
+END
+purchase_requisition_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/purchase_requisition_demo.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/__openerp__.py
+END
+purchase_requisition.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/3/openerp-server-7.0/openerp/addons/purchase_requisition/purchase_requisition.py
+END
+purchase_requisition_sequence.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/purchase_requisition_sequence.xml
+END
+purchase_requisition_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/purchase_requisition_data.xml
+END
+purchase_requisition_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/kgherp/!svn/ver/3/openerp-server-7.0/openerp/addons/purchase_requisition/purchase_requisition_view.xml
+END
+purchase_requisition_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/purchase_requisition_report.xml
+END

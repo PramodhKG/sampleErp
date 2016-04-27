@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report
+END
+consumption_summary.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/consumption_summary.py
+END
+store_issue_slip.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/store_issue_slip.py
+END
+consumption_summary.rml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/consumption_summary.rml
+END
+store_issue_slip.rml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/store_issue_slip.rml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/__init__.py
+END
+grn_to_issue.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/grn_to_issue.py
+END
+pobill_from_store2_po.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/pobill_from_store2_po.py
+END
+closing_stock.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/closing_stock.py
+END
+grn_to_issue.rml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/grn_to_issue.rml
+END
+opening_stock.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/opening_stock.py
+END
+pobill_from_store2_po.rml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/pobill_from_store2_po.rml
+END
+issue_summary_from_mainst.py
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/issue_summary_from_mainst.py
+END
+opening_stock.rml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/opening_stock.rml
+END
+issue_summary_from_mainst.rml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/issue_summary_from_mainst.rml
+END
+issueslip_on_screen_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/issueslip_on_screen_report.py
+END
+issueslip_on_screen_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/issueslip_on_screen_report.rml
+END
+pobill_from_po_acc.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/pobill_from_po_acc.py
+END
+pobill_from_po_acc.rml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/pobill_from_po_acc.rml
+END
+dep_indent_to_issue.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/dep_indent_to_issue.py
+END
+dep_issue_register.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/dep_issue_register.py
+END
+grn_register_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/grn_register_report.py
+END
+dep_indent_to_issue.rml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/dep_indent_to_issue.rml
+END
+dep_issue_register.rml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/dep_issue_register.rml
+END
+grn_register_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/63/openerp-server-7.0/openerp/addons/kg_grn/report/grn_register_report.rml
+END

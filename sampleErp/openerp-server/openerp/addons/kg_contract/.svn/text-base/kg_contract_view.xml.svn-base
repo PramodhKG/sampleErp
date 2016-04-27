@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_contract_form">
+				<field name="name">kg.contract.form</field>
+				<field name="model">hr.contract</field>
+				<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+				<field name="arch" type="xml">					
+					
+					<field name="employee_id" position="replace">
+					<field name="employee_id" 
+									on_change="onchange_employee_code(employee_id,emp_name)"/>
+					</field>
+					
+					<field name="employee_id" position="after">
+					<field name="emp_name"/>
+					<field name="dep_id"/>
+					<field name="leave_type"/>					
+					</field>
+					
+					<field name="type_id" position="replace">
+					<field name="type_id" invisible="1"/>					
+					</field>
+					
+					<field name="type_id" position="after">
+					<field name="join_date"/>
+					<field name="designation"/>
+					<field name="shift_type"/>				
+					</field>						
+					
+					<xpath expr = "//page[@string='Information']" position="before">
+						<page string="Payment Details">							
+							<group>
+								<group string="Salary Details">
+								<field name="eff_date"/>
+								<field name="wage" string="Basic Pay"/>
+								<field name="allowance"/>
+								<field name="spl_allowance"/>
+								<button type="object" name="salary_update" string="Update" class="oe_highlight"/>							
+							</group>
+							<group string="Pay Mode">
+								<field name="sal_date"/>
+								<field name="payment_mode" required="1"/>
+								<field name="bank" attrs="{'required': [('payment_mode','=','bank')]}"/>
+								<field name="acc_no" attrs="{'required': [('payment_mode','=','bank')]}"/>
+								<field name="pan_no"/>							
+								<field name="ot"/>
+							</group>							
+							<group string="PF - ESI - TAX - PLI">
+								<field name="sal_type" invisible="1"/>
+								<field name="pf_status"/>							
+								<field name="pf_acc_no" attrs="{'required': [('pf_status','=',True)]}"/>
+								<field name="esi"/>
+								<field name="tax"/>
+								<field name="pli_status"/>
+								<field name="tds_status"/>
+								<field name="pt_status"/>
+							</group>							
+							<group string="PF - ESI - TAX">
+								<field name="pf_eff_date" attrs="{'required': [('pf_status','=',True)]}"/>
+								<field name="over_type"/>
+								<field name="esi_acc_no" attrs="{'required': [('esi','=',True)]}"/>	
+								<field name="med_policy_no"/>	
+								<field name="tax_val" invisible="1"/>
+								<field name="last_update_date" invisible="1"/>						
+							</group>						
+							</group>							
+						</page>
+					</xpath>
+					
+					<xpath expr = "//page[@string='Payment Details']" position="after">
+						<page string="Previous Salary Details">
+							<group>
+								<group>
+								<field name="pre_basic"/>
+								<field name="pre_income"/>
+								<field name="pre_eff_date"/>
+								</group>
+								<group>							
+								<field name="pre_allowance"/>
+								<field name="pre_cross"/>
+								</group>
+							</group>							
+						</page>
+					</xpath>					
+				</field>
+			</record>
+			
+			<record model="ir.ui.view" id="kg_contract_tree">
+				<field name="name">kg.contract.tree</field>
+				<field name="model">hr.contract</field>
+				<field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+				<field name="arch" type="xml">
+					
+					<field name="name" position="replace">
+					<field name="name" invisible="1"/>
+					</field>
+					
+					<field name="employee_id" position="after">
+					<field name="emp_name"/>
+					</field>
+					
+					 <field name="job_id" position="replace">
+					 <field name="wage" string="Basic Pay"/>
+					 </field>
+					 
+					  <field name="working_hours" position="replace">
+					  <field name="allowance"/>
+					  </field>
+					  
+					  <field name="date_start" position="replace">
+					  <field name="pf_status"/>
+					  </field>
+					  
+					  <field name="date_end" position="replace">
+					  <field name="date_end" invisible="1"/>
+					  </field>
+					
+				</field>
+			</record>
+			
+			
+            
+    </data>
+</openerp>

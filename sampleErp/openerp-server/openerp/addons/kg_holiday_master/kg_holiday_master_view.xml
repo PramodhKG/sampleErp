@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="kg_holiday_master_form_view" model="ir.ui.view">       
+			<field name="name">Holiday Master</field>
+			<field name="model">kg.holiday.master</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="kg_holiday_master" version="7.0">
+					<header>
+						<button name="confirm_entry" states="draft" string="To Approve" type="object" class="oe_highlight"/>
+						<button name="approve_entry" states="confirm" string="Approve" type="object" class="oe_highlight"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm" statusbar_colors='{"draft":"blue","confirm":"blue"}'/>
+					</header>	
+					<sheet>				
+						<group>
+							<group>
+								<field name="from_date" required="1"/>
+								<field name="active"/>
+								<field name="expiry_date" attrs="{'invisible':[('active','==',True)]}"/>
+							</group>
+							<group>
+								
+								<field name="to_date" required="1" />
+								<field name="state" invisible="1"/>
+								<field name="branch"/>
+							</group>
+						</group>
+						<field name="line_id" nolabel="1">
+							<tree editable="bottom">
+								<field name="leave_date" required="1"/>
+								<field name="note" required="1" />
+							</tree>
+						</field>
+					</sheet>
+				</form>
+			</field>					
+		</record>
+		<record id="kg_holiday_master_tree_view" model="ir.ui.view">
+			<field name="name">Holiday Master</field>
+			<field name="model">kg.holiday.master</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="kg_holiday_master">
+					<field name="from_date"/>
+					<field name="to_date"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_holiday_master">
+			<field name="name">Holiday Master</field>
+			<field name="res_model">kg.holiday.master</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_holiday_master_tree_view"/>
+		</record>
+		
+		<!--<menuitem id="kg_menu_holiday_master" name="Holiday Master" parent="hr.menu_hr_root" sequence="9"/>
+		 
+		<menuitem id="kg_menu_gvt_holiday" name="Gvt Holidays" parent="kg_menu_holiday_master" sequence="10" action="action_holiday_master"/>
+-->
+	</data>
+</openerp>

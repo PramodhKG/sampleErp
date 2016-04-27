@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="kg_pi_detail_wizard_view" model="ir.ui.view">
+            <field name="name">Purchase Indent</field>
+            <field name="model">kg.pi.detail.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Department Indent">
+                <separator string="Purchase Indent" colspan="4"/>
+                   
+                    <notebook tabpos="up" colspan="4">
+						
+                    <page string="Filters" name="filters">
+						<field name="filter" colspan="4"/>
+						<separator string="Purchase Indent Date" colspan="4"/>
+						<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+						<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+					</page>
+					
+                                                                         
+                    </notebook>                
+                     <separator colspan="4"/>
+                    <group col="4" colspan="4">
+                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_kg_pi_detail_wizard" model="ir.actions.act_window">  
+            <field name="name">Purchase Indent</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.pi.detail.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+
+    </data>
+</openerp>

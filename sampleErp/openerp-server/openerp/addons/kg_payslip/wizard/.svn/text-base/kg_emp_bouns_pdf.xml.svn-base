@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_emp_bouns_pdf" model="ir.ui.view">
+            <field name="name">Employee Bouns</field>
+            <field name="model">kg.emp.bouns.pdf</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Employee Yearly Bouns">
+                <separator string="Employee Yearly Bouns" colspan="4"/>                   
+                    <notebook tabpos="up" colspan="4">						
+                    <page string="Filters" name="filters">
+						<field name="filter" colspan="4"/>						
+						<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+						<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+					</page>	
+					
+					<page string="Department Name">
+						<field name="dep_id"/>					
+					</page>			
+					                                                     
+                    </notebook>                
+                     <separator colspan="4"/>
+                    <group col="4" colspan="4">
+                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_emp_bouns_pdf" model="ir.actions.act_window">  
+            <field name="name">Employee Bouns PDF Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.emp.bouns.pdf</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+            
+            
+		<menuitem
+            icon="STOCK_PRINT"
+            parent="kg_payslip.menu_kg_hrm_reports" sequence = "28" 
+            action="action_emp_bouns_pdf"
+            id="kg_emp_bouns"
+            />
+
+    </data>
+</openerp>

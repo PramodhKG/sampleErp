@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <report auto="False" id="kg_depindent_report" model="kg.depindent"
+                name="report.kg_depindent_report" rml="kg_depindent/report/kg_depindent_report.rml" 
+                usage="default" string="Department Indent Report"/>
+    </data>
+</openerp>
+
+<!-- this RML file path system to be validated while printing report -->

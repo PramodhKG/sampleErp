@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depindent
+END
+kg_depindent.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/44/openerp-server-7.0/openerp/addons/kg_depindent/kg_depindent.py
+END
+kg_depindent_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/44/openerp-server-7.0/openerp/addons/kg_depindent/kg_depindent_view.xml
+END
+kg_depindent_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depindent/kg_depindent_report.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depindent/__init__.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depindent/__openerp__.py
+END

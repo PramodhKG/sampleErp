@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="salary_master_wizard_view" model="ir.ui.view">
+            <field name="name">Salary Master</field>
+            <field name="model">kg.salary.master.wiz</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+				<form string="Employee Salary Master">
+					<separator string="Employee Salary Master" colspan="4"/>                   
+						<notebook colspan="4">					
+							<page string="Filters" name="filters">
+								<field name="filter" colspan="4"/>
+								<field name="emp_name" colspan="4"/>
+								<separator string="Month" colspan="4"/>
+								<field name="month" colspan="4"/>
+							</page>
+					
+							<page string="Department Name" name="dep_id">
+								<group colspan="2" col="2">
+									<separator string="Department Name" colspan="2" col="2" />
+									<field name = "dep_id"/>
+								</group>
+							</page>
+						</notebook>                
+						<separator colspan="4"/>
+						<group col="4" colspan="4">
+							<button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+							<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						</group>
+				</form>
+            </field>
+        </record>
+
+        <record id="action_salary_master" model="ir.actions.act_window">  
+            <field name="name">Salary Master</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.salary.master.wiz</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+      
+
+    </data>
+</openerp>

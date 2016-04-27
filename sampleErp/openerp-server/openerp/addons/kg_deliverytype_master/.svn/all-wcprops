@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_deliverytype_master
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_deliverytype_master/__init__.py
+END
+kg_deliverytype_master.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_deliverytype_master/kg_deliverytype_master.py
+END
+kg_deliverytype_master_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/kgherp/!svn/ver/55/openerp-server-7.0/openerp/addons/kg_deliverytype_master/kg_deliverytype_master_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_deliverytype_master/__openerp__.py
+END

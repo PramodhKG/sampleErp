@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="kg_minormaster_form_view" model="ir.ui.view">
+			<field name="name">kg.minormaster.form</field>
+			<field name="model">kg.minormaster</field>
+			<field name="arch" type="xml">
+				<form string="Minor Master" version="7.0">
+				
+		<group>
+			<field name="major_name"/>
+			<field name="name"/>
+			<field name="date"/>
+			<field name="active"/>
+			
+		</group>
+			</form>
+			</field> 
+	  
+		</record>
+		
+		<record id="kg_minormaster_tree_view" model="ir.ui.view">
+			<field name="name">kg.minormaster.tree</field>
+			<field name="model">kg.minormaster</field>
+			<field name="arch" type="xml">
+				<tree toolbar="True" string="Minor Master">
+					<field name="name"/>
+					<field name="major_name"/>
+				</tree>
+			</field>
+		</record>
+		
+		 <record id="kg_minormaster_action_form" model="ir.actions.act_window">
+			<field name="name">Minor Master</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.minormaster</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_minormaster_tree_view"/>
+		</record>
+
+	<menuitem action="kg_minormaster_action_form" id="menu_kg_minormaster_tree_view_action_form" parent="kg_depmaster.kg_depmaster_parent_menu" sequence="8"/>
+
+</data>
+	</openerp>

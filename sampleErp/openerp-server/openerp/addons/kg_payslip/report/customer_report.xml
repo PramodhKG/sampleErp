@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_cust_rep_form" model="ir.ui.view">
+            <field name="name">Customer Details</field>
+            <field name="model">customer.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+			<form string="Customer Details" version="7.0">             			 
+				<header>
+					<button name="produce_xls" states="draft" string="Print" type="object" class="oe_highlight"/>
+				</header>
+				<group>
+					<group>
+					 <field name="groupby"/>
+					 <field name="state_id"/>
+					 </group>
+					 <group>
+					 <field name="country"/>
+					 <field name="rep_data"/>
+					 <field name="state"/>
+					 </group>
+				</group>
+			</form>
+            </field>
+        </record>
+        
+        <record id="view_cust_rep_form_tree" model="ir.ui.view">
+            <field name="name">Customer Details</field>
+            <field name="model">customer.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+             <tree string="Customer Details">
+				 
+				 <field name="groupby"/>
+				 <field name="state_id"/>
+				 <field name="country"/>
+				 <field name="rep_data"/>
+				 <field name="state"/>				 
+                
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_cust_form_report" model="ir.actions.act_window">
+			<field name="name">Customer Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">customer.report</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_cust_rep_form_tree"/>
+	</record>
+            
+            
+		<menuitem
+            icon="STOCK_PRINT"
+            name="Customer Report"
+            parent="kg_payslip.menu_kg_hrm_excel_reports" sequence = "4" 
+            action="action_cust_form_report"
+            id="kg_cust_rep"
+            />
+
+    </data>
+</openerp>
+

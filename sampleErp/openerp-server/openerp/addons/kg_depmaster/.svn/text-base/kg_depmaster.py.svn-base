@@ -1,0 +1,58 @@
+import math
+import re
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+
+import openerp.addons.decimal_precision as dp
+
+class kg_depmaster(osv.osv):
+
+    _name = "kg.depmaster"
+    _description = "Department Master"
+    _rec_name = 'dep_name' 
+    
+    _columns = {
+        'name': fields.char('Dep.Code', size=64, required=True, readonly=True),
+        'dep_name': fields.char('Dep.Name', size=64, required=True, translate=True),
+        'consumerga': fields.many2one('account.account', 'Consumer GL/AC', size=64, translate=True, select=2),
+        'cost': fields.many2one('account.account','Cost Centre', size=64, translate=True, select=2),
+        'stock_location': fields.many2one('stock.location', 'Dep.Stock Location', size=64, translate=True, 
+					select=True, required=True, domain=[('usage','<>','view')]),
+					
+		'main_location': fields.many2one('stock.location', 'Main Stock Location', size=64, translate=True, 
+					select=True, required=True, domain=[('usage','<>','view')]),
+		'used_location': fields.many2one('stock.location', 'Used Stock Location', size=64, translate=True, 
+					select=True, required=True, domain=[('usage','<>','view')]),
+        'date': fields.date('Date'),
+		'product_id': fields.many2many('product.product', 'product_deparment', 'depmaster_id', 'product_depid', 'Product'),
+        'issue_period': fields.selection([('weekly','Weekly'), ('15th','15th Once'), ('monthly', 'Monthly')], 'Stock Issue Period'),
+		'issue_date': fields.float('Stock Issue Days'),
+		'active': fields.boolean("Active"),
+		'sub_indent': fields.boolean("Sub.Store.Ind")
+
+    }
+
+
+    _defaults = {
+        'active': True,
+        'date' : fields.date.context_today,
+        'name': '/',
+    }
+    _sql_constraints = [
+        ('code_uniq', 'unique(name)', 'Department code must be unique!'),
+        ('name_uniq', 'unique(dep_name)', 'Department name must be unique !'),
+    ]
+    
+    def create(self, cr, uid, vals, context=None):
+        if vals.get('name','/')=='/':
+            vals['name'] = self.pool.get('ir.sequence').get(cr, uid, 'kg.depmaster') or '/'
+        order =  super(kg_depmaster, self).create(cr, uid, vals, context=context)
+        return order
+        
+	def write():
+		# Todo a dep master details should not allow to write again
+	    pass
+    
+
+kg_depmaster()

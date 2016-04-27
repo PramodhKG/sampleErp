@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/security
+END
+sale_stock_security.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/security/sale_stock_security.xml
+END
+ir.model.access.csv
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/security/ir.model.access.csv
+END

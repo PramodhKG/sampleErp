@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_so_bill_creation" model="ir.ui.view">
+            <field name="name">Service Bill Creation</field>
+            <field name="model">so2.service.bill</field>
+            <field name="arch" type="xml">
+              <form string="Create invoice" version="7.0">
+				  
+                  <group string="Create Invoice">
+                      <field name="journal_id"/>                      
+                      <field name="invoice_date" required="1"/>
+                      <field name="sup_inv_no"/>
+                      <field name="sup_inv_date"/>
+                  </group>
+                  <footer>
+                      <button name="open_invoice" string="Create" type="object" class="oe_highlight"/>
+                      or
+                      <button string="Cancel" class="oe_link" special="cancel"/>
+                  </footer>
+             </form>
+            </field>
+        </record>
+
+
+        <act_window name="Create SO Bill"
+            res_model="so2.service.bill"
+            src_model="kg.service.order"
+            key2="client_action_multi"
+            multi="True"
+            view_mode="form"
+            view_type="form"
+            target="new"
+            id="action_so_bill_creation"/>
+       
+    </data>
+</openerp>

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/wizard
+END
+purchase_line_invoice.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/wizard/purchase_line_invoice.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/wizard/__init__.py
+END
+purchase_line_invoice_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/wizard/purchase_line_invoice_view.xml
+END
+purchase_order_group.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/wizard/purchase_order_group.py
+END
+purchase_order_group_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/wizard/purchase_order_group_view.xml
+END

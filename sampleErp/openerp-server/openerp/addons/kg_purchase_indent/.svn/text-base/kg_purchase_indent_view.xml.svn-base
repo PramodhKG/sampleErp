@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<menuitem id="kg_pi_indent_menu" name="Purchase Indent" parent="stock.menu_stock_root" sequence="14"/>
+
+		<menuitem
+        id="purchase_requisition.menu_purchase_requisition_pro_mgt"
+        sequence="1"
+        parent="kg_pi_indent_menu"
+        action="purchase_requisition.action_purchase_requisition" name="Purchase Indent"/>
+		
+		
+		
+        <record model="ir.ui.view" id="kg_purchase_indent_form_inherit">
+        <field name="name">kg.purchase.indent.form.inherit</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+			
+        <button name="tender_done" states="in_progress" string="Purchase Done" type="object" class="oe_highlight" position="replace">
+        <button name="tender_done" states="in_progress" string="Purchase Done" type="object" class="oe_highlight" invisible="1"/>
+		</button>
+		
+		<button name="%(purchase_requisition.action_purchase_requisition_partner)d" type="action"
+                                string="Request a Quotation" icon="gtk-execute"
+                                attrs="{'invisible': [('line_ids','=',False),('state', 'not in', ('in_progress'))]}"
+                                position="replace">
+                                
+		<button name="%(purchase_requisition.action_purchase_requisition_partner)d" type="action"
+                                string="Request a Quotation" icon="gtk-execute"
+                                attrs="{'invisible': [('line_ids','=',False),('state', 'not in', ('in_progress'))]}"
+                                invisible="1"/>
+	<!--	<button name="%(purchase_requisition.action_purchase_requisition_partner)d" type="action"
+                                string="Create a PO" icon="gtk-execute"
+                                attrs="{'invisible': ['|',('line_ids','=',False),('state', 'not in', ('in_progress'))]}"/> -->
+                              
+		</button>
+		<field name="name" position="replace">
+		<group>
+		<field name="kg_seq_id" on_change="onchange_seq_id(kg_seq_id,name)"
+					attrs="{'required': [('pi_flag','=',True)]}"/>
+		</group>
+		</field>
+
+
+		
+		<field name="user_id" position="replace">
+		<field name="name" attrs="{'required': [('pi_flag','=',True)]}"/>
+		<field name="user_id" readonly="1"/>
+		</field>
+		<field name="date_end" position="replace">
+		<field name="dep_name" invisible="1"/>
+		</field>
+		<field name="origin" position="replace">
+		</field>
+		<field name="exclusive" position="replace">
+		<field name="exclusive" invisible="1"/>
+		</field>
+		<field name="company_id" position="replace">
+		<field name="company_id" invisible="1"/>
+		</field>
+		<field name="warehouse_id" position="replace">
+		<field name="warehouse_id" invisible="1"/>
+		</field>
+		<field name="user_id" position="after">
+		<field name="kg_store" invisible="1"/>
+		<field name="pi_flag" invisible="1"/>
+		</field>
+		
+		<field name="dep_name" invisible="1">
+		
+		</field>
+		
+        <field name="product_id" on_change="onchange_product_id(product_id,product_uom_id)" position="replace">
+        <field name="product_id" on_change="onchange_product_id(product_id,product_uom_id)" readonly="1"/>
+		</field>
+		
+		<field name="product_qty" position="replace">
+		<field name="product_qty" on_change="onchange_qty(product_qty,pending_qty)"/>
+		</field>
+		
+		<field name="product_uom_id" position="replace">
+		<field name="product_uom_id" string="UOM" readonly="1"/>
+		</field>
+		
+		<field name="product_uom_id" position="after">
+		<field name="rate"/>
+		<field name="pending_qty" invisible="1"/>
+		<field name="po_uom_qty" string="Dep.Indent Qty" readonly="1"/>
+		<field name="note"/>
+		<field name="group_flag" invisible="1"/>
+		
+		</field>
+		
+		
+		<xpath expr = "//page[@string='Products']" position="after">
+                    <page string="Select Pending Dep.Indent">
+                        <field name="kg_depindent_lines">
+						<tree string = "Dep Indent" editable="bottom">
+							<field name="indent_id" readonly="1"/>
+							<field name="line_date" readonly="1"/>
+							<field name="product_id" readonly="1"/>
+							<field name="uom" readonly="1"/>
+							<field name="qty" readonly="1"/>
+							<field name="pending_qty" readonly="1"/>
+							<field name="note" readonly="1"/>
+							</tree>
+							</field>                        
+                         <button name="update_pil" type='object' string="Save Record"/>
+                     </page>
+		
+		</xpath>
+		
+		</field>
+	</record>
+	
+		
+	<!-- purchase indent line tree view -->
+	
+	<record id="view_purchase_requisition_line_tree" model="ir.ui.view">
+            <field name="name">purchase.requisition.line.tree</field>
+            <field name="model">purchase.requisition.line</field>
+            <field name="type">tree</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Indent Line">
+                    <field name="requisition_id" string="Purchase Indent No"/>
+                    <field name="line_date"/>
+                    <field name="product_id"/>
+                    <field name="product_uom_id"/>
+                    <field name="product_qty"/>
+                    <field name="pending_qty"/>
+                    <field name="user_id" string="Entered By"/>
+                    <field name="dep_id"/>
+                </tree>
+            </field>
+        </record>
+        
+	
+    </data>
+</openerp>

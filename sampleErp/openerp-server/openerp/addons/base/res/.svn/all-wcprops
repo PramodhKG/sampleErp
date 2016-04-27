@@ -1,0 +1,185 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res
+END
+res_company.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_company.py
+END
+ir_property_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/ir_property_view.xml
+END
+res_partner_shortcut_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_shortcut_data.xml
+END
+res_company_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_company_view.xml
+END
+res_bank.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_bank.py
+END
+res_partner.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner.py
+END
+res_partner_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_data.xml
+END
+res_config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_config.xml
+END
+res_bank_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_bank_view.xml
+END
+res_partner_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_view.xml
+END
+res_partner_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_report.xml
+END
+res_security.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_security.xml
+END
+res_lang.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_lang.py
+END
+res_company_logo.png
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_company_logo.png
+END
+res_lang_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_lang_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/__init__.py
+END
+res_partner_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_demo.xml
+END
+res_partner_demo.yml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_demo.yml
+END
+res_request.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_request.py
+END
+res_partner_image_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_partner_image_demo.xml
+END
+res_currency.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_currency.py
+END
+res_request_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_request_view.xml
+END
+res_currency_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_currency_view.xml
+END
+res_users.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_users.py
+END
+res_country.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_country.py
+END
+res_users_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_users_view.xml
+END
+res_country_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_country_data.xml
+END
+res_country_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_country_view.xml
+END
+res_config.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/res_config.py
+END
+ir_property.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/ir_property.py
+END

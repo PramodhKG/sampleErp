@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_grn_moves_form" model="ir.ui.view">
+            <field name="name">view.kg.grn.moves.form</field>
+            <field name="model">kg.grn.moves</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+			<form string="GRN Entries" version="7.0">
+			<header>
+					<button name="done" string="Done" type="object" />
+					<button name="cancel" string="Cancle" type="object" class="oe_highlight"/>
+					<field name="state" widget="statusbar" statusbar_visible="done,cancel" statusbar_colors='{"draft":"red", "done":"blue"}'/>
+			</header>
+				<group>
+					<group>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="product_uom"/>
+                    <field name="state"/>
+                    </group>
+                    <group>
+					<field name="date"/>
+					<field name="product_qty"/>
+                    <field name="pending_qty"/>
+                    
+                    </group>
+				</group>
+                    
+				</form>
+			</field>
+		</record>
+			
+
+                    
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_grn_moves_tree" model="ir.ui.view">
+            <field name="name">kg.grn.moves.tree.view</field>
+            <field name="model">kg.grn.moves</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="GRN Entries" editable="bottom">
+					<button name="done" string="Done" type="object" />
+					<button name="cancel" string="Cancle" type="object" class="oe_highlight"/>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="product_uom"/>
+                    <field name="product_qty"/>
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_grn_moves_form" model="ir.actions.act_window">
+			<field name="name">GRN Entry</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.grn.moves</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_grn_moves_tree"/>
+	</record>
+	
+			<record id="track_grn_moves" model="ir.actions.act_window">
+	            <field name="name">GRN Entry</field>
+	            <field name="type">ir.actions.act_window</field>
+	            <field name="res_model">stock.move</field>
+	            <field name="view_type">form</field>
+	            <field name="view_mode">tree</field>
+	            <field name="target">new</field>
+	        </record>
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+    </data>
+</openerp>

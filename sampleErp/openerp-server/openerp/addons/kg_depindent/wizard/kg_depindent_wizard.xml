@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_depindent_wizard" model="ir.ui.view">
+            <field name="name"> Department Indent</field>
+            <field name="model">kg.dep.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Department Indent">
+                <separator string="Department Indent" colspan="4"/>
+                   
+                    <notebook tabpos="up" colspan="4">
+						
+                    <page string="Filters" name="filters">
+						<field name="filter" colspan="4"/>
+						<separator string="Department Indent Date" colspan="4"/>
+						<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+						<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+					</page>
+					
+					<page string="Indent Number" name="ind_id">
+						<group colspan="2" col="2">
+						<separator string="Indent Name" colspan="2" col="2" />
+						<field name = "ind_id"/>
+						</group>
+					 </page>
+					
+					<page string="Department Name" name="department">
+						<group colspan="2" col="2">
+						<separator string="Department Name" colspan="2" col="2" />
+						<field name = "dep_id"/>
+						</group>
+					 </page>
+                                                                         
+                    </notebook>                
+                     <separator colspan="4"/>
+                    <group col="4" colspan="4">
+                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_indent_wizard" model="ir.actions.act_window">  
+            <field name="name">Department Indent Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.dep.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+       
+        <menuitem
+            name="KG Reports"
+            parent="base.menu_reporting" sequence = "20" 
+            id="menu_kg_indent_reports"
+            />
+		<menuitem
+            icon="STOCK_PRINT"
+            name="Department Indent Report"
+            parent="menu_kg_indent_reports" sequence = "1" 
+            action="action_view_indent_wizard"
+            id="kg_indent_report001"
+            />
+
+    </data>
+</openerp>

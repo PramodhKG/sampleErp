@@ -1,0 +1,19 @@
+{
+    'name': 'KG Reports',
+    'version': '0.1',
+    'author': 'shubashri',
+    'category': 'HRM',
+    'website': 'http://www.openerp.com',
+ 
+    'depends' : ['base','hr'],
+    'data': ['wizard/kg_salary_master_wiz.xml',
+			 'wizard/kg_leave_summary_wiz.xml',
+			 'wizard/kg_salary_revision_wiz.xml',
+			 'wizard/kg_employee_payslip_wiz.xml',
+			 'wizard/kg_attendance_wiz.xml',
+			 'wizard/kg_monthly_atten_wiz.xml'],
+    'auto_install': False,
+    'installable': True,
+}
+
+

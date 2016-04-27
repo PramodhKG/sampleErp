@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="kg_subcontract_form_view" model="ir.ui.view">
+		<field name="name">KG Subcontract</field>
+		<field name="model">kg.subcontract.master</field>
+		<field name="arch" type="xml">
+		<form string="Subcontract Form" version="7.0">
+			
+				<group>
+					<group>
+						<field name="name"/>
+						 <label for="street" string="Address"/>
+							<div>
+								<field name="street" placeholder="Street..."/>
+								<field name="street2"/>
+								<div class="address_format">
+									<field name="city" placeholder="City" style="width: 40%%" />
+									<field name="state_id" class="oe_no_button" placeholder="State" style="width: 37%%" options='{"no_open": True}' />
+									<field name="zip" placeholder="ZIP" style="width: 20%%"/>
+								</div>
+								<field name="country_id" placeholder="Country" class="oe_no_button" options='{"no_open": True}' />
+							</div>
+						<field name="website" widget="url" placeholder="e.g. www.kgisl.com"/>
+						<!--<field name="process_type" widget="many2many_tags"/>-->
+						
+					</group>											
+					<group>
+						<field name = "creation_date"/>
+						<field name="phone" placeholder="e.g. +32.81.81.37.00"/>
+						<field name="mobile"/>
+						<field name="fax"/>
+						<field name="email" widget="email"/>
+						<field name="active"/>
+						<!--<field name="type_of_process"/>
+						<field name="state"/>-->
+					</group>
+									
+				</group>	
+				    <!--			   
+					<field colspan="4" mode="tree" name="line_id" nolabel="1" widget="one2many_list" invisible="1">
+						<tree string="Core Line" > 
+							<field name="product_id"/>
+							<field name="box_size">
+						
+								</field>
+							<field name="no_of_cores"/>
+							
+							
+							
+												
+						</tree>					
+						<form string="core Line" invisible="1">
+							<group>
+								<group>
+									<field name="product_id"/>
+									<field name="box_size">
+									</field>
+
+								</group>
+								<group>
+									<field name="no_of_cores"/>
+									<field name="core_aval_qty"/>
+
+									
+									
+								</group>
+							</group>					
+						</form>
+					</field>
+				-->
+		</form>
+	</field> 
+
+</record>
+
+		<!-- CRM Tree View -->
+		
+		<record id="kg_subcontract_master_tree_view" model="ir.ui.view">
+			<field name="name">kg.subcontract.master</field>
+			<field name="model">kg.subcontract.master</field>
+			<field eval="8" name="priority"/>
+			<field name="arch" type="xml">
+				<tree string="Subcontract List" toolbar="1" >				
+					<field name="name"/>							
+					<field name="creation_date"/>
+					<!--<field name="state"/>-->
+					
+					<!-- <button icon="go-next" name="make_order" states="confirm" string="Make Order" type="object" class="oe_highlight"/> -->
+				</tree>
+			</field>
+		</record>
+		
+			<!-- CRM Group By and Filter View -->
+		
+		
+		
+		<!-- Menu Action -->			
+		
+		 <record id="subcontract_action_form" model="ir.actions.act_window">
+			<field name="name">Subcontract Master</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.subcontract.master</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_subcontract_master_tree_view"/>
+		</record>
+	<!-- Master Menu-->
+	
+	
+	
+	
+
+	
+	
+	
+	
+
+</data>
+	</openerp>

@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account
+END
+account_bank_statement.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_bank_statement.py
+END
+account_assert_test.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_assert_test.xml
+END
+account_analytic_line.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_analytic_line.py
+END
+account_bank.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_bank.py
+END
+account_move_line.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_move_line.py
+END
+account_bank_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_bank_view.xml
+END
+installer.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/installer.py
+END
+ir_sequence.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/ir_sequence.py
+END
+res_currency.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/res_currency.py
+END
+ir_sequence_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/ir_sequence_view.xml
+END
+company.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/company.py
+END
+account_menuitem.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_menuitem.xml
+END
+company_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/company_view.xml
+END
+account_invoice.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_invoice.py
+END
+account_invoice_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_invoice_view.xml
+END
+partner.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/partner.py
+END
+partner_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/partner_view.xml
+END
+account_cash_statement.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_cash_statement.py
+END
+res_config.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/res_config.py
+END
+product.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/product.py
+END
+res_config_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/res_config_view.xml
+END
+account_installer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_installer.xml
+END
+product_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/product_view.xml
+END
+account_end_fy.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_end_fy.xml
+END
+account_financial_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_financial_report.py
+END
+account.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account.py
+END
+account_financial_report_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_financial_report_data.xml
+END
+account_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_view.xml
+END
+account_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_report.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/__init__.py
+END
+account_pre_install.yml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_pre_install.yml
+END
+account_unit_test.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_unit_test.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/__openerp__.py
+END
+board_account_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/board_account_view.xml
+END
+account_invoice_workflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/account_invoice_workflow.xml
+END

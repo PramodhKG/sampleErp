@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_product
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_product/__init__.py
+END
+kg_product.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/58/openerp-server-7.0/openerp/addons/kg_product/kg_product.py
+END
+kg_product_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/46/openerp-server-7.0/openerp/addons/kg_product/kg_product_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_product/__openerp__.py
+END
+_common.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_product/_common.py
+END

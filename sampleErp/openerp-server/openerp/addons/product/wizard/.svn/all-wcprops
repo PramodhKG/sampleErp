@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/wizard
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/wizard/__init__.py
+END
+product_price.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/wizard/product_price.py
+END
+product_price_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/wizard/product_price_view.xml
+END

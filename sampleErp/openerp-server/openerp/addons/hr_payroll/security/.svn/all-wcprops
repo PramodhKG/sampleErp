@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/security
+END
+hr_security.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/security/hr_security.xml
+END
+ir.model.access.csv
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/security/ir.model.access.csv
+END

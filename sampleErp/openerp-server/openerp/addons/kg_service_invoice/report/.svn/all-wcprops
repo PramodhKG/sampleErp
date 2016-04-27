@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/53/openerp-server-7.0/openerp/addons/kg_service_order/report
+END
+service_order_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/53/openerp-server-7.0/openerp/addons/kg_service_order/report/service_order_report.py
+END
+kg_service_order_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kgherp/!svn/ver/53/openerp-server-7.0/openerp/addons/kg_service_order/report/kg_service_order_report.py
+END
+service_order_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kgherp/!svn/ver/53/openerp-server-7.0/openerp/addons/kg_service_order/report/service_order_report.rml
+END
+kg_service_order_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kgherp/!svn/ver/53/openerp-server-7.0/openerp/addons/kg_service_order/report/kg_service_order_report.rml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/53/openerp-server-7.0/openerp/addons/kg_service_order/report/__init__.py
+END

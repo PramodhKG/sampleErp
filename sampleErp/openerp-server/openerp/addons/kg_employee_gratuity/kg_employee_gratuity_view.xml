@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="kg_employee_gratuity_form_view" model="ir.ui.view">       
+			<field name="name">Employee Gratuity</field>
+			<field name="model">kg.employee.gratuity</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="kg_employee_gratuity" version="7.0">
+					<header>
+						<button name="confirm_entry" states="draft" string="Waiting For Approval" type="object" class="oe_highlight"  />
+						<button name="approve_entry" states="confirm" string="Confirmed" type="object" class="oe_highlight" />
+						<button name="paid_entry" states="approved" string="Approved" type="object" class="oe_highlight" />
+						<button name="cancel_entry" states="approved,confirm,draft" string="Cancel"  type="object"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved,paid"/>
+					</header>
+					<button name="compute_gratuity_date" string="CHECK" type="object" class="oe_highlight"/>
+					<sheet>				
+						<group>
+							<group>
+							
+								<field name="creation_date"/>
+								<field name="employee_id"/>
+								<field name="from_date"/>
+								<field name="payment_mode" attrs ="{'invisible':[('state','=','draft')]}"/>
+								<field name="bank" attrs ="{'invisible':[('payment_mode','!=','bank')],'required':[('payment_mode','=','bank')]}"/>
+								<field name="acc_no" attrs = "{'invisible':[('payment_mode','!=','bank')],'required':[('payment_mode','=','bank')]}"/>
+								<field name="cheque_no" attrs = "{'invisible':[('payment_mode','!=','cheque')],'required':[('payment_mode','=','cheque')]}"/>
+								<field name="active" />
+							</group>
+							<group>
+								<field name="gratuity_date"/>
+								<field name="employee_name"/>
+								<field name="to_date"/>
+								<field name="gratuity_amount" />
+								<field name="approved_by" attrs ="{'invisible':[('state','!=','approved'),('state','!=','paid')]}"/>
+								<field name="approved_date" attrs ="{'invisible':[('state','!=','approved'),('state','!=','paid')]}"/>
+								<field name="paid_by" attrs ="{'invisible':[('state','!=','paid')]}"/>
+								<field name="paid_date" attrs ="{'invisible':[('state','!=','paid')]}"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>					
+		</record>
+		<record id="kg_employee_gratuity_tree_view" model="ir.ui.view">
+			<field name="name">Employee Gratuity Master</field>
+			<field name="model">kg.employee.gratuity</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="kg_gratuity_master">
+					<field name="employee_id"/>
+					<field name="employee_name"/>
+					<field name="gratuity_amount"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_employee_gratuity">
+			<field name="name">Employee Gratuity Master</field>
+			<field name="res_model">kg.employee.gratuity</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_employee_gratuity_tree_view"/>
+		</record>
+		
+		<menuitem id="kg_menu_employee_gratuity" name="Gratuity" parent="hr.menu_hr_root" sequence="12"/>
+		 
+		<menuitem id="kg_employee_gratuity" name="Employee Gratuity" parent="kg_menu_employee_gratuity" sequence="13" action="action_employee_gratuity"/>
+	
+	</data>
+</openerp>

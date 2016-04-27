@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location
+END
+procurement_pull_workflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/procurement_pull_workflow.xml
+END
+stock_location_demo_cpu3.yml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/stock_location_demo_cpu3.yml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/__openerp__.py
+END
+stock_location.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/stock_location.py
+END
+stock_location_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/stock_location_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/__init__.py
+END
+procurement_pull.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/procurement_pull.py
+END
+stock_location_demo_cpu1.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock_location/stock_location_demo_cpu1.xml
+END

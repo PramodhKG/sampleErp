@@ -1,0 +1,75 @@
+import time
+from lxml import etree
+import openerp.addons.decimal_precision as dp
+import openerp.exceptions
+
+from openerp import netsvc
+from openerp import pooler
+from openerp.osv import fields, osv, orm
+from openerp.tools.translate import _
+
+class kg_emp_budget(osv.osv):
+	
+	_name = 'kg.emp.budget'
+	_description = 'Employee Budget'
+	
+	_columns = {
+
+		'date':fields.date('Creation Date',readonly=True),		
+		'from_date':fields.date('From Date',required=True,readonly=True, states={'draft':[('readonly',False)]}),		
+		'to_date':fields.date('To Date',required=True,readonly=True, states={'draft':[('readonly',False)]}),		
+		'state': fields.selection([('draft','Draft'),('confirm','Confirmed')],'Status',readonly=True),
+		'employee_id': fields.many2one('hr.employee', 'Employee Name',required=True,readonly=True, states={'draft':[('readonly',False)]}),
+		'budget_amt': fields.float('Budget Amount', required=True,readonly=True, states={'draft':[('readonly',False)]}),
+		'achieved_amt': fields.float('Achieved Amount',readonly=True),
+		
+		
+	}
+
+	def _check_value(self, cr, uid, ids, context=None):
+		entry = self.browse(cr,uid,ids[0])
+		if entry.budget_amt <= 0:
+			return False		
+		return True
+
+
+	def _check_duplicate_entry(self, cr, uid, ids, context=None):
+		entry = self.browse(cr,uid,ids[0])
+		obj = self.pool.get('kg.emp.budget')
+		start_date = entry.from_date
+		end_date = entry.to_date
+		emp_id = entry.employee_id.id
+		dup_ids = obj.search(cr, uid, [('from_date','=',start_date),('to_date','=',end_date),
+									('employee_id','=',emp_id)])
+		print "dup_ids =============>>>", dup_ids
+		if len(dup_ids) > 1:
+			return False
+		return True
+	
+	_constraints = [        
+              
+        (_check_value, 'System not allow to save zero budget value .!!',['budget_amt']),
+        (_check_duplicate_entry, 'System not allow to save duplicate entries. Check Month and Employee Name !!',['amount']),
+        
+        ]	
+	
+	
+	_defaults = {
+	
+		'date':fields.date.context_today,
+		'state': 'draft',
+		}
+
+
+	def entry_confirm(self, cr, uid, ids, context=None):
+		self.write(cr, uid, ids, {'state': 'confirm'})
+		return True
+		
+
+	def unlink(self,cr,uid,ids,context=None):
+		raise osv.except_osv(_('Warning!'),
+				_('You can not delete any Entry !!'))			
+		
+		
+kg_emp_budget()
+

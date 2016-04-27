@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_indent_to_issue_report" model="ir.ui.view">
+            <field name="name">Department Indent To Issue</field>
+            <field name="model">dep.indent.to.issue.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Department Indent To Issue">
+                <separator string="Department Indent To Issue" colspan="4"/>
+                   
+                    <notebook tabpos="up" colspan="4">
+						<page string="Filters" name="filters">
+							<field name="filter" colspan="4"/>
+							<separator string="Issue Date" colspan="4"/>
+							<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+							<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+						</page>
+                        
+                        <page string="Department Name" name="dep_id">
+                            <group colspan="2" col="2">
+								<separator string="Department Name" colspan="2" col="2" />
+								<field name = "dep_id"/>
+							</group>
+                        </page>
+                        <page string="Product Name" name="product_id">
+                            <group colspan="2" col="2">
+								<separator string="Product Name" colspan="2" col="2" />
+								<field name = "product_id"/>
+							</group>
+                        </page>
+                                                                         
+                    </notebook>                
+                    <separator colspan="4"/>
+						<group col="4" colspan="4">
+							<button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+							<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						</group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_dep_indent_issue_report" model="ir.actions.act_window">  
+            <field name="name">Department Indent To Issue</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">dep.indent.to.issue.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        
+    </data>
+</openerp>

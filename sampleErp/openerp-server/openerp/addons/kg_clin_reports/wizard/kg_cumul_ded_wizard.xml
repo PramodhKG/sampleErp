@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="cumul_deduc_report" model="ir.ui.view">
+            <field name="name">Cumulative Deduction</field>
+            <field name="model">kg.cumul.ded.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form string="Cumulative Deduction">
+				<separator string="Advance Deduction" colspan="4"/>                   
+					<notebook tabpos="up" colspan="4">
+						<page string="Filters" name="filters">
+							<field name="filter" colspan="4"/>
+							<separator string="Employees" colspan="4"/>
+							
+						   <field name="employee" colspan="4" />
+						   <field name="month"/>
+						   <field name="year"/>
+						   
+						</page>
+						
+										   
+					</notebook> 
+					         
+                    <separator colspan="4"/>
+						<group col="4" colspan="4">
+							<button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+							<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						</group>
+			</form>
+            </field>
+        </record>
+
+        <record id="action_cumul_deduc" model="ir.actions.act_window">  
+            <field name="name">Advance Deduction</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.cumul.ded.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record> 
+        
+      <!--  <menuitem
+            
+            parent="kg_payslip.menu_kg_hrm_reports" sequence = "76" 
+            action="action_cumul_deduc"
+            id="menu_kg_cumul_deduc"
+            />
+          -->
+    </data>
+</openerp>

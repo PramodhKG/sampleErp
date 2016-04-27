@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--
+        KG ICR Copy Attachment
+        -->
+
+        <record id="view_emp_budget_tree" model="ir.ui.view">
+            <field name="name">Employee Budget</field>
+            <field name="model">kg.emp.budget</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Budget">
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                    <field name="employee_id"/>
+                    <field name="budget_amt"/>
+                    <field name="achieved_amt"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_budget_form" model="ir.ui.view">
+            <field name="name">Employee Budget</field>
+            <field name="model">kg.emp.budget</field>
+            <field name="arch" type="xml">
+                <form string="Employee Budget" version="7.0">
+					<header>
+					<button name="entry_confirm" type="object" string="Confirm" states="draft"/>
+					</header> 
+                    <group>
+                        <group>                            
+                            <field name="from_date"/>
+                            <field name="employee_id"/>
+                            <field name="budget_amt"/>                
+                             
+                        </group>
+                        <group>                            
+							<field name="to_date"/>
+							<field name="date"/>
+							<field name="state"/>  
+                           
+                        </group>
+                    </group>
+                   
+                </form>
+            </field>
+        </record>
+
+        <record id="action_emp_budget" model="ir.actions.act_window">
+            <field name="name">Employee Budget</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.emp.budget</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="view_emp_budget_tree"/>
+        </record>
+
+	 <menuitem id="menu_emp_budget" parent="kg_icr_copy.menu_icr_main" action="action_emp_budget" sequence="2"/>
+        
+         
+
+    </data>
+</openerp>

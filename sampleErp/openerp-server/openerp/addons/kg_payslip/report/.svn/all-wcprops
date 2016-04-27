@@ -1,0 +1,383 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report
+END
+kg_pay_abstract.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pay_abstract.py
+END
+kg_pay_abstract.rml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pay_abstract.rml
+END
+kg_esi_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_esi_report.pyc
+END
+kg_pay_abstract.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pay_abstract.pyc
+END
+kg_pf_paymuster.rml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pf_paymuster.rml
+END
+kg_emp_bouns_pdf.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bouns_pdf.py
+END
+kg_pf_paymuster.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pf_paymuster.pyc
+END
+kg_emp_sal_muster.rml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_sal_muster.rml
+END
+kg_emp_bouns_pdf.rml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bouns_pdf.rml
+END
+kg_emp_sal_muster.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_sal_muster.pyc
+END
+kg_emp_bouns_pdf.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bouns_pdf.pyc
+END
+kg_esi_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_esi_report.xml
+END
+kg_nonpf_paymuster.rml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_nonpf_paymuster.rml
+END
+kg_nonpf_paymuster.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_nonpf_paymuster.pyc
+END
+kg_allowance_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_allowance_report.py
+END
+kg_allowance_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_allowance_report.rml
+END
+kg_allowance_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_allowance_report.pyc
+END
+kg_esi_pdf_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_esi_pdf_report.py
+END
+kg_otdays.rml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_otdays.rml
+END
+kg_esi_pdf_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_esi_pdf_report.rml
+END
+kg_otdays.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_otdays.pyc
+END
+kg_esi_pdf_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_esi_pdf_report.pyc
+END
+kg_banklist_text_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_banklist_text_report.pyc
+END
+kg_leave_balance_rep.rml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_leave_balance_rep.rml
+END
+kg_leave_balance_rep.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_leave_balance_rep.pyc
+END
+kg_esi_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_esi_report.py
+END
+kg_banklist_text_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_banklist_text_report.xml
+END
+customer_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/customer_report.pyc
+END
+kg_emp_sal_muster.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_sal_muster.py
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/6/openerp-server/openerp/addons/kg_payslip/report/__init__.pyc
+END
+kg_baask_sal_muster.rml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_baask_sal_muster.rml
+END
+kg_baask_sal_muster.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_baask_sal_muster.pyc
+END
+customer_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/customer_report.xml
+END
+kg_clin_pay_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_clin_pay_report.py
+END
+kg_pf_pdf_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pf_pdf_report.py
+END
+kg_emp_bank_stm.rml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bank_stm.rml
+END
+kg_emp_bank_stm.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bank_stm.pyc
+END
+kg_otdays.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_otdays.py
+END
+kg_leave_balance_rep.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_leave_balance_rep.py
+END
+kg_bank_list.rml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_bank_list.rml
+END
+kg_bank_list.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_bank_list.pyc
+END
+customer_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/customer_report.py
+END
+kg_pf_paymuster.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pf_paymuster.py
+END
+kg_baask_sal_muster.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_baask_sal_muster.py
+END
+kg_emp_sal_muster-orig.rml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_sal_muster-orig.rml
+END
+kg_netpayment.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_netpayment.py
+END
+kg_netpayment.rml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_netpayment.rml
+END
+kg_netpayment.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_netpayment.pyc
+END
+kg_emp_bouns.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bouns.pyc
+END
+kg_pf_pdf_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pf_pdf_report.rml
+END
+kg_clin_pay_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_clin_pay_report.rml
+END
+kg_pf_pdf_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_pf_pdf_report.pyc
+END
+kg_clin_pay_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_clin_pay_report.pyc
+END
+kg_emp_bank_stm.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bank_stm.py
+END
+kg_emp_bouns.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bouns.xml
+END
+kg_banklist_text_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_banklist_text_report.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Clinsync/!svn/ver/5/openerp-server/openerp/addons/kg_payslip/report/__init__.py
+END
+kg_epfo_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_epfo_report.py
+END
+kg_epfo_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_epfo_report.pyc
+END
+kg_emp_bouns.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_emp_bouns.py
+END
+kg_nonpf_paymuster.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_nonpf_paymuster.py
+END
+kg_epfo_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_epfo_report.xml
+END
+kg_bank_list.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_payslip/report/kg_bank_list.py
+END

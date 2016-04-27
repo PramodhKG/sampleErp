@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report
+END
+sale_order.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report/sale_order.sxw
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report/__init__.py
+END
+sale_order.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report/sale_order.py
+END
+sale_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report/sale_report.py
+END
+sale_order.rml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report/sale_order.rml
+END
+sale_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/report/sale_report_view.xml
+END

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_qa_form" model="ir.ui.view">
+            <field name="name">view.kg.qa.form</field>
+            <field name="model">kg.qa</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Quality Acceptance" version="7.0">
+		<header>
+				<button name="draft_qa" states="cancel" string="Draft" type="object" class="oe_highlight"/>
+                <button name="confirm_qa" states="draft" string="Confirm" type="object" />
+                <button name="cancel_qa" states="confirm" string="Cancle" type="object" class="oe_highlight"/>
+                <button name="update_qa" type='object' states="draft" string="Update QA"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,cancel" statusbar_colors='{"draft":"blue"}'/>
+		</header>
+		
+		
+		<group>
+                    <field name="name" readonly="1"/>
+                    <field name="date"/>
+                    <field name="user_id" readonly="1"/>
+                    <field name="grn_id"/>
+                    <field name="active"/>
+                    <field name="state" readonly="1"/>
+			</group>
+
+                     <field colspan="4" string="Quality Acceptance Line" mode="tree" name="kg_qa_line" nolabel="1" widget="one2many_list">
+
+                      <tree string="Quality Acceptance Line" editable="bottom"> 
+                            <field name="product_id"/>
+                            <field name="received_qty"/>
+                            <field name="accepted_qty" on_change="onchange_accepted(received_qty,accepted_qty,rejected_qty)"/>
+                            <field name="rejected_qty" on_change="onchange_rejected(received_qty,accepted_qty,rejected_qty)"/>
+                            
+                        </tree>
+                        <form string=" QA Line " >
+									<field name="product_id"/>
+                                    <field name="received_qty"/>
+                                    <field name="accepted_qty"/>
+                                    <field name="rejected_qty"/>
+                                    <field name="note"/>
+
+
+                        </form>
+                    </field>
+        
+
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_qa_tree" model="ir.ui.view">
+            <field name="name">kg.qa.tree.view</field>
+            <field name="model">kg.qa</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Quality Acceptance">
+                    <field name="name"/>
+					<field name="date"/>
+                    <field name="grn_id"/>
+					<field name="state"/>
+
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_qa_form" model="ir.actions.act_window">
+			<field name="name">Quality Acceptance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.qa</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_qa_tree"/>
+	</record>
+	
+	        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+	<menuitem 
+            id="menu_kg_qa" 
+            name="Quality Acceptance" 
+            parent="kg_depmaster.kg_depmaster_parent_menu"
+            sequence="20"
+            action="action_kg_qa_form"/>
+    </data>
+</openerp>

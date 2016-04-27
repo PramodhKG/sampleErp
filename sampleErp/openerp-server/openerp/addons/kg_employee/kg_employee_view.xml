@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_employee_form">
+				<field name="name">kg.employee.form</field>
+				<field name="model">hr.employee</field>
+				<field name="inherit_id" ref="hr.view_employee_form"/>
+				<field name="arch" type="xml">
+					
+					<field name="notes" position="after">
+					<label for="email_field"/>
+					<field name="email_field" placeholder="Type content to be mailed" colspan="4"/>	
+					<button name="send_mail" string="Send Mail" type="object" />
+					</field>
+								
+					
+					<field name="name" position="after">
+					<label for="emp_code" class="oe_edit_only"/>
+					<field name="emp_code"/>					
+					<label for="payslip" class="oe_edit_only"/>
+					<field name="payslip"/>
+					</field>
+					
+					<field name="address_id" position="before">
+					<field name="join_date"/>
+					</field>					
+					 
+					 <field name="address_home_id" context="{'show_address': 1}" 
+							options='{"always_reload": True, "highlight_first_line": True}' position="replace">	 
+					
+					<field name="present_add"/>
+					<field name="pre_city"/>
+					<field name="pre_state" options='{"no_open": True}'/>
+					<field name="pre_country" options='{"no_open": True}'/>
+					<field name="pin_code"/>
+					<field name="pre_phone_no"/>
+					<field name="same" on_change = "onchange_address(same,present_add,pre_city,pre_state,pre_country,pin_code,pre_phone_no)"/>
+					<field name="permanent_add" attrs="{'required': [('same','=',False)]}"/>
+					<field name="city" attrs="{'required': [('same','=',False)]}" />
+					<field name="kg_state" attrs="{'required': [('same','=',False)]}" options='{"no_open": True}'/>
+					<field name="country" attrs="{'required': [('same','=',False)]}" options='{"no_open": True}'/>
+					<field name="code" attrs="{'required': [('same','=',False)]}"/>
+					<field name="phone_no" attrs="{'required': [('same','=',False)]}"/>					
+					</field>
+					
+					<field name="country_id" options='{"no_open": True}' position="before">
+					<field name="father_name"/>
+					<field name="mother_name"/>
+					<field name="father_occ"/>
+					<field name="mother_occ"/>
+					</field>
+					
+					<field name="marital" position="after">
+					<field name="ann_date"/>
+					<field name="wi_hus_name"/>
+					</field>
+                    
+                    <field name="birthday" position="after">
+					<field name="cer_dob_date"/>
+					</field>
+					
+					<field name="work_location" position="after">
+					<field name="band_level" invisible = "1"/>
+					<field name="pos_level" invisible = "1"/>
+					</field>
+					
+					<field name="parent_id" position="replace" >
+					<field name="rsm_name" attrs="{'invisible': [('rsm','=',True)],'required':[('asi','=',True)]}"/>
+					<field name="asi_id" attrs="{'invisible': ['|',('asi','=',True),('rsm','=',True)]}"/>
+					<field name="com_catg"/>
+					<field name="call_state" />
+					<field name="status" />
+					<field name="releaving_date" attrs="{'required':[('status','=','resigned')]}" />
+					<field name="releaving_reason" attrs="{'required':[('status','=','resigned')]}" />
+					</field>
+					
+					
+					<field name="job_id" position="after">
+					<field name="thottam" invisible="1"/>
+					
+					</field>
+					
+					<field name="job_id" position="replace">
+					<field name="job_id" string="Designation"/>
+					
+					</field>
+					
+					<field name="coach_id" position="replace">
+					<field name="coach_id" string="Trainer" invisible = "1"/>
+					
+					</field>
+					<field name="work_phone" position="after">
+					<field name="location" />
+					<field name="branch"/>
+					<field name="rsm" attrs="{'invisible': [('asi','=',True)]}"/>
+					<field name="asi" attrs="{'invisible': [('rsm','=',True)]}"/>
+					<field name="state"/>
+					</field>
+					
+					
+					<field name="coach_id" position="after">
+					<field name="leave_type" invisible="1"/>
+					<field name="shift_type" options='{"no_open": True}' invisible = "1"/>
+					<field name="week_off" invisible = "1"/>
+					<field name="round_off" invisible = "1"/>
+					<field name="last_month_bal" invisible = "1"/>
+					</field>
+					
+					
+					<xpath expr = "//page[@string='Personal Information']" position="after">
+						<page string="Reference Details" >
+							
+						<group>
+							<field name="refer_line_id" nolabel="1"/>
+							
+						</group>
+							
+						</page>
+					</xpath>
+					
+					
+					
+					
+					<xpath expr = "//page[@string='Personal Information']" position="after">
+						<page string="Educational Details" invisible = "1">
+							
+						<group>
+							<field name="education_line_id" nolabel="1"/>
+							
+						</group>
+							
+						</page>
+					</xpath>
+					
+					<xpath expr = "//page[@string='Educational Details']" position="after">
+						<page string="Employment Status" invisible = "1">
+							
+						<group>
+							<group>	
+							<field name="employee_status" required="False"/>				
+							<field name="training_period"/>
+							<field name="probation"/>
+							<field name="confirm_date"/>
+							<field name="salary_revision"/>
+							</group>
+							<group>
+							<field name="due_date"/>
+							<field name="due_confirm"/>
+							<field name="notice"/>
+							<field name="res_date"/>
+							<field name="res_reason"/>
+							</group>
+							<group string="Others">							
+							<field name="pan"/>
+							<field name="mobile_no"/>						
+							<field name="eme_contact_no"/>						
+							<field name="con_person"/>						
+							</group>							
+							<group string="Others">							
+							<field name="blood"/>
+							<field name="per_email"/>						
+							<field name="relation"/>						
+							</group>
+						</group>
+							
+						</page>
+					</xpath>
+					
+					<xpath expr = "//page[@string='Employment Status']" position="after">
+						<page string="Work History" invisible = "1">
+							
+						<group>
+							<field name="history_line_id" nolabel="1"/>
+								
+							
+							
+						</group>
+							
+						</page>
+					</xpath>
+
+			
+				</field>
+			</record>
+			
+						
+			<record model="ir.ui.view" id="kg_employee_tree">
+				<field name="name">kg.employee.tree</field>
+				<field name="model">hr.employee</field>
+				<field name="inherit_id" ref="hr.view_employee_tree"/>
+				<field name="arch" type="xml">
+					
+					<field name="name" position="after">
+					<field name="emp_code"/>
+					</field>
+					
+					<field name="job_id" position="replace">					
+					<field name="join_date"/>
+					</field>
+					
+					<field name="parent_id" position="replace">					
+					<field name="parent_id" invisible="1"/>					
+					<field name="status"/>
+					</field>
+					
+				</field>
+			</record>
+			
+			
+			<record model="ir.ui.view" id="kg_reference_tree">
+				<field name="name">Reference Details</field>
+				<field name="model">kg.reference.det.line</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Reference Details" editable="bottom">
+						<field name="name"/>
+						<field name="contact_num"/>
+						<field name="relation"/>
+						<field name="designation"/>
+						<field name="address"/>
+					</tree>
+				</field>
+			</record>
+			
+			
+			<record model="ir.ui.view" id="kg_education_line_form">
+				<field name="name">Education Details</field>
+				<field name="model">kg.education.line</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Education Details" version="7.0">
+						<group>
+						<field name="ug_id"/>
+								<field name="ug_study"/>
+								<field name="ug_grade"/>
+								<field name="ug_institute"/>
+								<field name="ug_uni"/>
+								<field name="ug_date"/>
+						</group>
+					</form>
+					
+					
+			
+				</field>
+			</record>
+			
+			
+			<record model="ir.ui.view" id="kg_education_tree_form">
+				<field name="name">Education Details</field>
+				<field name="model">kg.education.line</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Education Details">
+						<field name="ug_id"/>
+						<field name="ug_study"/>
+						<field name="ug_grade"/>
+						<field name="ug_institute"/>
+						<field name="ug_uni"/>
+						<field name="ug_date"/>
+					</tree>
+					
+					
+			
+				</field>
+			</record>
+			
+			<record model="ir.ui.view" id="kg_history_line_form">
+				<field name="name">Working History</field>
+				<field name="model">kg.history.line</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					<form string="Working History" version="7.0">
+						<group>
+						<field name="work_exp"/>
+						<field name="org1"/>
+						<field name="position"/>
+						<field name="position_level"/>
+						<field name="spec"/>
+						<field name="indus"/>
+						<field name="from_date"/>
+						<field name="to_date"/>
+						</group>
+					</form>
+					
+					
+			
+				</field>
+			</record>
+			
+			
+			<record model="ir.ui.view" id="kg_history_tree_form">
+				<field name="name">Working History</field>
+				<field name="model">kg.history.line</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					<tree string="Working History">
+						<field name="work_exp"/>
+						<field name="org1"/>
+						<field name="position"/>
+						<field name="position_level"/>
+						<field name="spec"/>
+						<field name="indus"/>
+						<field name="from_date"/>
+						<field name="to_date"/>
+					</tree>
+					
+					
+			
+				</field>
+			</record>
+			
+			<record id="kg_education_line_action" model="ir.actions.act_window">
+            <field name="name">Education Details</field>
+            <field name="res_model">kg.education.line</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="kg_education_tree_form"/>
+        </record>
+        
+        <record id="kg_history_line_action" model="ir.actions.act_window">
+            <field name="name">Working History</field>
+            <field name="res_model">kg.history.line</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="kg_history_tree_form"/>
+        </record>
+        
+       <!-- <menuitem id="education_menu" parent="hr.menu_hr_main" action="kg_education_line_action"/>
+        
+        <menuitem id="history_menu" parent="hr.menu_hr_main" action="kg_history_line_action"/>
+        -->
+			
+			
+    </data>
+</openerp>

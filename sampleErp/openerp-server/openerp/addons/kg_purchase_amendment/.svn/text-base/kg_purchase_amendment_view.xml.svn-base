@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_poamend_form" model="ir.ui.view">
+            <field name="name">view.kg.poamend.form</field>
+            <field name="model">kg.purchase.amendment</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Purchase Order Amendment" version="7.0">
+		<header>
+                <button name="confirm_amend" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+			<!--	<button name="approve_amend" states="confirm" string="Approve" type="object" class="oe_highlight" /> 
+                <button name="cancel_amend" states="confirm,done" string="Cancel" type="object" class="oe_highlight"/> -->
+                <button name="make_amend" string="Create Amend" type="object" class="oe_highlight"
+							attrs = "{'invisible':[('amend_flag','=',True)]}"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel" statusbar_colors='{"draft":"blue"}'/>
+
+		</header>
+				<group>
+                    <group>
+                    <field name="name"/>
+                    <field name="po_id" attrs = "{'readonly':[('amend_flag','=',True)]}"
+									on_change="onchange_poid(po_id, pricelist_id)"/>
+                    <field name="partner_id"/>
+                    <field name="bill_type"/>
+                    <field name="payment_mode"/>
+                    <field name="delivery_type"/>
+                    <field name="delivery_mode"/>
+                    <field name="po_expenses_type1"/>
+                    <field name="value1"/>
+					<field name="po_expenses_type2"/>
+                    <field name="value2"/>
+                    <field name="amend_flag" invisible="1"/>
+                    <field name="state" readonly="1"/>
+                    <field name="pricelist_id" invisible="1"/>
+                    <field name="grn_flag" invisible="1"/>
+                    
+
+                    </group>
+                    <group>
+                    <field name="date"/>
+					<field name="po_date"/>
+                    <field name="active"/>
+                    <field name="partner_id_amend" attrs = "{'readonly':[('grn_flag','=',True)]}"/>
+                    <field name="bill_type_amend"/>
+                    <field name="payment_mode_amend"/>
+                    <field name="delivery_type_amend"/>
+                    <field name="delivery_mode_amend"/>
+                    <field name="po_expenses_type1_amend"/>
+                    <field name="value1_amend"/>
+					<field name="po_expenses_type2_amend"/>
+                    <field name="value2_amend"/>
+
+                    </group>
+				</group>
+				
+				<notebook>
+				<page string="Product">
+					<field colspan="4" mode="tree" name="amendment_line" nolabel="1" widget="one2many_list" attrs = "{'readonly':[('state','!=','draft')]}">
+						  <tree string="Purchase Amendment Line"> 
+								<field name="product_id"/>
+								<field name="product_uom"/>
+								<field name="product_qty_amend"/>
+								<field name="price_unit_amend"/>
+								<field name="kg_discount_amend"/>
+								<field name="price_subtotal"/>
+								
+							</tree>
+                   </field>				
+				<field name="terms" class="oe_inline" placeholder="Terms and conditions..."/>
+				</page>		
+
+				<page string="Remarks">					
+					<field name="remark"/>				
+				</page>
+				
+			
+				</notebook>		
+				
+			</form>
+		</field>
+	</record>
+	
+			<record id="view_kg_amend_line_form" model="ir.ui.view">
+            <field name="name">view.kg.amend.line.form</field>
+            <field name="model">kg.purchase.amendment.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+							
+				<form string="Purchase Amendment Line" version="7.0">
+					<group>
+						<group>
+							<field name="product_id"/>
+							<field name="product_qty" readonly="1"/>
+							<field name="pending_qty" readonly="1"/>
+							<field name="received_qty" readonly="1"/>
+							<field name="cancel_qty" readonly="1"
+									attrs="{'invisible': [('cancel_flag','=',False)]}"/>
+							<field name="price_unit" readonly="1"/>
+							<field name="kg_discount" readonly="1"/>
+							<field name="kg_discount_per" readonly="1"/>
+							<field name="kg_discount_per_value" invisible="1"/>
+							<field name="taxes_id" widget="many2many_tags" 
+								domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+							<field name="note" readonly="1"/>
+							<field name="line_bill" invisible="1"/>
+
+						</group>
+						<group>
+							<field name="product_uom"/>
+							<field name="product_qty_amend"
+								on_change="onchange_qty(product_qty,product_qty_amend,pending_qty,pending_qty_amend)"/>
+							<field name="pending_qty_amend" invisible="1"/>
+							<field name="price_unit_amend" attrs="{'readonly': [('line_bill','=',True)]}"
+								on_change="onchange_price_unit(price_unit_amend,kg_discount_per_amend,kg_discount_per_value_amend,product_qty_amend)"/>
+							<field name="kg_discount_amend" attrs="{'readonly': [('line_bill','=',True)]}"/>
+							<field name="kg_discount_per_amend" attrs="{'readonly': [('line_bill','=',True)]}"
+								on_change="onchange_discount_value_calc(kg_discount_per_amend,product_qty_amend,price_unit_amend)"/>
+							<field name="kg_discount_per_value_amend" invisible="1"/>
+							<field name="taxes_id_amend" widget="many2many_tags" attrs="{'readonly': [('line_bill','=',True)]}"
+								domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+							<field name="note_amend"/>
+							
+						</group>
+						<field name="cancel_flag" invisible="1"/>
+						<field name="line_state" invisible="1"/>
+						<button name="pol_cancel" type="object" string="Cancel" icon="gtk-cancel"
+								attrs="{'invisible': [('line_state','!=','draft')]}"
+								class="oe_highlight"/>
+						<button name="pol_draft" type="object" string="Set to Draft" icon="gtk-draft"
+								attrs="{'invisible': ['|', ('line_state','=','done'), ('line_state','=', 'draft')]}" 
+								class="oe_highlight"/>
+					</group>
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_poamendment_tree" model="ir.ui.view">
+            <field name="name">view.kg.poamendment.tree</field>
+            <field name="model">kg.purchase.amendment</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Purchase Order Amendment">
+                    <field name="name"/>
+					<field name="date"/>
+                    <field name="po_id"/>
+                    <field name="po_date"/>
+					<field name="state"/>
+
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_poamendment_form" model="ir.actions.act_window">
+			<field name="name">Purchase Order Amendment</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.purchase.amendment</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_poamendment_tree"/>
+	</record>
+	
+	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+	<menuitem 
+	
+            id="menu_kg_poamendment" 
+            name="PO Amendment" 
+            parent="purchase.menu_procurement_management"
+            sequence="16"
+            action="action_kg_poamendment_form"/>
+           
+	
+    </data>
+</openerp>

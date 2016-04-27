@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_depindent_form" model="ir.ui.view">
+            <field name="name">view.kg.depindent.form</field>
+            <field name="model">kg.depindent</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Department Indent" version="7.0">
+							
+		<header>
+                <button name="confirm_indent" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+                <button name="approve_indent" states="confirm" string="Approve" type="object" class="oe_highlight" groups="kg_menus.group_kg_main_store_user"/>
+                <button name="cancel_indent" states="confirm,approved" string="Cancel" type="object" class="oe_highlight"/>
+                <button name="print_indent" states="confirm,approved" string="Print Indent" type="object" class="oe_highlight"/>
+				<field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved,cancel"
+								statusbar_colors='{"draft":"blue","confirm":"blue","approved":"blue"}'/>
+		</header>
+				<group>
+					<group>
+                    <field name="name"/>
+                    <field name="user_id" on_change="onchange_user_id(user_id)" invisible="1"/>
+                    <field name="dep_name" readonly="True" on_change="onchange_depname(dep_name,src_location_id,dest_location_id)"/>
+                    <field name="src_location_id" invisible="1"/>
+                    <field name="main_store" groups="kg_menus.group_kg_main_store_user"/>
+                    </group>
+                    <group>
+                    <field name="dest_location_id" invisible="1"/>
+					<field name="date"/>
+                    <field name="type" invisible="1"/>
+                    <field name="active"/>
+                    <field name="state" readonly="1" style="width: 30%%" class="indent_state_change" /> 
+                    </group>
+				</group>
+
+                    <!-- <field colspan="4" string="Indent Lines" mode="tree" name="dep_indent_line" nolabel="1" widget="one2many_list">
+					<tree string="Indent Line" colors="blue:state=='draft';red:state in ('done','cancel')"> -->
+
+					<field colspan="4" mode="tree" name="dep_indent_line" nolabel="1" widget="one2many_list" attrs = "{'readonly':[('state','=','done')]}">
+						  <tree string="Department Indent Line"> 
+								<field name="product_id"/>
+								<field name="uom"/>
+								<field name="qty"/>
+								<field name="pending_qty" invisible="0"/>
+								<field name="issue_pending_qty"/>
+								<field name="line_state" invisible="1"/>
+																
+							</tree>
+							<form string=" Indent Line " >
+								<group>
+									<group>
+										<field name="product_id" on_change="onchange_product_id(product_id,uom,po_uom)"/>
+										<field name="uom" 
+												on_change="onchange_product_uom(product_id, uom, po_uom,qty)"/>
+										<field name="po_uom" invisible="1"/>
+										<field name="qty" 
+											attrs="{'readonly': [('uom', '=', False)]}"
+											on_change="onchange_qty(uom,product_id,qty,pending_qty,issue_pending_qty,po_qty)"/>
+										<field name="po_qty" invisible="1"/>
+										</group>
+										<group>
+										<field name="pending_qty" invisible="1"/>
+										<field name="issue_pending_qty" invisible="1"/>
+										<field name="main_store_qty" invisible="1"/>
+										<field name="note"/>
+										<field name="dep_id" invisible="1"/>
+										</group>
+								</group>
+									
+							</form>
+                    </field>
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_depindent_tree" model="ir.ui.view">
+            <field name="name">kg.depindent.tree.view</field>
+            <field name="model">kg.depindent</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+				<tree colors="blue:state == 'confirm';gray:state in ('draft','cancel');black:state == 'approved'" 
+								string="Department Indent" toolbar="1" >                
+                    <field name="name"/>
+					<field name="date"/>
+                    <field name="dep_name"/>
+                    <field name="user_id"/>
+					<field name="state"/>
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_depindent_form" model="ir.actions.act_window">
+			<field name="name">Department Indent</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.depindent</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_depindent_tree"/>
+	</record>
+	
+	
+	
+	<!-- dep indent line tree view -->
+	
+	<record id="view_kg_depindent_line_tree" model="ir.ui.view">
+            <field name="name">kg.depindent.line.tree</field>
+            <field name="model">kg.depindent.line</field>
+            <field name="type">tree</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+               <tree string="Department Indent">
+                    <field name="indent_id"/>
+                    <field name="line_date"/>
+                    <field name="product_id"/>
+                    <field name="uom"/>
+                    <field name="qty"/>
+                    <field name="pending_qty"/>
+                    <field name="issue_pending_qty"/>
+                    
+                    
+                </tree>
+            </field>
+        </record>
+        
+	
+	
+	
+	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+        
+	<menuitem id="kg_dep_indent_menu" name="Department Indent" parent="stock.menu_stock_root" sequence="13"/>
+
+	<menuitem 
+            id="menu_kg_depindent" 
+            name="Department Indent" 
+            parent="kg_dep_indent_menu"
+            sequence="2"
+            action="action_kg_depindent_form"/>
+            
+	<!-- <menuitem name="KG Reports"
+            id="base.menu_kg_report_main"
+            sequence="120"/> -->
+    </data>
+</openerp>

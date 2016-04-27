@@ -1,0 +1,210 @@
+import time
+from report import report_sxw
+from reportlab.pdfbase.pdfmetrics import stringWidth
+import locale
+
+
+class kg_leave_balance_rep(report_sxw.rml_parse):
+	
+	_name = 'kg.leave.balance.rep'
+	_inherit='hr.payslip'   
+
+	def __init__(self, cr, uid, name, context=None):
+		if context is None:
+			context = {}
+		super(kg_leave_balance_rep, self).__init__(cr, uid, name, context=context)
+		self.query = ""
+		self.period_sql = ""
+		self.localcontext.update( {
+			'time': time,
+			'get_filter': self._get_filter,
+			'get_start_date':self._get_start_date,
+			'get_end_date':self._get_end_date,
+			'get_data':self.get_data,
+			'locale':locale,
+		})
+		self.context = context
+		
+	def get_data(self,form):
+		res = {}
+		where_sql = []
+		dep = []
+		employee=[]
+		
+		
+		if form['leave_type']:
+				where_sql.append("leave.leave_type= '%s' "%form['leave_type'])
+		if form['dep_id']:
+			ids = form['dep_id'][0]
+			dep.append("leave.department_id = %s" %(ids))
+		if form['employee']:
+			ids = form['employee'][0]
+			dep.append("att.employee_id = %s" %(ids))
+			
+		
+		if where_sql:
+			where_sql = ' and '+' or '.join(where_sql)
+		else:
+			where_sql=''
+		
+		if dep:
+			dep = ' and '+' or '.join(dep)
+		else:
+			dep=''
+		
+		if employee:
+			employee = ' and '+' or '.join(employee)
+		else:
+			employee=''
+					
+		
+		print "where_sql --------------------------->>>", where_sql	
+		
+		self.cr.execute('''
+		
+			 select 
+				sum(sickleave) as tot_sl,
+				sum(el) as tot_el,
+				sum(cl) as tot_cl,
+				sum(absent) as unpaid,
+				att.employee_id as emp_id
+
+
+
+				from kg_monthly_attendance att
+				
+				JOIN hr_holidays leave ON (leave.emp_code=att.employee_id)
+				
+
+			  where att.start_date >=%s and att.end_date <=%s '''+ where_sql + dep + employee + '''
+			  group by att.employee_id''',(form['date_from'],form['date_to']))
+			   
+		data=self.cr.dictfetchall()
+		print "data_sort ------------------------>>>.........", data
+	
+		leave_obj = self.pool.get('hr.holidays')
+		att_obj=self.pool.get('kg.monthly.attendance')
+		
+		
+		for item in data:
+			gran_tot=0.0
+			gran_used=0.0
+			gran_rem=0.0
+			cl_ids=0
+			sl_ids=0
+			el_ids=0
+			unpaid=0
+			
+			att_sl = item['tot_sl']
+			att_cl = item['tot_cl']
+			att_el = item['tot_el']
+			att_unpaid=item['unpaid']
+			emp_id = item['emp_id']
+			print "employeeid..............",emp_id
+			att_ids=att_obj.search(self.cr,self.uid,[('employee_id','=',emp_id),
+						('start_date','>=',form['date_from']),('end_date','<=',form['date_to'])])
+			att_rec = att_obj.browse(self.cr,self.uid,att_ids[0])
+			print "'att_rec",att_rec
+			item['employee_code']=att_rec.employee_name	
+			leave_ids = leave_obj.search(self.cr, self.uid,[('emp_code','=',emp_id),('leave_type','=',form['leave_type'])])
+			
+			print "leave_ids...................", leave_ids
+			
+			if leave_ids:
+				cl_ids = leave_obj.search(self.cr, self.uid,[('emp_code','=',emp_id),('leave_type','=','cl')])
+				print "cl_ids1.............",cl_ids
+				sl_ids = leave_obj.search(self.cr, self.uid,[('emp_code','=',emp_id),('leave_type','=','sl')])
+				print "sl_ids1.............",sl_ids
+				el_ids = leave_obj.search(self.cr, self.uid,[('emp_code','=',emp_id),('leave_type','=','el')])
+				print "el_ids.............",el_ids
+				unpaid_ids = leave_obj.search(self.cr, self.uid,[('emp_code','=',emp_id),('leave_type','=','unpaid')])
+				print "unpaid_ids1.............",unpaid_ids
+				if cl_ids:
+					leave_rec = leave_obj.browse(self.cr,self.uid,cl_ids[0])
+					print "attrec....................",leave_rec
+					emp_name=leave_rec.employee_name
+					item['employee_name']=emp_name
+					print "CL Leave record......................",leave_rec
+					tot_day= leave_rec.number_of_days_temp
+					
+					item['total_days']=tot_day
+					
+					print "total cl days.......................",tot_day
+					
+					item['used_leaves']=att_cl
+					rem_leave=tot_day - att_cl
+					print "remaining cl Leaves.....................",rem_leave
+
+					item['remaining_day']=rem_leave
+					
+				elif sl_ids:
+					leave_rec = leave_obj.browse(self.cr,self.uid,sl_ids[0])
+					emp_name=leave_rec.employee_name
+					item['employee_name']=emp_name
+					print "SL Leave record......................",leave_rec
+					tot_day= leave_rec.number_of_days_temp
+					item['total_days']=tot_day
+					print "total sl days.......................",tot_day
+					item['used_leaves']=att_sl
+					rem_leave=tot_day - att_sl
+					print "remaining sl Leaves.....................",rem_leave
+					item['remaining_day']=rem_leave
+					
+						
+					
+					
+					
+					
+				elif el_ids:
+					leave_rec = leave_obj.browse(self.cr,self.uid,el_ids[0])
+					emp_name=leave_rec.employee_name
+					item['employee_name']=emp_name
+					print "EL Leave record......................",leave_rec
+					tot_day= leave_rec.number_of_days_temp
+					item['total_days']=tot_day
+					print "total sl days.......................",tot_day
+					item['used_leaves']=att_el
+					rem_leave=tot_day - att_el
+					print "remaining sl Leaves.....................",rem_leave
+					item['remaining_day']=rem_leave
+				
+				elif unpaid_ids:
+					leave_rec = leave_obj.browse(self.cr,self.uid,unpaid_ids[0])
+					emp_name=leave_rec.employee_name
+					item['employee_name']=emp_name
+					print "Unpaid Leave record......................",leave_rec
+					tot_day= leave_rec.number_of_days_temp
+					item['total_days']=tot_day
+					print "total sl days.......................",tot_day
+					item['used_leaves']=att_unpaid
+					rem_leave=tot_day - att_unpaid
+					print "remaining sl Leaves.....................",rem_leave
+					item['remaining_day']=rem_leave
+							
+			
+			
+		return data
+		
+		
+
+	def _get_filter(self, data):
+		if data.get('form', False) and data['form'].get('filter', False):
+			if data['form']['filter'] == 'filter_date':
+				return _('Date')
+			
+		return _('No Filter')
+		
+	def _get_start_date(self, data):
+		if data.get('form', False) and data['form'].get('date_from', False):
+			return data['form']['date_from']
+		return ''
+		
+	def _get_end_date(self, data):
+		if data.get('form', False) and data['form'].get('date_to', False):
+			return data['form']['date_to']
+		return ''		   
+  
+
+report_sxw.report_sxw('report.kg.leave.balance.rep', 'hr.payslip', 
+			'addons/kg_payslip/report/kg_leave_balance_rep.rml', 
+			parser=kg_leave_balance_rep, header = False)

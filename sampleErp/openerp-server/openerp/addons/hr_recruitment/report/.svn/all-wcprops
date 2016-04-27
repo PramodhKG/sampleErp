@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/report
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/report/__init__.py
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/report/__init__.pyc
+END
+hr_recruitment_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/report/hr_recruitment_report.py
+END
+hr_recruitment_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/report/hr_recruitment_report_view.xml
+END
+hr_recruitment_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/report/hr_recruitment_report.pyc
+END

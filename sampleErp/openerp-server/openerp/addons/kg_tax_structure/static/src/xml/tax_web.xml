@@ -1,0 +1,15 @@
+<templates>
+<div t-name="Taxweb" class="oe_web_example oe_web_example_stopped">
+    <h4 class="oe_web_example_timer">00:00:00</h4>
+    <p class="oe_web_example_start">
+        <button type="button">Start</button>
+    </p>
+    <p class="oe_web_example_stop">
+        <button type="button">Stop</button>
+    </p>
+    <p class="oe_web_example_clear">
+        <button type="button">Clear</button>
+    </p>
+</div>
+</templates>
+

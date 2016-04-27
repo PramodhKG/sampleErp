@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account_accountant
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account_accountant/__init__.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account_accountant/__openerp__.py
+END
+account_accountant_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account_accountant/account_accountant_demo.xml
+END
+account_accountant_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account_accountant/account_accountant_data.xml
+END

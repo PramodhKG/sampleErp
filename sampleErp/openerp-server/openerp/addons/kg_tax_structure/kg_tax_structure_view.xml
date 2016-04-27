@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_tax_structure_form" model="ir.ui.view">
+            <field name="name">view.tax.structure.form</field>
+            <field name="model">kg.tax.structure</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Tax Structure" version="7.0">	
+					<header>
+					<button name="approve_tax" states="draft" string="Approve" type="object" class="oe_highlight"/>
+					<button name="open_web" string="Open Web" type="object" class="oe_highlight"/>
+					</header>
+					<group>
+						<group>
+							<field name="name"/>
+							<field name="type"/>	
+							<field name="active"/>
+						</group>						
+						<group>
+							<field name="creation_date"/>
+							<field name="state"/>
+							
+													
+						</group>
+					</group>
+
+                     <field colspan="4" string="Tax Structure Line" mode="tree" name="tax_line" nolabel="1" widget="one2many_list">
+									 
+                      <tree string="Tax Structure Line" editable="bottom"> 
+                            <field name="tax_id" on_change="onchange_tax_id(tax_id)"/>
+                            <field name="tax_type"/>
+                            <field name="value"/>
+                        </tree>
+                        <form string="Tax Structure Line" >
+									<field name="tax_id"/>
+
+                        </form>
+                    </field>
+               </form>
+           </field>
+        </record>
+        
+        <record model="ir.actions.client" id="action_kg_tax">
+            <field name="name">Tax Structure</field>
+            <field name="tag">tax.ui</field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="tax_structure_tree_view" model="ir.ui.view">
+            <field name="name">tax.structure.tree.view</field>
+            <field name="model">kg.tax.structure</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Tax Structure">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="state"/>
+                   
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_tax_structure" model="ir.actions.act_window">
+			<field name="name">Tax Structure</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.tax.structure</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="tax_structure_tree_view"/>
+	</record>
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+        
+	<!--<menuitem 
+            id="kg_tax_structure" 
+            name="Tax Structure" 
+            parent="kg_depmaster.kg_depmaster_parent_menu"
+            sequence="19"
+            action="action_tax_structure"/> -->
+            
+    </data>
+</openerp>

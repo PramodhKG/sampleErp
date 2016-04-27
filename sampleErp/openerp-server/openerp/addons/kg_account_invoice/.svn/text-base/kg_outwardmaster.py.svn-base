@@ -1,0 +1,31 @@
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+
+
+class kg_outwardmaster(osv.osv):
+
+	_name = "kg.outwardmaster"
+	_description = "Outward Master"
+	_columns = {
+		
+		'name': fields.char('Outward Type', size=128, required=True, select=True),
+		'date': fields.date('Date'),
+		'bill': fields.boolean('Bill Indication'),
+		'return': fields.boolean('Return Indication'),
+		'valid': fields.boolean('Valid Indication'),
+		'active': fields.boolean('Active'),
+
+		
+	}
+	
+	_defaults = {
+	
+	'date': fields.date.context_today,
+	
+	}
+
+
+	
+kg_outwardmaster()

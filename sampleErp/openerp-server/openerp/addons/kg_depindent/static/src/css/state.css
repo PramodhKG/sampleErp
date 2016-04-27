@@ -1,0 +1,12 @@
+.indent_state_change {
+    color: blue;
+    top: 255px;
+    left: 45px
+}
+.indent_line{
+	border-right:#000 solid 2px;
+}
+.indent_align{
+	text-align:center;
+}
+

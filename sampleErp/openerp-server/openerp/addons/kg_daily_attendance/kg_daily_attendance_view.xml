@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="daily_attendance_form_view" model="ir.ui.view">
+			<field name="name">daily.attendance</field>
+			<field name="model">kg.daily.attendance</field>
+			<field name="arch" type="xml">
+				<form string="Daily Attendance" version="7.0">
+				<header>						
+					<button name="confirm_entry" states="load,draft" string="Confirm" type="object" class="oe_highlight"/>
+					<button name="lst_month_daily_attendance" string="Calc" type="object" class="oe_highlight"/>
+				</header>															
+					<group>
+						<group>
+							<field name="date" attrs="{'readonly':[('state','=','load')]}"/>
+							<field name="created_by"/>
+							<button name="load_employee_attandance" states="draft" string="Load Employee's" type="object" class="oe_highlight"/>
+						</group>
+						<group>
+							<field name="creation_date"/>
+							<field name="state"/>
+						</group>
+					</group>
+					<field name="entry_id" nolabel="1" colspan="4">
+						<tree string="Daliy Attendance Line" editable="bottom" >
+							<field name="employee_id" required="1" readonly="1"/>
+							<field name="employee_code" readonly="1"/>
+							<field name="dept_name" readonly="1"/>
+							<field name="emp_status" required="1"/>
+						</tree>
+					</field>
+				</form>
+			</field>
+	  
+
+
+
+	</record>
+		
+		<record id="daily_attendance_tree_view" model="ir.ui.view">
+			<field name="name">daily.attendance.tree</field>
+			<field name="model">kg.daily.attendance</field>
+			<field name="arch" type="xml">
+				<tree colors="red:state == 'draft';red:state == 'load' ;blue:state == 'approve'"
+								string="Buyer Form Tree" toolbar="1" >
+					<field name="date"/>
+					<field name="present_count"/>
+					<field name="absent_count"/>
+					<field name="on_duty_count"/>
+					<field name="half_day_count"/>
+					<field name="late_count"/>
+					<field name="tot_count"/>
+					<field name="state"/>
+					<field name="created_by"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="daily_action_form" model="ir.actions.act_window">
+			<field name="name">Daily Attendance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.daily.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="daily_attendance_tree_view"/>
+		</record>
+
+	<menuitem 
+            id="kg_daily_attendance" 
+            name="Daily Attendance" 
+            parent="hr_attendance.menu_hr_attendance"
+            sequence="25"
+            action="daily_action_form"/>
+
+</data>
+	</openerp>

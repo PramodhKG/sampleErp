@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="monthly_attendance_form_view" model="ir.ui.view">
+			<field name="name">monthly.attendance</field>
+			<field name="model">kg.monthly.attendance</field>
+			<field name="arch" type="xml">
+				<form string="Monthly Attendance" version="7.0">					
+				<header>						
+					<button name="confirm_entry" states="open" string="Confirm" type="object" class="oe_highlight"/>
+					<button name="cancel_entry" states="confirm" string="Cancel" type="object" class="oe_highlight"/>
+					<button name="draft_entry" states="cancel" string="Set to Draft" type="object" class="oe_highlight"/>
+				</header>										
+					<group>
+					<group>
+						<field name="start_date" style="width: 30%%" class="att_month_change"/>
+						<field name="employee_id" on_change="onchange_employee_code(employee_id,employee_name)"/>
+						<field name="punch" invisible="1"/>
+						<field name="worked" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="ot" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="on_duty" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="cl" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="sickleave" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="el" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>			
+						
+						
+					</group>
+					<group>
+						<field name="end_date" style="width: 30%%" class="att_month_change"/>
+						<field name="employee_name"/>
+						<field name="active" invisible="1"/>
+						<field name="arrear" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="absent"/>						
+						<field name="month_tot_day"/>
+						<field name="leave" on_change="onchange_tot_workdays(worked,ot,on_duty,cl,sickleave,el,leave,arrear,absent,mon_tot_days)"/>
+						<field name="working_days"/>
+						<field name="mon_tot_days"/>	
+						<field name="state" readonly="1" style="width: 30%%" class="att_month_change"/>
+					</group>
+					</group>
+				   
+				</form>
+			</field>
+	  
+
+	</record>
+		
+		<record id="monthly_attendance_tree_view" model="ir.ui.view">
+			<field name="name">monthly.attendance.tree</field>
+			<field name="model">kg.monthly.attendance</field>
+			<field name="arch" type="xml">
+				<tree toolbar="True" string="Monthly Attendance">
+					<field name="employee_id"/>
+					<field name="employee_name"/>
+					<field name="start_date"/>
+					<field name="end_date"/>
+					<field name="mon_tot_days"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		<record id="monthly_att_group_view" model="ir.ui.view">
+            <field name="name">Monthly Attendance Entry</field>
+            <field name="model">kg.monthly.attendance</field>
+            <field name="arch" type="xml">
+                <search string="Monthly Attendance Entry">                    
+                    <group expand="0" string="Group By...">
+                        <filter string="Month" icon="terp-personal" domain="[]" context="{'group_by':'start_date'}"/>
+                        <filter string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>                        
+                        <filter string="State" icon="terp-gtk-select-all" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+                </search>
+			</field>
+		</record>
+		
+		 <record id="monthly_action_form" model="ir.actions.act_window">
+			<field name="name">Monthly Attendance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.monthly.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="monthly_attendance_tree_view"/>
+		</record>
+
+	<menuitem 
+            id="kg_monthly_attendance" 
+            name="Monthly Attendance" 
+            parent="hr_attendance.menu_hr_attendance"
+            sequence="23"
+            action="monthly_action_form"/>
+
+</data>
+	</openerp>

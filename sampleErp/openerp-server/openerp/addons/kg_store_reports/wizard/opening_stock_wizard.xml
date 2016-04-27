@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="opening_stock_report" model="ir.ui.view">
+            <field name="name">Opening Stock</field>
+            <field name="model">opening.stock.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form string="Opening Stock">
+				<separator string="Opening Stock" colspan="4"/>                   
+					<notebook tabpos="up" colspan="4">
+						<page string="Filters" name="filters">
+							<field name="filter" colspan="4"/>
+							<separator string="Date" colspan="4"/>
+							<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+							<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+							<field name="location_dest_id"/>
+						</page>
+															   
+					</notebook>                
+                    <separator colspan="4"/>
+						<group col="4" colspan="4">
+							<button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+							<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						</group>
+			</form>
+            </field>
+        </record>
+
+        <record id="action_opening_stock" model="ir.actions.act_window">  
+            <field name="name">Opening Stock</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">opening.stock.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record> 
+    
+    </data>
+</openerp>

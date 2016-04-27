@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+	<!-- Other menu Changes -->
+				
+	<menuitem id="menu_others" name= "Others" sequence="12" groups="group_others"/>
+	<menuitem id="purchase.menu_procurement_management_inventory" name="Incoming Products"
+		parent="menu_others" sequence="1"/>
+	<menuitem id="purchase.menu_procurement_management_invoice" name="Invoice Control"
+			parent="menu_others" sequence="5"/>
+			
+	<menuitem id="stock.menu_stock_products_moves" name="Receive/Deliver Products" parent="menu_others" sequence="9"/>
+	<menuitem id="menu_traceability" name="Traceability" parent="menu_others" sequence="11"/>
+	<menuitem action="stock.action_tracking_form" id="stock.menu_action_tracking_form" groups="product.group_stock_packaging"
+				sequence="13" parent="menu_others"/>
+	<menuitem action="stock.action_production_lot_form" id="stock.menu_action_production_lot_form"
+		parent="kg_menus.menu_traceability" groups="stock.group_production_lot" sequence="1"/>
+	<menuitem action="stock.action_move_form2" id="stock.menu_action_move_form2" parent="kg_menus.menu_others" sequence="2" 
+							groups="stock.group_locations"/>
+							
+	<menuitem id="menu_stock_inventory_control" name="Inventory Control" parent="menu_others" sequence="19"/>
+	<menuitem action="stock.action_inventory_form" id="stock.menu_action_inventory_form" parent="kg_menus.menu_stock_inventory_control" sequence="1"/>
+	<menuitem action="stock.action_location_tree" id="stock.menu_action_location_tree" parent="kg_menus.menu_stock_inventory_control" 
+		   groups="stock.group_locations" sequence="2"/>
+		   
+	<menuitem id="menu_stock_sched" name="Schedulers" parent="menu_others" sequence="24" 
+			groups="stock.group_stock_manager"/>
+	<menuitem action="procurement.action_compute_schedulers" id="procurement.menu_stock_proc_schedulers" parent="kg_menus.menu_stock_sched" 
+			sequence="2" groups="stock.group_stock_manager"/>
+	<menuitem action="procurement.procurement_exceptions" id="procurement.menu_stock_procurement_action" parent="kg_menus.menu_stock_sched" 
+			sequence="4" groups="stock.group_stock_manager"/>
+			
+	<menuitem id="stock.menu_stock_warehouse_mgmt" name="GRN AND ISSUE" parent="stock.menu_stock_root" sequence="1"/>
+	
+    <menuitem id="stock.menu_stock_product" name="Product Master" parent="stock.menu_stock_root" sequence="6"/>
+	
+	<menuitem id="partner_master_details" parent="base.menu_purchase_root" name="Partner Masters" sequence="49" />
+	
+	<menuitem id="base.menu_procurement_management_supplier_name" name="Suppliers"
+        parent="partner_master_details"
+        action="base.action_partner_supplier_form" sequence="1"/>
+    
+    <!-- PO Bill -->
+    
+    <menuitem id="kg_po_bill" parent="base.menu_purchase_root" name="Purchase Bill" 
+							sequence="52" />
+        
+	<menuitem action="account.action_invoice_tree2" id="account.menu_action_invoice_tree2" 
+			parent="kg_po_bill" name="PO Bill'S" sequence="1"/>
+			
+	<!-- Taxes Menu -->
+	
+	<menuitem action="account.action_tax_form" id="account.menu_action_tax_form" 
+				parent="kg_depmaster.kg_depmaster_parent_menu" sequence="16"/>
+        
+	
+    
+    </data>
+</openerp>

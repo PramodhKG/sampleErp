@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_emp_epfo_stm_form" model="ir.ui.view">
+            <field name="name">Employee EPFO Statement</field>
+            <field name="model">kg.epfo.report</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+			<form string="Employee EPFO Statement" version="7.0">             			 
+				<header>
+					<button name="produce_xls" states="draft" string="Print" type="object" class="oe_highlight"/>
+				</header>
+				<group>
+					<group>
+					 <field name="filter"/>
+					 <field name="date_from"/>
+					 <field name="date_to"/>
+					</group>
+					<group>
+					 <field name="rep_data"/>
+					 <field name="name"/> 
+					 <field name="state"/>
+					</group>
+				</group>
+			</form>
+            </field>
+        </record>
+        
+        <record id="view_emp_epfo_stm_form_tree" model="ir.ui.view">
+            <field name="name">Employee EPFO Statement</field>
+            <field name="model">kg.epfo.report</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+             <tree string="Employee EPFO Statement">
+				 
+				 <field name="date"/>
+				 <field name="date_from"/>
+				 <field name="date_to"/>				 
+				 <field name="name"/>               
+				<field name="rep_data"/>
+				<field name="state"/>
+                
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_epfo_form_report" model="ir.actions.act_window">
+			<field name="name">EPFO Report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.epfo.report</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_emp_epfo_stm_form_tree"/>
+	</record>
+            
+            
+		<menuitem
+            icon="STOCK_PRINT"
+            name="Employee EPFO Report"
+            parent="kg_payslip.menu_kg_hrm_reports" sequence = "7" 
+            action="action_epfo_form_report"
+            id="kg_emp_epfo_form_stm"
+            />
+
+    </data>
+</openerp>

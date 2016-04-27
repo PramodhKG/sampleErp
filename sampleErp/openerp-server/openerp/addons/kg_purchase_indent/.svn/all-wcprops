@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_indent
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_indent/__openerp__.py
+END
+kg_purchase_indent.py-bk
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_indent/kg_purchase_indent.py-bk
+END
+kg_purchase_indent.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/60/openerp-server-7.0/openerp/addons/kg_purchase_indent/kg_purchase_indent.py
+END
+kg_depindent2_poindent.py
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/60/openerp-server-7.0/openerp/addons/kg_purchase_indent/kg_depindent2_poindent.py
+END
+kg_purchase_indent_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/60/openerp-server-7.0/openerp/addons/kg_purchase_indent/kg_purchase_indent_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/9/openerp-server-7.0/openerp/addons/kg_purchase_indent/__init__.py
+END

@@ -1,0 +1,268 @@
+import math
+import re
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+import kg_depindent
+from itertools import groupby
+
+import openerp.addons.decimal_precision as dp
+
+class kg_purchase_indent(osv.osv):
+	
+	_name = "purchase.requisition"
+	_inherit = "purchase.requisition"
+	_columns = {
+	
+		'name': fields.char('Purchase Indent No', size=64, required=True,readonly=True),
+		'kg_store': fields.selection([('sub','Sub Store'), ('main','Main Store')], 'Store', readonly=True, states={'draft': [('readonly', False)]}),
+		'dep_name' : fields.many2one('kg.depmaster', 'Dep.Name', readonly=True, states={'draft': [('readonly', False)]}),
+		'state': fields.selection([('draft','New'),('in_progress','Confirm'),('cancel','Cancelled'),('done','Purchase Done')],
+			'Status', track_visibility='onchange', required=True, readonly=True, states={'draft': [('readonly', False)]}),
+		'kg_depindent_lines':fields.many2many('kg.depindent.line','kg_depindent_pi_line' , 'pi_id', 'depindent_line_id', 'DepIndent Lines',domain="[('indent_id.state','=','done'), '&', ('pending_qty','>','0')]", readonly=True, states={'draft': [('readonly', False)]}),
+		'date_start':fields.date('Indent Date', readonly=True),
+		'line_ids' : fields.one2many('purchase.requisition.line','requisition_id','Products to Purchase', readonly=True, states={'draft': [('readonly', False)]}),
+		'pi_type': fields.selection([('direct','Direct'),('fromdep','From Dep Indent')], 'Type'),
+		'pi_flag': fields.boolean('pi flag'),
+
+	}
+	
+	_defaults = {
+		'exclusive': 'exclusive',
+		'kg_store': 'main',
+		'name': '/',
+	}
+	
+		
+	def create(self, cr, uid, vals, context=None):
+		print "callled create from KG"
+		if vals.get('name','/')=='/':
+			vals['name'] = self.pool.get('ir.sequence').get(cr, uid, 'purchase.requisition') or '/'
+		order =  super(kg_purchase_indent, self).create(cr, uid, vals, context=context)
+		return order
+		
+	def onchange_product_id(self, cr, uid, ids, product_id, uom, context=None):
+		print "callled create from KG"
+
+		value = {'uom': ''}
+		if product_id:
+			prod = self.pool.get('product.product').browse(cr, uid, product_id, context=context)
+			value = {'uom': prod.uom_id.id}
+		return {'value': value}
+		
+	
+	def update_pil(self,cr,uid,ids,context=False,):
+		print "callled update_pil from KG"
+
+		"""
+		Purchase indent line should be created from dep indent while click on update to purchase indent button
+		"""
+		depindent_line_obj = self.pool.get('kg.depindent.line')
+		pi_line_obj = self.pool.get('purchase.requisition.line')
+		prod_obj = self.pool.get('product.product')
+		line_ids = []			   
+		res={}
+		line_ids = []
+		res['line_ids'] = []
+		res['pi_flag'] = True
+		obj =  self.browse(cr,uid,ids[0])
+		if obj.line_ids:
+			line_ids = map(lambda x:x.id,obj.line_ids)
+			pi_line_obj.unlink(cr,uid,line_ids)
+		if obj.kg_depindent_lines:
+			depindent_line_ids = map(lambda x:x.id,obj.kg_depindent_lines)
+			depindent_line_browse = depindent_line_obj.browse(cr,uid,depindent_line_ids)
+			depindent_line_browse = sorted(depindent_line_browse, key=lambda k: k.product_id.id)
+			groups = []
+			for key, group in groupby(depindent_line_browse, lambda x: x.product_id.id):
+				groups.append(map(lambda r:r,group))
+			for key,group in enumerate(groups):
+				qty = sum(map(lambda x:float(x.qty),group)) #TODO: qty
+				depindent_line_ids = map(lambda x:x.id,group)
+				prod_browse = group[0].product_id			
+				uom =False
+				for ele in group:
+					uom = (ele.product_id.product_tmpl_id and ele.product_id.product_tmpl_id.uom_id.id) or False
+					qty = (ele.pending_qty) or False
+					depindent_id= ele.id
+					break
+					
+				vals = {
+			
+				'product_id':prod_browse.id,
+				'product_uom_id':uom,
+				'product_qty':qty,
+				'pending_qty':qty,
+				'dep_indent_qty':qty,
+				'depindent_line_id':depindent_id,
+				
+				}  
+				
+			
+				if ids:
+					self.write(cr,uid,ids[0],{'line_ids':[(0,0,vals)]})
+				
+			if ids:
+				if obj.line_ids:
+					line_ids = map(lambda x:x.id,obj.line_ids)
+					for line_id in line_ids:
+						self.write(cr,uid,ids,{'line_ids':[]})
+		self.write(cr,uid,ids,res)		
+		return True
+		
+	def depindent_line_move(self, cr, uid,ids, depindent_lines , context=None):
+		print "callled depindent_line_move from KG"
+		return {}
+		   
+	def tender_in_progress(self, cr, uid, ids, context=None):
+		print "callled tender_in_progress from KG"
+
+		obj = self.browse(cr,uid,ids[0])
+		
+		for t in self.browse(cr,uid,ids):
+			if not t.line_ids:
+				raise osv.except_osv(
+						_('Empty Purchase Indent'),
+						_('You can not confirm an empty Purchase Indent'))
+			if t.line_ids[0].product_qty==0:   
+				raise osv.except_osv(
+						_('Error'),
+						_('Purchase Indent quantity can not be zero'))
+			self.write(cr,uid,ids,{'state':'in_progress'})
+			for id in ids:
+				cr.execute(""" select depindent_line_id from kg_depindent_pi_line where pi_id = %s """ %(str(id)))
+				data = cr.dictfetchall()
+				val = [d['depindent_line_id'] for d in data if 'depindent_line_id' in d] # Get a values form list of dict if the dict have with empty values
+				print "val~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~", val
+				pi_lines = obj.line_ids
+				print "pi_lines^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", pi_lines
+				for i in range(len(pi_lines)):
+					depindent_line_id=pi_lines[i].depindent_line_id
+					product = pi_lines[i].product_id.name
+					pi_qty=pi_lines[i].product_qty
+					print "pi_qty:::::", pi_qty
+					pi_pending_qty=pi_lines[i].dep_indent_qty
+					print "pi_pending_qty:::::", pi_pending_qty
+					depindent_pending_qty= pi_pending_qty - pi_qty
+					print "depindent_pending_qty::::::", depindent_pending_qty , "dep line id======", val[i]
+					if depindent_line_id:
+						#if pi_qty > pi_pending_qty:
+							#raise osv.except_osv(
+							#_('If Purchase Indent(PI) from Dep.Indent'),
+							#_('PI Qty should not be greater than Dep.Indent Qty. You can raise this PI Qty upto %s --FOR-- %s.' %(pi_pending_qty, product)))
+						pi_obj=self.pool.get('kg.depindent.line')
+						pi_line_obj=pi_obj.search(cr, uid, [('id','=',val[i])])
+						print pi_lines[i], "<<<<<<<<<<>>>>>>>>>>>>", val[i], "<<<<<<<<<>>>>>>>>>", depindent_pending_qty 
+						sql = """ update kg_depindent_line set pending_qty=%s where id = %s"""%(depindent_pending_qty,val[i])
+						cr.execute(sql)
+						#self.write(cr,uid,val[i], {'pending_qty' : pi_qty})
+						#pi_obj.write(cr, uid, val[i], {'line_state' : 'done'})
+		return True
+		cr.close()
+		
+	def tender_cancel(self, cr, uid, ids, context=None):
+		print "callled tender_cancel from KG"
+		pi_obj = self.pool.get('purchase.requisition').browse(cr, uid, ids[0])
+		pi_line_obj = self.pool.get('purchase.requisition.line').browse(cr, uid, [('requisition_id','=',ids[0])])
+		print "pi_line_obj,,,,,,,,,,,,,,,,,,,,,,,,,,,,,", pi_line_obj, ids[0]
+		purchase_order_obj = self.pool.get('purchase.order')
+		for purchase in self.browse(cr, uid, ids, context=context):
+			for purchase_id in purchase.purchase_ids:
+				if str(purchase_id.state) in('draft'):
+					purchase_order_obj.action_cancel(cr,uid,[purchase_id.id])
+		#if product_qty != pending_qty:
+			#raise osv.except_osv(
+				#_('Purchase Indent is Under Processing'),
+				#_('This Purchase Indent associated with some POS. So, you can not cancel this Purchase Indent !!'))
+		if line_ids in ids:
+			print "line_ids--------------------->", line_ids
+			if dep_id in line_ids:
+				print "dep_id======================>", dep_id
+				
+						
+		return self.write(cr, uid, ids, {'state': 'cancel'})
+			
+		
+kg_purchase_indent()
+
+class kg_purchase_indent_line(osv.osv):
+	
+	_name = "purchase.requisition.line"
+	_inherit = "purchase.requisition.line"
+	_rec_name = 'name'
+	
+	_columns = {
+	
+	'rate': fields.float('Last Purchase Rate',readonly=True, state={'draft': [('readonly', False)]}),
+	'note': fields.text('Remarks', readonly=True, state={'draft': [('readonly', False)]}),
+	'line_state': fields.selection([('new', 'New'),('pending', 'Pending'),('done', 'Done')], 'Line State'),
+	'pending_qty': fields.float('Pending Qty'),
+	'dep_indent_qty': fields.float('Dep.Indent Qty'),
+	'name': fields.char('Name', size=64),
+	'depindent_line_id':fields.many2one('kg.depindent.line', 'Dep.Indent Line'),
+	
+	}
+	
+	_defaults = {
+	
+	'line_state' : 'pending',
+	'name': 'PILINE',
+	
+	}
+	
+	def onchange_qty(self, cr, uid, ids, product_qty, pending_qty, context=None):
+		print "callled onchange_qty from KG"
+
+		value = {'pending_qty': ''}
+		if product_qty:
+			value = {'pending_qty': product_qty}
+		return {'value': value}
+	
+	
+	"""
+	def onchange_depindent_id(self, cr, uid, ids, product_id, product_qty, product_uom_id, context=None):
+		value = { 'product_id' : '', 'product_qty' : '', 'product_uom_id' : '' }
+		#if pending_depindent:
+		indent = self.pool.get('kg.depindent.line').browse(cr, uid, indent_id.id, context=context)
+		print "<<<<<<<<<<>>>>>>>>>>>", indent
+		value = {'product_id': indent.product_id.id, 'product_qty' : indent.qty, 'product_uom_id' : indent.uom.id}
+		return {'value' : value}
+		"""	
+					
+	
+kg_purchase_indent_line()	
+
+
+
+
+
+
+
+
+
+"""
+	   
+	def tender_in_progress(self, cr, uid, ids, context=None):
+		
+		for t in self.browse(cr,uid,ids):
+			if not t.line_ids:
+				raise osv.except_osv(
+						_('Empty Purchase Indent'),
+						_('You can not confirm an empty Purchase Indent'))
+			if t.line_ids[0].product_qty==0:   
+				raise osv.except_osv(
+						_('Error'),
+						_('Purchase Indent quantity can not be zero'))
+			self.write(cr,uid,ids,{'state':'in_progress'})
+			for id in ids:
+				cr.execute(select depindent_line_id from kg_depindent_pi_line where pi_id = %s  %(str(id)))
+				data = cr.dictfetchall()
+				val = [d['depindent_line_id'] for d in data if 'depindent_line_id' in d] # Get a values form list of dict if the dict have with empty values
+				for dep_id in val:
+					dep_indent_obj=self.pool.get('kg.depindent.line')
+					dep_indent_line_id =self.pool.get('kg.depindent.line').search(cr, uid, [('id','=',dep_id)]) 
+					for id in dep_indent_line_id:
+						dep_indent_obj.write(cr, uid, id, {'line_state' : 'pi_done'})
+			return True
+"""

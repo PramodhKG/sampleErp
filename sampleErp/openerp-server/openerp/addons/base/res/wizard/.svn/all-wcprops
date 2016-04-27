@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/wizard
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/wizard/__init__.py
+END
+change_password_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/wizard/change_password_wizard.py
+END
+change_password_wizard_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/wizard/change_password_wizard_view.xml
+END

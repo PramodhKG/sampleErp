@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>       
+
+        <record id="ta_advance_tree_view" model="ir.ui.view">
+            <field name="name">TA Advance</field>
+            <field name="model">kg.ta.advance</field>
+            <field name="arch" type="xml">
+                <tree string="TA Advance">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="employee_id"/>
+                    <field name="ad_amt"/>
+                    <field name="repay_amt"/>
+                    <field name="used_amt"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="ta_advance_form_view" model="ir.ui.view">
+            <field name="name">TA Advance</field>
+            <field name="model">kg.ta.advance</field>
+            <field name="arch" type="xml">
+                <form string="TA Advance" version="7.0">
+					<header>
+					<button name="entry_confirm" type="object" string="Confirm" states="draft"/>
+					</header> 
+                    <group>
+                        <group>                            
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                            <field name="ad_amt"/>
+                            <field name="repay_amt" on_change="onchange_repayamt(ad_amt,repay_amt,used_amt)"/>
+                             
+                        </group>
+                        <group>                            
+							<field name="date"/>
+							<field name="used_amt" invisible="1"/>
+							<field name="state"/>  
+							<field name="remark"/>  
+                           
+                        </group>
+                    </group>
+                   
+                </form>
+            </field>
+        </record>
+
+        <record id="ta_advance_action" model="ir.actions.act_window">
+            <field name="name">TA Advance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.ta.advance</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="ta_advance_tree_view"/>
+        </record>
+	
+	<menuitem id="menu_advance_master" name="Monthly Advances" parent="hr.menu_hr_root" sequence="13"/>
+	<menuitem id="ta_advance_action_menu" name="TA Advances" parent="menu_advance_master" action="ta_advance_action" sequence="15"/>
+        
+         
+
+    </data>
+</openerp>

@@ -1,0 +1,26 @@
+
+# KGH Employee Payslip Reports
+
+import kg_emp_sal_muster
+import kg_emp_bank_stm
+import kg_bank_list
+import kg_pf_paymuster
+import kg_otdays
+import kg_pay_abstract
+
+import kg_nonpf_paymuster
+import kg_netpayment
+import kg_banklist_text_report
+import kg_pf_pdf_report
+import kg_esi_pdf_report
+import kg_allowance_report
+import kg_emp_bouns
+import kg_emp_bouns_pdf
+import kg_baask_sal_muster
+import customer_report
+import kg_leave_balance_rep
+import kg_clin_pay_report
+
+
+
+

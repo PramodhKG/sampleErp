@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_gate_pass_form" model="ir.ui.view">
+            <field name="name">view.gate.pass.form</field>
+            <field name="model">kg.gate.pass</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Gate Pass" version="7.0">
+					<header>
+					<button name="gate_pass_print" string="Print Gate Pass" type="object" class="oe_highlight"/>
+					</header>
+					
+					<group>
+						<group>
+							<field name="name" required="0"/>
+							<field name="partner_id" required="1"/>
+							<field name="out_type" required="1"/>
+							<field name="origin"/>
+						</group>						
+						<group>
+							<field name="date"/>
+							<field name="dep_id" required="1"/>
+							<field name="return_date"/>
+						</group>
+					</group>
+
+                     <field colspan="4" string="Gate Pass Line" mode="tree" name="gate_line" nolabel="1" widget="one2many_list">
+									 
+                      <tree string="Gate Pass Line"> 
+                            <field name="product_id"/>
+                            <field name="uom"/>
+                            <field name="qty"/>
+                        </tree>
+                        <form string="Gate Pass Line " >
+									<field name="product_id" on_change="onchange_uom(product_id)" required="1"/>
+                                    <field name="uom" required="1"/>
+                                    <field name="qty" required="1"/>
+                                    <field name="note"/>
+
+                        </form>
+                    </field>
+                    <field name="note"/>
+        
+
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="gate_pass_tree_view" model="ir.ui.view">
+            <field name="name">gate.pass.tree.view</field>
+            <field name="model">kg.gate.pass</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Gate Pass">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="partner_id"/>
+                    <field name="dep_id"/>
+                    <field name="out_type"/>
+                    <field name="origin"/>
+                   
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_gate_pass" model="ir.actions.act_window">
+			<field name="name">Gate Pass</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.gate.pass</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="gate_pass_tree_view"/>
+	</record>
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+        
+	
+            
+    </data>
+</openerp>

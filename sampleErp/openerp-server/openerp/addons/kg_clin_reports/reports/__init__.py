@@ -1,0 +1,12 @@
+import kg_attendance_rpt
+import kg_monthly_attend_rpt
+import kg_pf_pdf_report
+import kg_esi_pdf_report
+import kg_empsal_muster
+import kg_emp_sal_details
+import kg_cumul_ded_report	
+import kg_allowance_report
+import kg_mobile_bills_report
+import kg_excel_esi_report
+import kg_excel_pf_report
+import kg_esi_pf_report

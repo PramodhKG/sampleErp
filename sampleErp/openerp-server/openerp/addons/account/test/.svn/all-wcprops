@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test
+END
+test_parent_structure.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/test_parent_structure.py
+END
+chart_of_account.yml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/chart_of_account.yml
+END
+account_validate_account_move.yml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_validate_account_move.yml
+END
+account_invoice_state.yml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_invoice_state.yml
+END
+test_parent_structure.yml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/test_parent_structure.yml
+END
+account_change_currency.yml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_change_currency.yml
+END
+account_bank_statement.yml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_bank_statement.yml
+END
+price_accuracy00.yml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/price_accuracy00.yml
+END
+test_edi_invoice.yml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/test_edi_invoice.yml
+END
+account_cash_statement.yml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_cash_statement.yml
+END
+account_sequence_test.yml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_sequence_test.yml
+END
+account_period_close.yml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_period_close.yml
+END
+account_fiscalyear_close_state.yml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_fiscalyear_close_state.yml
+END
+account_fiscalyear_close.yml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_fiscalyear_close.yml
+END
+account_report.yml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_report.yml
+END
+account_use_model.yml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_use_model.yml
+END
+account_customer_invoice.yml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_customer_invoice.yml
+END
+account_supplier_invoice.yml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/test/account_supplier_invoice.yml
+END

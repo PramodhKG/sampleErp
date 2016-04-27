@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard
+END
+account_analytic_chart.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_chart.py
+END
+account_analytic_chart_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_chart_view.xml
+END
+account_analytic_journal_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_journal_report.py
+END
+account_analytic_journal_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_journal_report_view.xml
+END
+project_account_analytic_line.py
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/project_account_analytic_line.py
+END
+project_account_analytic_line_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/project_account_analytic_line_view.xml
+END
+account_analytic_inverted_balance_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_inverted_balance_report.py
+END
+account_analytic_balance_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_balance_report.py
+END
+account_analytic_balance_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_balance_report_view.xml
+END
+account_analytic_cost_ledger_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_cost_ledger_report.py
+END
+account_analytic_cost_ledger_for_journal_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_cost_ledger_for_journal_report.py
+END
+account_analytic_cost_ledger_for_journal_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_cost_ledger_for_journal_report_view.xml
+END
+account_analytic_inverted_balance_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_inverted_balance_report.xml
+END
+account_analytic_cost_ledger_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/account_analytic_cost_ledger_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/project/wizard/__init__.py
+END

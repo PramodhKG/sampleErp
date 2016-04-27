@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_depissue_form" model="ir.ui.view">
+            <field name="name">view.kg.depissue.form</field>
+            <field name="model">kg.depissue</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Department issue" version="7.0">
+		<header>
+				<button name="draft_issue" states="cancel" string="Set to Draft" type="object" class="oe_highlight"/>
+				<button name="confirm_issue" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+				<button name="approve_issue" states="confirm" string="Approve" type="object" class="oe_highlight"/>
+                <button name="done_issue" states="approve" string="Done" type="object" />
+                <button name="cancel_issue" states="done" string="Cancle" type="object" class="oe_highlight"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approve,done,cancel" statusbar_colors='{"draft":"red", "done":"blue"}'/>
+		</header>
+                    <group>
+                    <field name="name"/>
+					<field name="date"/>
+                    <field name="dep_name" default_focus="1"/>
+                    <field name="src_location"/>
+                    <field name="des_location"/>
+                    <field name="active"/>
+                    <field name="state"/>
+                    </group>
+
+                     <field colspan="4" string="Issue Lines" mode="tree" name="dep_issue_line" nolabel="1" widget="one2many_list">
+						<tree string="Issue Line" colors="blue:state=='draft';red:state in ('done','cancel')">
+							
+                            <field name="product_id"/>
+                            <field name="uom"/>
+                            <field name="qty"/>
+                            <field name="issue_qty"/>
+
+                        </tree>
+                        <form string=" issue Line " >
+									<field name="product_id"/>
+                                    <field name="uom"/>
+                                    <field name="qty"/>
+                                    <field name="issue_qty"/>
+                                    <field name="src_location"/>
+                                    <field name="des_location"/>
+
+                        </form>
+                    </field>
+        
+
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_depissue_tree" model="ir.ui.view">
+            <field name="name">kg.depissue.tree.view</field>
+            <field name="model">kg.depissue</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Department issue">
+                    <field name="name"/>
+                    <field name="date"/>
+                    <field name="dep_name"/>
+                    <field name="state"/>
+
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+<record id="action_kg_depissue_form" model="ir.actions.act_window">
+			<field name="name">Department issue</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.depissue</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_depissue_tree"/>
+	</record>
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+<!--<menuitem 
+            id="menu_kg_depissue" 
+            name="Department Issue" 
+            parent="purchase.menu_purchase_config_purchase"
+            sequence="20"
+            action="action_kg_depissue_form"/>-->
+    </data>
+</openerp>

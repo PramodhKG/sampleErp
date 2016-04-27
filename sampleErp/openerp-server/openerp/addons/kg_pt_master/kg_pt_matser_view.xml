@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="kg_pt_master_form_view" model="ir.ui.view">       
+			<field name="name">PT Master</field>
+			<field name="model">kg.pt.master</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="kg_pt_master" version="7.0">
+					<header>
+						<button name="confirm_entry" states="draft" string="Approve" type="object" class="oe_highlight"/>
+						<!--<button name="approve_entry" states="confirm" string="Approve" type="object" class="oe_highlight"/>-->
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm" statusbar_colors='{"draft":"blue","confirm":"blue"}'/>
+					</header>	
+					<sheet>				
+						<group>
+							<group>
+								<field name="created_date" required="1"/>
+								<field name="active"/>
+							</group>
+							<group>
+								<field name="created_by" required="1"/>
+								<field name="expiry_date" attrs="{'invisible':[('active','==',True)]}"/>
+								<field name="state" invisible="1"/>
+							</group>
+						</group>
+						<field name="pt_line" nolabel="1">
+							<tree editable="bottom">
+								<field name="min_value" />
+								<field name="max_value" />
+								<field name="pt_value"  />
+							</tree>
+						</field>
+					</sheet>
+				</form>
+			</field>					
+		</record>
+		<record id="kg_pt_master_tree_view" model="ir.ui.view">
+			<field name="name">PT Master</field>
+			<field name="model">kg.pt.master</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="kg_pt_master">
+					<field name="created_date"/>
+					<field name="created_by"/>
+					<field name="state"/>
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_pt_master">
+			<field name="name">PT Master</field>
+			<field name="res_model">kg.pt.master</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_pt_master_tree_view"/>
+		</record>
+		
+		 
+
+	</data>
+</openerp>

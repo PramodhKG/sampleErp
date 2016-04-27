@@ -1,0 +1,335 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report
+END
+account_general_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_journal.py
+END
+account_print_invoice.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_print_invoice.py
+END
+account_partner_balance.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_balance.sxw
+END
+account_print_invoice.rml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_print_invoice.rml
+END
+account_central_journal.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_central_journal.sxw
+END
+account_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_report.py
+END
+account_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_report_view.xml
+END
+account_balance.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_balance.sxw
+END
+common_report_header.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/common_report_header.py
+END
+account_partner_balance.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_balance.py
+END
+account_tax_report.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_tax_report.sxw
+END
+account_financial_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_financial_report.rml
+END
+account_central_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_central_journal.py
+END
+account_partner_balance.rml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_balance.rml
+END
+account_central_journal.rml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_central_journal.rml
+END
+account_print_overdue.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_print_overdue.py
+END
+account_balance.rml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_balance.rml
+END
+account_analytic_entries_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_analytic_entries_report.py
+END
+account_tax_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_tax_report.rml
+END
+account_analytic_entries_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_analytic_entries_report_view.xml
+END
+account_partner_ledger.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_ledger.py
+END
+account_general_ledger.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_ledger.py
+END
+account_general_journal.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_journal.sxw
+END
+account_journal_sale_purchase.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_journal_sale_purchase.sxw
+END
+account_general_ledger_landscape.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_ledger_landscape.sxw
+END
+account_journal.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_journal.sxw
+END
+account_entries_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_entries_report.py
+END
+account_entries_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_entries_report_view.xml
+END
+account_general_journal.rml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_journal.rml
+END
+account_treasury_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_treasury_report.py
+END
+account_journal_sale_purchase.rml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_journal_sale_purchase.rml
+END
+account_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_journal.py
+END
+account_general_ledger_landscape.rml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_ledger_landscape.rml
+END
+account_treasury_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_treasury_report_view.xml
+END
+account_journal.rml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_journal.rml
+END
+account_print_overdue.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_print_overdue.sxw
+END
+account_financial_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_financial_report.py
+END
+transfer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/transfer.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/__init__.py
+END
+account_balance.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_balance.py
+END
+account_partner_ledger.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_ledger.sxw
+END
+transfer.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/transfer.xsl
+END
+account_invoice_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_invoice_report.py
+END
+account_partner_ledger_other.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_ledger_other.sxw
+END
+account_print_overdue.rml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_print_overdue.rml
+END
+account_tax_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_tax_report.py
+END
+account_general_ledger.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_ledger.sxw
+END
+account_invoice_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_invoice_report_view.xml
+END
+account_aged_partner_balance.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_aged_partner_balance.sxw
+END
+account_partner_ledger.rml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_ledger.rml
+END
+account_aged_partner_balance.py
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_aged_partner_balance.py
+END
+account_partner_ledger_other.rml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_partner_ledger_other.rml
+END
+account_general_ledger.rml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_general_ledger.rml
+END
+account_print_invoice.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_print_invoice.sxw
+END
+account_aged_partner_balance.rml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/report/account_aged_partner_balance.rml
+END

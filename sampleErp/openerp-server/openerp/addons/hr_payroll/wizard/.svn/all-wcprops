@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard
+END
+hr_payroll_contribution_register_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/hr_payroll_contribution_register_report.xml
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/__init__.pyc
+END
+hr_payroll_payslips_by_employees.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/hr_payroll_payslips_by_employees.xml
+END
+hr_payroll_contribution_register_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/hr_payroll_contribution_register_report.py
+END
+hr_payroll_payslips_by_employees.py
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/hr_payroll_payslips_by_employees.py
+END
+hr_payroll_contribution_register_report.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/hr_payroll_contribution_register_report.pyc
+END
+hr_payroll_payslips_by_employees.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/hr_payroll_payslips_by_employees.pyc
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/wizard/__init__.py
+END

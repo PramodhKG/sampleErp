@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="form_view_kg_mobile_bills" model="ir.ui.view">       
+			<field name="name">Mobile Bills</field>
+			<field name="model">kg.mobile.bills</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="kg_mobile_bills" version="7.0">
+					<header>
+						<button name="confirm_entry" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+						<button name="cancel_entry" states="confirm" string="Cancel" type="object"/>
+						<button name="draft_entry" states="cancel" string="Set to Draft" type="object"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+					</header>
+					<sheet>				
+						<group>
+							<group>
+								<field name="creation_date" readonly="1"/>
+								<field name="employee_name" on_change="onchange_employee_code(employee_name,employee_code,total_amt)"/>
+								<field name="mobile_no" />
+								<field name="con_tell_allow" required="1"/>
+								<!--<field name="from_date" required="1"/>
+								<field name="due_date" required="1"/>-->
+								<field name="active"/>
+							</group>
+							<group>
+								<!--<field name="generation_date"/>-->
+								<field name="employee_code"/>
+								<field name="bill_no"/>
+								<field name="bill_date" required="1"/>
+								<!--<field name="to_date" required="1"/>-->
+								<field name="total_amt"/>
+								<field name="balance_amt"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>					
+		</record>
+		<record id="tree_view_kg_mobile_bills" model="ir.ui.view">
+			<field name="name">Mobile bills</field>
+			<field name="model">kg.mobile.bills</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="kg_mobile_bills">
+					<field name="employee_name"/>
+					<field name="employee_code"/>
+					<field name="mobile_no"/>
+					<field name="bill_no"/>
+					<field name="bill_date"/>
+					<field name="con_tell_allow"/>
+					<field name="total_amt"/>
+					<field name="balance_amt"/>
+					<field name="state"/>
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+		
+		
+		<record id="search_group_view" model="ir.ui.view">
+            <field name="name">Mobile Bills</field>
+            <field name="model">kg.mobile.bills</field>
+            <field name="arch" type="xml">
+                <search string="Month">
+					<separator/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Month" icon="terp-personal" domain="[]" context="{'group_by':'bill_date'}"/>
+					</group>
+                </search>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="kg_mobile_bills_kg">
+			<field name="name">Mobile Bills</field>
+			<field name="res_model">kg.mobile.bills</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="tree_view_kg_mobile_bills"/>
+			<field name="context">{}</field>
+			<field name="search_view_id" ref="search_group_view"/>
+		</record>
+		
+		<menuitem id="mobile_bills_kg_menu" name="Mobile Bills" parent="hr.menu_hr_root" sequence="10"/>
+		 
+		<menuitem id="menu_bills_mobile" name="Mobile/Phone Bills" parent="mobile_bills_kg_menu" action="kg_mobile_bills_kg"
+		sequence="11"/>
+		
+		
+		</data>
+</openerp>

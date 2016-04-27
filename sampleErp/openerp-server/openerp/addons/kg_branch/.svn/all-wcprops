@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/Cross_fields_erp/!svn/ver/9/openerp-server/openerp/addons/kg_branch
+END
+kg_branch.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Cross_fields_erp/!svn/ver/15/openerp-server/openerp/addons/kg_branch/kg_branch.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Cross_fields_erp/!svn/ver/9/openerp-server/openerp/addons/kg_branch/__init__.py
+END
+kg_branch_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/Cross_fields_erp/!svn/ver/15/openerp-server/openerp/addons/kg_branch/kg_branch_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Cross_fields_erp/!svn/ver/9/openerp-server/openerp/addons/kg_branch/__openerp__.py
+END

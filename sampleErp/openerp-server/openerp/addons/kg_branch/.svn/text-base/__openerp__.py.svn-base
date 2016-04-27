@@ -1,0 +1,19 @@
+##############################################################################
+#
+#   This is New KG Customized New Module
+#
+##############################################################################
+
+{
+    'name': 'KG Branch',
+    'version': '0.1',
+    'author': 'sengottuvelu',
+    'category': 'CRM',
+    'images': ['images/purchase_requisitions.jpeg'],
+    'website': 'http://www.openerp.com',
+    'depends' : ['base','hr'],
+    'data': ['kg_branch_view.xml'],
+    'auto_install': False,
+    'installable': True,
+}
+

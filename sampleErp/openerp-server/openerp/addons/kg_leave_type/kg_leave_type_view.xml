@@ -1,0 +1,22 @@
+<openerp>
+    <data>
+
+
+	<record model="ir.ui.view" id="leave_type">
+            <field name="name">Leave Type</field>
+            <field name="model">hr.holidays.status</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+            <field name="arch" type="xml">
+				
+				<field name="double_validation" invisible="1">			
+				</field>
+					
+            </field>
+        </record>
+        
+   
+
+     <menuitem action="hr_holidays.open_view_holiday_status" id="menu_kg_leave_type_form" parent="kg_shift_time.kg_master_menu" sequence="4"/>
+	    
+	 </data>
+	</openerp>

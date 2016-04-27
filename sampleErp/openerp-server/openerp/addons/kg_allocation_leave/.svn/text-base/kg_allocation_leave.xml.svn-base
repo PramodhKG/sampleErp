@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_alloc_leave_entry" model="ir.ui.view">
+            <field name="name">alloc.leave</field>
+            <field name="model">kg.allocation.leave</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+			<form string="Allocation Request" version="7.0">
+		    					
+			<header>
+				<button name="confirm_entry" states="draft" string="To Approve" type="object" class="oe_highlight"/>
+                <button name="approve_entry" states="confirm" string="Approve" type="object" class="oe_highlight"/>
+                <field name="state" widget="statusbar" statusbar_visible="confirm,validate"/>
+			</header>	
+			<sheet>			
+			
+				<group>
+					<group>
+						<field name="start_date" style="width: 30%%" class="att_month_change"/>
+						<field name="employee_id" on_change="onchange_employee(employee_id)"/>
+						
+                    </group>
+                    <group>					
+						<field name="end_date" style="width: 30%%" class="att_month_change"/>
+						<field name="employee_code"/>
+						<field name="department_id"/>
+                    </group>
+				</group>
+				
+				<field colspan="4" mode="tree" name="entry_line" nolabel="1" widget="one2many_list">
+					  <tree string="Allocation Request Line" editable="bottom"> 
+							<field name="leave_type"/>
+							<field name="alloc_leave"/>
+							<field name="used_leave"/>
+							<field name="allow_limit"/>
+						</tree>
+				</field>
+				
+				
+               </sheet>
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="alloc_leave_tree_view" model="ir.ui.view">
+            <field name="name">alloc.req</field>
+            <field name="model">kg.allocation.leave</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+				<tree string="Allocation Leave">				               
+					<field name="start_date"/>
+					<field name="end_date"/>
+					<field name="employee_id"/>
+					<field name="employee_code"/>
+					<field name="state"/>
+				</tree>
+            </field>
+        </record>
+        
+        
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_alloc_leave_entry" model="ir.actions.act_window">
+			<field name="name">Allocation Requests</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.allocation.leave</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_alloc_leave_entry"/>
+	</record>	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->       
+ <menuitem name="Leave Management" parent="hr.menu_hr_root" id="menu_alloc_leave" sequence="20"/>
+	<menuitem 
+            id="kg_alloc_leave" 
+            parent="menu_alloc_leave"
+            sequence="8"
+            action="action_alloc_leave_entry"/>
+            
+	     
+    </data>
+</openerp>

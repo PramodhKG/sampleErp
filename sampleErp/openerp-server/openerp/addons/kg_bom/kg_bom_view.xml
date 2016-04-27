@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_bom_form">
+				<field name="name">mrp.bom</field>
+				<field name="model">mrp.bom</field>
+				<field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+				<field name="arch" type="xml">
+					
+					<button string="Confirm" type="object" class="oe_highlight" position="replace">
+						<button name="bom_confirm" string="Approve"  states = "draft" type="object" class="oe_highlight"/>
+					</button>
+				
+                       
+
+				
+				<field name="type" position="after">
+					    <field name="creation_date"/>
+					    <field name="state"/>
+					    <field name="expiry_date" attrs = "{'invisible':[('state','!=','expiry')]}"/>
+					    <field name="active"/>
+						
+							
+    
+
+					</field>
+
+				<field name="date_start" position="replace">
+					<field name="date_start" invisible="1"/>
+					</field>
+				<field name="date_stop" position="replace">
+					<field name="date_stop" invisible="1"/>
+					</field>
+					
+					
+				<field name="product_id" on_change="onchange_product_id(product_id, name, context)" context="{'default_supply_method':'produce'}" class="oe_inline" position="replace">
+					<field name="product_id" on_change="onchange_product_id(product_id, name, context)" context="{'default_supply_method':'produce'}" 
+					          class="oe_inline" attrs = "{'readonly':[('state','=','approve')]}"/>
+			    </field>
+				<field name="product_qty" class="oe_inline" position="replace">
+					    <field name="product_qty" class="oe_inline" readonly="1"/>
+
+					</field>
+				<field name="product_uom" class="oe_inline" on_change="onchange_uom(product_id, product_uom)" groups="product.group_uom" position="replace">
+					    <field name="product_uom" class="oe_inline" on_change="onchange_uom(product_id, product_uom)" groups="product.group_uom" attrs = "{'readonly':[('state','=','approve')]}"/>
+
+					</field>
+				<field name="name" groups="base.group_no_one" position="replace">
+					    <field name="name" groups="base.group_no_one"  invisible="1"/>
+					</field>
+				<field name="code" string="Reference" position="replace">
+					    <field name="code" string="Reference"  invisible="1"/>
+					</field>
+				<field name="type" position="replace">
+                    <field name="type" invisible="1"/>
+                </field>
+                
+              
+				<field name="bom_lines" widget="one2many_list"  position="replace">
+					<field name="mrp_bom_line" widget="one2many_list" attrs = "{'readonly':[('state','=','approve')]}">
+						<tree string="Components" editable="bottom">
+							<field name="product_id" on_change="onchange_uom_id(product_id)"/>
+							<field name="product_qty"/>
+							<field name="product_uom"/>
+							<field name="department_id"/>
+							<field name="state" invisible="1"/>
+							
+							
+							
+						</tree>
+				    </field>
+				    
+				    <field name="remarks" nolabel="1"/>
+				</field>
+               
+               
+				
+			</field>
+			</record>
+			
+			
+			<record id="view_kg_bom_line_tree" model="ir.ui.view">
+            <field name="name">kg.bom.line.tree</field>
+            <field name="model">mrp.bom.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+              <tree string="Components" editable="bottom">
+					<field name="product_id" on_change="onchange_uom_id(product_id)"/>
+					<field name="product_qty"/>
+					<field name="product_uom"/>
+					<field name="department_id"/>
+					<field name="state" invisible="1"/>
+					
+							
+			   </tree>
+            </field>
+        </record>
+			
+			
+			<menuitem
+            name="Bill of Materials"
+            id="menu_mrp_bom_form_action1"
+            parent="base.menu_mrp_root"
+            sequence="1"/>
+            
+            <menuitem
+            action="mrp.mrp_bom_form_action"
+            id="menu_mrp_bom_menu"
+            parent="menu_mrp_bom_form_action1"
+            sequence="1"/>
+			
+	
+	
+    </data>
+</openerp>

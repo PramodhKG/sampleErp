@@ -1,0 +1,14 @@
+{
+    'name': 'Employee Budget',
+    'version': '1.0',
+    'description': """
+===================================================
+""",
+    'author': 'Sengottuvel',
+    'maintainer': 'KG',
+    'website': 'http://www.openerp.com',
+    'depends': ['base','hr'],
+    'data': ['kg_emp_budget_view.xml'],
+    'installable': True,
+    'auto_install': True,
+}

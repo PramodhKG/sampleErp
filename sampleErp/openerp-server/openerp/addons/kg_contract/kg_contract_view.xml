@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_contract_form">
+				<field name="name">kg.contract.form</field>
+				<field name="model">hr.contract</field>
+				<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+				<field name="arch" type="xml">					
+					
+					<field name="employee_id" position="replace">
+					<field name="employee_id" 
+									on_change="onchange_employee_code(employee_id,emp_name)"/>
+					</field>
+					
+					
+					<field name="employee_id" position="before">
+						<field name="creation_date"/>
+					</field>
+					
+					<field name="employee_id" position="after">
+					<field name="designation"/>
+					<field name="dep_id"/>
+					<field name="leave_type" invisible = "1"/>					
+					</field>
+					
+					<field name="type_id" position="replace">
+					<field name="type_id" invisible="1"/>					
+					</field>
+					
+					<field name="type_id" position="after">
+					<field name="join_date"/>
+					<field name="emp_name"/>
+					<field name="shift_type"/>	
+					<field name="active"/>			
+					</field>						
+					
+					<xpath expr = "//page[@string='Information']" position="before">
+						<page string="Payment Details">							
+							<group>
+								<group colspan="5">
+								<separator  string="Salary Details"/>
+								</group>
+								<group>
+									<field name="gross_salary"/>
+									<field name="tel_allow"/>
+								</group>
+								<group >
+									<field name="increament_amount"/>
+									<field name="increament_type"/>
+								</group>
+								<group colspan="5">
+									<field name = "salary_entry" nolabel="1"/>
+								</group>
+								<group string="Pay Mode" >
+									<field name="eff_date" invisible = "1"/>
+									<field name="payment_mode" required="1"/>
+									<field name="bank" attrs="{'required': [('payment_mode','=','bank')]}"/>
+									<field name="acc_no" attrs="{'required': [('payment_mode','=','bank')]}"/>
+									<field name="wage" string="Basic Pay" invisible="1"/>
+									<field name="allowance" invisible="1"/>
+									<field name="spl_allowance" invisible="1"/>					
+								</group>
+								<group string="General">
+									<field name="sal_date" invisible = "1"/>
+									<field name="ot"/>
+									<field name="pan_no"/>	
+								</group>
+								
+								<group string="PF">
+				
+									<field name="pf_status"/>
+									<field name="pf_eff_date" attrs="{'required': [('pf_status','=',True)]}"/>							
+									<field name="pf_acc_no" attrs="{'required': [('pf_status','=',True)]}"/>
+									<field name="pf_percentage" attrs="{'required': [('pf_status','=',True)]}" invisible="1"/>
+									
+								</group>
+								
+								<group string="ESI">
+									
+									<field name="esi"/>
+									<field name="esi_eff_date" attrs="{'required': [('esi','=',True)]}"/>
+									<field name="esi_acc_no" attrs="{'required': [('esi','=',True)]}"/>	
+									<field name="esi_percentage" attrs="{'required': [('esi','=',True)]}" invisible="1"/>
+								</group>								
+								<group string="TAX - PLI" invisible = "1">
+									<field name="sal_type" invisible="1"/>
+									<field name="tax"/>
+									<field name="pli_status"/>
+									<field name="tds_status"/>
+									<field name="pt_status"/>
+									<field name="over_type"/>
+									<field name="med_policy_no"/>	
+									<field name="tax_val" invisible="1"/>
+									<field name="last_update_date" invisible="1"/>		
+								</group>							
+												
+							</group>							
+						</page>
+						
+						<page string="Previous Salary Details">
+							<group>
+								<group>
+								<field name="pre_basic"/>
+								<field name="pre_income"/>
+								<field name="pre_eff_date"/>
+								</group>
+								<group>							
+								<field name="pre_allowance"/>
+								<field name="pre_cross"/>
+								</group>
+							</group>							
+						</page>
+					</xpath>
+					
+					<!--<xpath expr = "//page[@string='Payment Details']" position="after">
+						
+					</xpath>	-->				
+				</field>
+			</record>
+			
+			<record model="ir.ui.view" id="kg_contract_tree">
+				<field name="name">kg.contract.tree</field>
+				<field name="model">hr.contract</field>
+				<field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+				<field name="arch" type="xml">
+					
+					<field name="name" position="replace">
+					<field name="name" invisible="1"/>
+					</field>
+					
+					<field name="employee_id" position="after">
+					<field name="emp_name"/>
+					<field name="gross_salary"/>
+					<field name="tel_allow"/>
+					</field>
+					
+					 <field name="job_id" position="replace">
+					 <field name="wage" string="Basic Pay" invisible="1"/>
+					 </field>
+					  
+					  <field name="date_start" position="replace">
+					  <field name="pf_status"/>
+					  <field name="esi"/>
+					  
+					  </field>
+					  
+					  <field name="date_end" position="replace">
+					  <field name="date_end" invisible="1"/>
+					  </field>
+					
+				</field>
+			</record>
+			
+			
+			
+			<record model="ir.ui.view" id="kg_salary_line_tree">
+				<field name="name">kg.salary.line</field>
+				<field name="model">kg.salary.detail</field>
+				<field name="type">tree</field>
+				<field name="arch" type="xml">
+					
+					<tree string = "salary details" editable="bottom">
+						<field name="salary_type"/>
+						<field name="type"/>
+						<field name="salary_amount"/>
+					</tree>
+					
+				</field>
+			</record>
+			<record model="ir.ui.view" id="kg_salary_line_form">
+				<field name="name">kg.salary.form</field>
+				<field name="model">kg.salary.detail</field>
+				<field name="type">form</field>
+				<field name="arch" type="xml">
+					
+					<form string = "salary details">
+						<field name="salary_type"/>
+						<field name="type"/>
+						<field name="salary_amount"/>
+					</form>
+					
+				</field>
+			</record>
+			
+			 <record id="action_kg_salary_detail" model="ir.actions.act_window">
+				<field name="name">Salary Details</field>
+				<field name="type">ir.actions.act_window</field>
+				<field name="res_model">kg.salary.detail</field>
+				<field name="view_type">form</field>
+				<field name="view_id" ref="kg_salary_line_tree"/>
+			</record>
+			
+			<!--<menuitem action="action_kg_salary_detail" id="kg_salary_det_menu" parent="hr.menu_hr_main" 
+			name="Salary Details" sequence="5"/>-->
+			
+			
+			
+            
+    </data>
+</openerp>

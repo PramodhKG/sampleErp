@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/edi
+END
+sale_order_action_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/edi/sale_order_action_data.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/edi/__init__.py
+END
+sale_order.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale/edi/sale_order.py
+END

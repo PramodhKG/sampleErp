@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<openerp>
+<data noupdate="0">
+	  <record id="group_hrm_employee" model="res.groups">
+		<field name="name">kg_hrm_employee</field>
+		<field name="category_id" ref="base.module_category_human_resources"/>
+       
+		<field eval="[(6,0,[ref('hr_payroll.menu_hr_root_payroll'),
+			ref('kg_allocation_leave.menu_alloc_leave'),
+			ref('kg_holiday_req.kg_leave_req'),ref('hr_attendance.menu_hr_attendance'),ref('hr.menu_hr_root'),ref('hr.menu_hr_main')
+            ])]" name="menu_access"/>
+
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>     
+      
+    </record>
+	
+</data>
+</openerp>

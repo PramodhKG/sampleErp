@@ -1,0 +1,10 @@
+-
+  
+-
+  I print Purchase Order report
+-
+  !python {model: kg.depindent}: |
+    import netsvc, tools, os
+    (data, format) = netsvc.LocalService('kg.depindent').create(cr, uid, [ref('kg_depindent.kg_depindent_1'),ref('kg_depindent.kg_depindent_2')], {}, {})
+    if tools.config['test_report_directory']:
+        file(os.path.join(tools.config['test_report_directory'], 'kg_depindent-kg_depindent_report'+format), 'wb+').write(data)

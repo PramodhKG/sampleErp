@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_order
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/14/openerp-server-7.0/openerp/addons/kg_purchase_order/__init__.py
+END
+kg_indent2_po.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/49/openerp-server-7.0/openerp/addons/kg_purchase_order/kg_indent2_po.py
+END
+kg_ir_sequence.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/5/openerp-server-7.0/openerp/addons/kg_purchase_order/kg_ir_sequence.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/36/openerp-server-7.0/openerp/addons/kg_purchase_order/__openerp__.py
+END
+kg_purchase_order.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/61/openerp-server-7.0/openerp/addons/kg_purchase_order/kg_purchase_order.py
+END
+kg_purchase_order.py_withGRN
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_order/kg_purchase_order.py_withGRN
+END
+kg_purchase_order_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/61/openerp-server-7.0/openerp/addons/kg_purchase_order/kg_purchase_order_view.xml
+END

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_applicant_form">
+				<field name="name">kg.applicant.form</field>
+				<field name="model">hr.applicant</field>
+				<field name="inherit_id" ref="hr_recruitment.crm_case_form_view_job"/>
+				<field name="arch" type="xml">
+					
+					<label for="job_id" class="oe_edit_only" invisible="1" position="before">
+					<field name="image_medium" widget='image' class="oe_left oe_avatar"/>
+					<group>
+						<field name="app_date"/>
+	                    <field name="app_job" required="1"/>
+	                    <field name="dep_id"/>
+					    <field name="func_area"/>
+					     <field name="exp_year"/>
+					</group>
+					</label>
+					
+					<field name="partner_id"
+                                on_change="onchange_partner_id(partner_id)" invisible="1" position="after">
+						<field name="app_name"/>
+					    <field name="dob"/>
+					    <field name="pre_loc"/>
+					    <field name="nationality"/>
+					    <field name="sex"/>
+					    <field name="mar_status"/>
+					    
+					    
+					    
+					</field>
+					
+					<field name="text" invisible="1" position="after">
+						<label for="pre_add" string="Present Address"/>
+						<div name="div_address">
+							<field name="pre_add" placeholder="Street..."/>
+						<div class="address_format">
+							<field name="pre_city" placeholder="City" style="width: 40%%"/>
+							<field name="pre_state_id" class="oe_no_button" placeholder="State" style="width: 37%%"/>
+							<field name="pre_zip" placeholder="ZIP" style="width: 20%%"/>
+                        </div>
+                        </div>
+                        <field name="pre_tele" placeholder="Phone..."/>
+                        <field name="pre_mob" placeholder="Mobile..."/>
+                        
+
+                        <label for="perm_add" string="Permanent Address"/>
+						<div name="div_address">
+							<field name="perm_add" placeholder="Street..."/>
+						<div class="address_format">
+							<field name="perm_city" placeholder="City" style="width: 40%%"/>
+							<field name="perm_state_id" class="oe_no_button" placeholder="State" style="width: 37%%"/>
+							<field name="perm_zip" placeholder="ZIP" style="width: 20%%"/>
+                        </div>
+                        </div>
+                        <field name="perm_tele" placeholder="Phone..."/>
+                        <field name="perm_mob" placeholder="Mobile..."/>
+                        <field name="perm_email" placeholder="Email..."/>
+                       
+						
+						
+					   
+					    
+					</field>
+					
+					<xpath expr = "//page[@string='Family Details']" position="replace">
+						<page string="Family Details">
+							   <field name="family_id">
+								   <tree nolabel="1" editable="bottom">
+									  
+									<field name="s_no"/>
+									<field name="fam_name"/>
+									<field name="relationship"/>
+									<field name="education"/>
+									<field name="occupation"/>
+									
+								 </tree>
+								</field>
+						</page>
+						
+						<page string="Languages Known">
+							   <field name="lang_id">
+								   <tree nolabel="1" editable="bottom">
+									  
+									<field name="sno"/>
+									<field name="lang"/>
+									<field name="r_w_s"/>
+									<field name="s_only"/>
+									<field name="r_only"/>
+									
+								 </tree>
+								</field>
+							</page>
+							
+						<page string="Education Details">
+							   <field name="edu_id">
+								   <tree nolabel="1" editable="bottom">
+									  
+									<field name="course_name"/>
+									<field name="place"/>
+									<field name="year_of_passing"/>
+									<field name="duration"/>
+									<field name="spec"/>
+									<field name="marks"/>
+								</tree>
+								  
+								</field>
+								<group>
+							       <field name="break"/>
+								   <field name="break_details" nolabel="1"/>
+								</group>
+							</page>
+							
+							
+							<page string="Other Qualification Details">
+							   <field name="award_id">
+								   <tree nolabel="1" editable="bottom">
+									  
+									<field name="date_from"/>
+									<field name="date_to"/>
+									<field name="awards"/>
+									<field name="ins"/>
+									
+								 </tree>
+								  
+								</field>
+							</page>
+							
+							
+							<page string="Professional Membership / s">
+							   <field name="member_id">
+								   <tree nolabel="1" editable="bottom">
+									  
+									<field name="mem_sno"/>
+									<field name="org_name"/>
+									<field name="duration"/>
+									<field name="remarks"/>
+									
+								 </tree>
+								  
+								</field>
+							</page>
+							
+							
+					</xpath>
+					
+					
+		            
+		        </field>
+			</record>
+		
+			
+
+			
+			
+    </data>
+</openerp>

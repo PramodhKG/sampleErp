@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		<!--
+		  =====================
+		  master Form view
+		  =====================
+		-->
+
+		<record id="view_kg_job_form" model="ir.ui.view">
+			<field name="name">view.kg.job.form</field>
+			<field name="model">kg.job.request</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+			<form string="Job Request" version="7.0">
+				<header>
+					<button name="confirm_request" states="open" string="Request" type="object" class="oe_highlight"/>
+					<field name="state" widget="statusbar" statusbar_visible="confirm"/>
+			   </header>
+				<sheet>
+										
+					<group string="Position Information">
+						<group>
+							<field name="job_id" on_change="onchange_department(job_id,department_id)"/>
+							<field name="no_of_persons"/>
+							<field name="department_id"/>
+							<field name="location"/>
+							<field name="join_date"/>
+							<field name="manager"/>
+							<field name="justify"/>
+							
+						</group>
+						<group>
+							<field name="type"/>
+							<field name="date_req"/>
+							<field name="pos_type" />
+							<field name="proj_name"/>
+							<field name="emp_replace" attrs="{'required': [('pos_type','=','replace')]}"/>
+							<field name="emp_period" attrs="{'required': [('type','=','contract')]}"/>
+							<field name="state"/>
+						</group>
+					</group>
+				
+					<group string="Salary &amp; Entitlement">
+						<field name="rec_ctc"/>
+						<group>
+							<field name="car"/>
+							<field name="fuel"/>
+							<field name="mobile"/>
+							<field name="comp_eqp"/>
+						</group>
+						<group>
+							<field name="cc_det"/>
+							<field name="lit_det"/>
+							<field name="amt_det"/>
+							<field name="justify_lap"/>
+						</group>
+					</group>
+				
+					<group string="Budget Information">
+						<group>
+							<field name="budget"/>
+							<field name="month"/>
+						</group>
+						<group>
+							<field name="bud_justify" attrs="{'required': [('budget','=','no')]}" />
+							<field name="gross_sal"/>
+						</group>
+					</group>
+					
+					<group string="Approvals">
+						<group>
+							<field name="man_sign"/>
+							<field name="head_sign"/>
+							<field name="hr_sign"/>
+							<field name="fin_sign"/>
+							<field name="man_dir"/>
+						</group>
+						<group>
+							<field name="man_date"/>
+							<field name="head_date"/>
+							<field name="hr_date"/>
+							<field name="fin_date"/>
+							<field name="man_date"/>
+							
+					   </group>
+					</group>
+				
+
+				</sheet>
+						
+
+			   </form>
+		   </field>
+		</record>
+
+		<!--
+		=====================
+		master Tree view
+		=====================
+		-->
+		<record id="view_kg_job_tree" model="ir.ui.view">
+			<field name="name">kg.job.tree.view</field>
+			<field name="model">kg.job.request</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Job Request">
+					 <field name="job_id"/>
+				   
+					
+					<field name="no_of_persons"/>
+				   
+					<field name="department_id"/>
+					 <field name="manager"/>
+					 <field name="state"/>
+					
+				</tree> 
+			</field>
+		</record>
+	   
+	   <!--
+		=====================
+		master Form Action
+		===================== -->
+
+
+	<record id="action_kg_job_form" model="ir.actions.act_window">
+			<field name="name">Job Request</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.job.request</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_job_tree"/>
+	</record>
+	
+		<!--
+		=====================
+		master Menu Item
+		=====================
+		-->
+		
+	<menuitem id="kg_job_menu" name="Job Request" parent="hr.menu_hr_root" sequence="2"/>
+	
+
+	<menuitem 
+			id="menu_kg_job"  
+			parent="kg_job_menu"
+			sequence="1"
+			action="action_kg_job_form"/>
+				  
+				  
+	</data>
+</openerp>

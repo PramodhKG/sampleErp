@@ -1,0 +1,200 @@
+<?xml version="1.0" ?>
+<openerp>
+<data noupdate="0">       		
+		
+		<!--Account Group-->
+		
+	    <record id="master_res_partner" model="ir.model.access">
+			<field name="model_id" ref="base.model_res_partner"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Supplier</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		 <record id="master_sub_contract" model="ir.model.access">
+			<field name="model_id" ref="kg_subcontract_master.model_kg_subcontract_master"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Subcontract</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_dep_master" model="ir.model.access">
+			<field name="model_id" ref="kg_depmaster.model_kg_depmaster"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Department</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_store_location" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_location"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Store Location</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_product_category" model="ir.model.access">
+			<field name="model_id" ref="product.model_product_category"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Product Category</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_product" model="ir.model.access">
+			<field name="model_id" ref="product.model_product_product"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Product</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_product_template" model="ir.model.access">
+			<field name="model_id" ref="product.model_product_template"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Product Template</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_product_uom" model="ir.model.access">
+			<field name="model_id" ref="product.model_product_uom"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Product UOM</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_inward" model="ir.model.access">
+			<field name="model_id" ref="kg_inwardmaster.model_kg_inwardmaster"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Inward Master</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_outward" model="ir.model.access">
+			<field name="model_id" ref="kg_outwardmaster.model_kg_outwardmaster"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Outward Master</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_res_country" model="ir.model.access">
+			<field name="model_id" ref="base.model_res_country"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Country</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_res_country_state" model="ir.model.access">
+			<field name="model_id" ref="base.model_res_country_state"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">State</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_res_city" model="ir.model.access">
+			<field name="model_id" ref="base.model_res_city"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">City</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_tax_structure" model="ir.model.access">
+			<field name="model_id" ref="kg_tax_structure.model_kg_tax_structure"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Tax Structure</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_tax_structure_line" model="ir.model.access">
+			<field name="model_id" ref="kg_tax_structure.model_kg_tax_structure_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Tax Structure Line</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_account_tax" model="ir.model.access">
+			<field name="model_id" ref="account.model_account_tax"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Account Tax</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		<record id="master_account_account_type" model="ir.model.access">
+			<field name="model_id" ref="account.model_account_account_type"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Account Type</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		<record id="master_account_account" model="ir.model.access">
+			<field name="model_id" ref="account.model_account_account"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Account</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_master_group')]"/>
+		</record>
+		
+		
+		
+    </data>
+</openerp>
+	

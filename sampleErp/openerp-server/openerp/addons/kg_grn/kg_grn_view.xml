@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+		<!-- Stock picking form view -->
+		
+		<record model="ir.ui.view" id="kg_stock_picking_form_inherit">
+        <field name="name">kg.stock.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field eval="2" name="priority"/>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">			
+
+			<field name="partner_id" on_change="onchange_partner_in(partner_id)" 
+								string="Supplier" domain="[('supplier','=',True)]" position="replace">
+			<field name="partner_id" on_change="onchange_partner_in(partner_id)" 
+								string="Supplier" domain="[('supplier','=',True)]" invisible="1"/>
+								
+			<field name="kg_seq_id" required="1" on_change="onchange_seq_id(kg_seq_id,name)" default_focus="1"/>
+			<field name="dep_name" string="Department Name" readonly="1"/>	
+			<field name="outward_type"/>				
+			<field name="user_id" on_change="onchange_user_id(user_id)" invisible="1"/>
+			</field>
+			
+			<field name="date" position="after">
+			<field name="state" style="width: 30%%" class="indent_state_change"/>
+			
+			<field name="cons_flag" invisible="1"/>
+			<field name="active"/>
+			</field>
+			
+			<field name="date" position="before">
+			<field name="name" required="1"/>
+			</field>			
+			<button name="draft_force_assign" states="draft" string="Confirm" 
+										type="object" class="oe_highlight" groups="base.group_user" position="replace">
+			
+            <button name="draft_force_assign" states="draft" string="Confirm" type="object" class="oe_highlight" 
+						groups="base.group_user" invisible="1"/>
+			
+			</button>
+			
+			<button name="action_process" states="assigned" string="Confirm &amp; Transfer" groups="stock.group_stock_user" type="object" class="oe_highlight" position="replace">
+			<button name="test_finished" states="assigned" string="Approved" type="object" class="oe_highlight" invisible="1"/>
+			<button name="item_load" states="draft" string="Item Load" type="object" class="oe_highlight"/>
+			</button>
+            
+            <button name="button_cancel" states="assigned,confirmed,draft" string="Cancel Transfer"
+					groups="base.group_user" position="replace">
+            <button name="button_cancel" states="assigned,confirmed,draft" string="Cancel Transfer" 
+					groups="base.group_user" invisible="1"/>
+			</button>
+			
+			<button name="%(stock.action_stock_invoice_onshipping)d" string="Create Invoice/Refund"  attrs="{'invisible': ['|','|',('state','&lt;&gt;','done'),('invoice_state','=','invoiced'),('invoice_state','=','none')]}"  type="action" class="oe_highlight" groups="base.group_user" position="replace">
+			<button name="%(stock.action_stock_invoice_onshipping)d" string="Create Invoice"  attrs="{'invisible': ['|','|',('state','&lt;&gt;','done'),('invoice_state','=','invoiced'),('invoice_state','=','none')]}"  type="action" class="oe_highlight"/>
+			</button>
+
+            <button name="force_assign" states="confirmed" string="Force Availability" type="object" 
+									class="oe_highlight" groups="base.group_user" position="replace">
+			
+			<button name="kg_confirm" states="confirmed" string="Confirm" type="object" class="oe_highlight"/>
+			<button name="action_process" states="assigned" string="Approve" type="object" 
+					class="oe_highlight"/>
+			<button name="button_cancel" states="confirmed,assigned" string="Cancel" class="oe_highlight"/>
+			
+			</button>
+			
+            <button name="%(stock.act_stock_return_picking)d" string="Reverse Transfer" states="done" type="action" 
+							groups="base.group_user" position="replace">
+			
+            <button name="%(stock.act_stock_return_picking)d" string="Reverse Transfer" states="done" type="action" 
+									groups="base.group_user" invisible="1"/>			
+			
+			</button>			
+			
+			
+   
+            <field name="min_date" readonly="1" attrs="{'invisible': [('min_date','=',False)]}" position="replace">
+			<field name="min_date" readonly="1" attrs="{'invisible': [('min_date','=',False)]}"  invisible="1"/>
+			</field>
+			
+			<field name="invoice_state" string="Invoice Control" groups="account.group_account_invoice" 
+				attrs="{'invisible':[('invoice_state', '=', 'none')]}" position="replace">
+			<field name="invoice_state" string="Invoice Control" groups="account.group_account_invoice" 
+				attrs="{'invisible':[('invoice_state', '=', 'none')]}" invisible="1"/>
+			</field>
+
+			
+		<!-- Stock picking Out things -->
+		
+		 <xpath expr="/form/header//button[@name='draft_validate']" position="replace">
+                    <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" 
+							type="object" class="oe_highlight" invisible="1"/>
+                    <button name="action_assign" states="confirmed" string="Check Availability" 
+							type="object" class="oe_highlight" invisible="1"/>
+                </xpath>
+               
+                <xpath expr = "//page[@string='Additional Info']" position="before">
+                    <page string="Select Pending Dep.Indent" attrs = "{'invisible':[('cons_flag','=',True)]}">
+                        <field name="kg_dep_indent_line" default_focus="1"/>
+									
+                        <button name="update_issue" type='object' string="Update TO Issue"/>
+                     </page>
+		
+				</xpath>
+			
+		</field>
+		</record>
+		
+		
+		<!-- Stock Picking Tree view -->
+		
+		<record model="ir.ui.view" id="kg_sp_tree_inherit">
+			<field name="name">kg.sp.tree.inherit</field>
+			<field name="model">stock.picking</field>
+			<field eval="2" name="priority"/>
+			<field name="inherit_id" ref="stock.vpicktree"/>
+			<field name="arch" type="xml">
+					
+				<field name="backorder_id" position="replace">
+				<field name="backorder_id" invisible="1"/>
+				</field>
+				
+				<field name="origin" position="replace">
+				<field name="origin" invisible="1"/>
+				</field>
+				
+				<field name="min_date" position="replace">
+				<field name="dep_name"/>
+				</field>
+				
+				<field name="invoice_state" position="replace">
+				<field name="user_id"/>
+				</field>
+				
+				<field name="stock_journal_id" widget="selection" position="replace">
+				<field name="stock_journal_id" widget="selection" invisible="1"/>
+				</field>						
+			
+			</field>
+        </record>
+
+		
+		<!-- Stock picking in form view -->
+		
+		<record id="view_kg_stock_picking_detail" model="ir.ui.view">
+                        <field name="name">kg.stock.picking.detail</field>
+                        <field name="model">stock.picking.in</field>
+                        <field name="type">form</field>
+                        <field name="inherit_id" ref="stock.view_picking_in_form"/>
+                        <field name="arch" type="xml">							
+											
+					<data>
+						<group>
+							<group>
+							
+							<field name="kg_seq_id" attrs="{'required': [('state', '==', 'confirmed')]}" on_change="onchange_seq_id(kg_seq_id,name)"/>
+					
+							<field name="dc_no"/>							
+							<field name="po_id" attrs="{'required':[('grn_type','!=','direct')]}"/>
+							<field name="inward_type"/>
+							</group>
+							<group>
+							<field name="name" string="GRN NO" attrs="{'required': [('state', '==', 'confirmed')]}"/>
+							<field name="grn_type" required="1"  attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+							<field name="dc_date" required="1"/>
+							<field name="state" style="width: 30%%" class="indent_state_change" />
+							<field name="active"/>
+							<field name="grn_total" invisible="1"/>
+
+							</group>
+						</group>						
+				
+                <button name="%(stock.act_stock_return_picking)d" string="Return Products" states="done" type="action" position="replace">
+                <button name="%(stock.act_stock_return_picking)d" string="Return Products" states="done" type="action" invisible="1"/>
+				</button>
+				
+				<button name="%(stock.action_stock_invoice_onshipping)d" string="Create Invoice/Refund"  attrs="{'invisible': ['|','|',('state','&lt;&gt;','done'),('invoice_state','=','invoiced'),('invoice_state','=','none')]}"  type="action" class="oe_highlight" groups="base.group_user" position="replace">
+				<button name="%(stock.action_stock_invoice_onshipping)d" string="Create Invoice"  
+						attrs="{'invisible': ['|','|',('state','&lt;&gt;','done'),('invoice_state','=','invoiced'),('invoice_state','=','none')]}"  
+							type="action" class="oe_highlight" />
+				</button>
+
+                <button name="draft_validate" states="draft" string="Confirm &amp; Receive" type="object" 
+							class="oe_highlight" position="replace">
+				<button name="draft_validate" states="draft" string="Confirm &amp; Receive" type="object" 
+							class="oe_highlight" invisible="1"/>
+				
+				</button>
+				
+			<button name="button_cancel" states="assigned,confirmed,draft" string="Cancel Transfer"
+					groups="base.group_user" position="replace">
+            <button name="update_potogrn" type="object" string="Create GRN From PO" 
+							attrs="{'invisible': ['|','|',('state','!=','draft'),('grn_type','!=','frompo')]}"/>
+					
+			</button>
+			
+            <button name="draft_force_assign" states="draft" string="Confirm" type="object" class="oe_highlight" 
+						groups="base.group_user" position="replace">
+						
+			<button name="kg_confirm_in" states="draft,confirmed" string="Confirm" type="object" class="oe_highlight"/>
+			</button>
+			
+			<button name="force_assign" states="confirmed" string="Force Availability" type="object" 
+									class="oe_highlight" groups="base.group_user" position="replace">
+			
+			<button name="force_assign" states="confirmed" string="Force Availability" type="object" 
+					class="oe_highlight" groups="base.group_user" invisible="1"/>
+			</button>
+			
+			<button name="action_process" states="assigned" string="Receive" type="object" class="oe_highlight" position="replace">
+			<button name="action_process" states="assigned" string="Approve" type="object" class="oe_highlight"/>
+			<button name="view_purchase_order" states="done" string="View PO" type="object" class="oe_highlight"/>
+			</button>			
+				
+				</data>
+		
+			</field>
+		</record>
+		
+		<!-- Stock picking in tree view -->
+		
+		<record id="view_kg_stock_picking_in_tree" model="ir.ui.view">
+					<field name="name">view.kg.stock.picking.in.tree</field>
+					<field name="model">stock.picking.in</field>
+					<field name="inherit_id" ref="stock.view_picking_in_tree"/>
+					<field name="arch" type="xml">
+					
+					<field name="name" position="replace">
+					<field name="name" string="GRN NO"/>
+					</field>
+					
+					<field name="origin" position="replace">
+					<field name="po_id" string="Purchase Order"/>
+					</field>
+					
+                    <field name="backorder_id" position="replace">
+					<field name="backorder_id" invisible="1"/>
+					</field>
+					
+					<field name="min_date" position="replace">
+					<field name="min_date" invisible="1"/>
+					</field>
+										
+                    <field name="invoice_state" groups="account.group_account_invoice" position="replace">
+                    <field name="invoice_state" groups="account.group_account_invoice" invisible="1"/>
+                    </field>
+                    
+                    <field name="stock_journal_id" widget="selection" groups="account.group_account_user" position="replace">
+                    <field name="stock_journal_id" widget="selection" groups="account.group_account_user" invisible="1"/>
+                    </field>                
+                
+            </field>
+        </record>
+        
+	<!-- stock picking out form view -->
+	
+		<record id="kg_view_dep_issue_form" model="ir.ui.view">
+                        <field name="name">kg.view.dep.issue.form</field>
+                        <field name="model">stock.picking.out</field>
+                        <field name="type">form</field>
+                        <field name="inherit_id" ref="stock.view_picking_out_form"/>
+                        <field name="arch" type="xml">       
+
+                     
+				<data>
+                   <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" type="object" class="oe_highlight" position="replace">
+                   <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" type="object" class="oe_highlight" invisible="1"/>
+                   </button>
+                   
+                    <xpath expr="/form/header//button[@name='%(stock.act_stock_return_picking)d']" position="replace">
+                    <button name="%(stock.act_stock_return_picking)d" string="Return Products" states="done" type="action" invisible="1">
+                    </button>
+                </xpath>
+                
+                  <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" 
+							type="object" class="oe_highlight" position="replace">
+				<button name="draft_validate" states="draft" string="Confirm &amp; Deliver" 
+							type="object" class="oe_highlight" invisible="1"/>
+				</button>
+				
+				<button name="action_assign" states="confirmed" string="Check Availability" type="object" class="oe_highlight" position="replace">
+				<button name="action_assign" states="confirmed" string="Check Availability" type="object" class="oe_highlight" invisible="1"/>
+				</button>
+				<button name="force_assign" states="confirmed" string="Force Availability" type="object" 
+									class="oe_highlight" groups="base.group_user" position="replace">
+				<button name="force_assign" states="confirmed" string="Force Availability" type="object" 
+									class="oe_highlight" groups="base.group_user" invisible="1"/>
+				</button>
+				
+                <button name="draft_force_assign" states="draft" string="Confirm" type="object" 
+						class="oe_highlight" groups="base.group_user" position="replace">
+													
+				<button name="kg_confirm_out" states="confirmed" string="Confirm" type="object" class="oe_highlight"
+						/>
+				</button>
+
+                <button name="action_process" states="assigned" string="Approve" type="object" 
+								class="oe_highlight" position="replace">
+								
+                <button name="action_process" states="assigned" string="Approve" type="object" 
+							class="oe_highlight"/>
+				</button>
+				
+				<button name="%(stock.report_picking_list_out)d" string="Print Delivery Slip" type="action" states="done" class="oe_highlight" position="replace">
+				<button name="print_issue_slip" states="done" string="Print Issue Slip" type="object"
+						class="oe_highlight"/>
+				</button> 
+				
+				<button name="button_cancel" states="assigned,confirmed,draft" string="Cancel Transfer"
+					groups="base.group_user" position="replace">
+				<button name="button_cancel" states="assigned,confirmed,draft" string="Cancel Transfer" 
+						groups="base.group_user" invisible="1"/>
+				</button>  
+                   
+		
+					<xpath expr = "//page[@string='Additional Info']" position="before">
+						<page string="Select Pending Dep.Indent">
+							<field name="kg_dep_indent_line" colspan="4" nolabel="1" >
+								<tree string = "Dep Indent" editable="bottom">
+								<field name="indent_id" readonly="1"/>
+								<field name="product_id" readonly="1"/>
+								<field name="uom" readonly="1"/>
+								<field name="qty" readonly="1"/>
+								<field name="issue_pending_qty" readonly="1"/>
+								</tree>
+								
+								</field>
+							
+							<button name="update_issue" type='object' string="Save Record"/>
+						</page>
+					</xpath>
+					
+					<field name="date" position="before">
+					<field name="name" string="Dep.Issue NO" attrs="{'required': [('state', '==', 'confirmed')]}"/>
+					<field name="outward_type"/>
+					<field name="issue_by"/>
+					<field name="active"/>
+					
+					<field name="partner_id" on_change="onchange_partner_in(partner_id)" string="Customer" 
+									domain="[('customer','=',True)]" invisible="1"/>
+					</field>	
+					
+						<field name="partner_id" on_change="onchange_partner_in(partner_id)" string="Customer" 
+									domain="[('customer','=',True)]" position="replace">					
+						<field name="kg_seq_id" attrs="{'required': [('state', '==', 'confirmed')]}" on_change="onchange_seq_id(kg_seq_id,name)"/>
+						<field name="user_id" on_change="onchange_user_id(user_id)" invisible="1"/>
+						<field name="dep_name"/>
+						
+						<field name="state" style="width: 30%%" class="indent_state_change"/>
+						
+						
+						
+						</field>
+				</data>
+			</field>
+		</record>
+		
+		<!-- Stock picking out tree view -->
+		
+		<record id="view_kg_stock_issue_out_tree" model="ir.ui.view">
+				<field name="name">view.kg.stock.picking.out.tree</field>
+				<field name="model">stock.picking.out</field>
+				<field name="inherit_id" ref="stock.view_picking_out_tree"/>
+				<field name="arch" type="xml">
+				
+				<field name="name" position="replace">
+				<field name="name" string="Issue NO"/>
+				</field>
+				
+				<field name="partner_id" string="Customer" position="replace">
+				<field name="partner_id" string="Customer" invisible="1"/>
+				</field>
+				
+				<field name="origin" position="replace">
+				<field name="dep_name"/>
+				<field name="user_id"/>
+				
+				</field>
+				
+				<field name="backorder_id" position="replace">
+				<field name="backorder_id" invisible="1"/>
+				</field>
+				
+				<field name="min_date" position="replace">
+				<field name="min_date" invisible="1"/>
+				</field>
+									
+				<field name="invoice_state" groups="account.group_account_invoice" position="replace">
+				<field name="invoice_state" groups="account.group_account_invoice" invisible="1"/>
+				</field>
+				
+				<field name="stock_journal_id" widget="selection" groups="account.group_account_user" position="replace">
+				<field name="stock_journal_id" widget="selection" groups="account.group_account_user" invisible="1"/>
+				</field>
+			
+                
+            </field>
+        </record>
+        
+        <!-- Consumption Stock Move Tree view   
+        
+        <record id="kg_stock_move_tree" model="ir.ui.view">
+            <field name="name">kg.stock.move.tree</field>
+            <field name="model">stock.move</field>
+            <field eval="4" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Stock Moves" editable="bottom">
+                    <field name="product_id"/>
+                    <field name="product_qty" string="Orig Qty" invisible="1"/>
+                    <field name="po_to_stock_qty" on_change="cons_onchange_qty(po_to_stock_qty,product_qty)"/>
+                    <field name="cons_qty" string="Current Stock"/>
+                    <field name="product_uom"/>
+                    <field name="state"/>
+                    <field name="price_unit" readonly="1"/>
+				</tree>
+			</field>
+		</record>  -->
+		
+		<!-- stock move form view -->		
+		
+		<record model="ir.ui.view" id="kg_stock_move_form_inherit">
+        <field name="name">kg.stock.move.form.inherit</field>
+        <field name="model">stock.move</field>
+        <field eval="2" name="priority"/>
+        <field name="inherit_id" ref="stock.view_move_form"/>
+        <field name="arch" type="xml">
+			
+			<field name="product_qty"
+						on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)"
+						class="oe_inline" position="replace">
+			<field name="po_to_stock_qty" string="GRN Qty" on_change="onchange_quantity(product_id, product_uom, product_uos,po_to_stock_qty)"/>
+			</field>
+			<field name="product_uom" position="after">
+			<group>
+				
+			<field name="kg_grn_moves" attrs="{'invisible': [('move_type','not in',('out'))]}">			
+							<tree string = "GRN Entry" editable="bottom">
+							<field name="grn_no" readonly="1"/>
+							<field name="product_id" readonly="1"/>
+							<field name="pending_qty" readonly="1"/>
+							<field name="product_uom" readonly="1"/>
+						<!-- <field name="issue_qty" readonly="1" on_change="onchange_qty(issue_qty,pending_qty)"/> -->
+							</tree>
+			</field>
+			</group>
+			</field>
+			
+            <field name="product_uos" class="oe_inline" position="replace">
+			<field name="product_uos" class="oe_inline" invisible="1"/>
+			</field>
+            
+            <field name="product_uos_qty"
+                                    on_change="onchange_uos_quantity(product_id, product_uos_qty, product_uos, product_uom)"
+                                    class="oe_inline" position="replace">
+			<field name="product_uos_qty" invisible="1"/>
+			</field>
+			
+			<field name="name" position="replace">
+			</field>
+
+            <field name="product_uom" groups="product.group_uom" class="oe_inline" position="replace">
+            <field name="product_uom" string="UOM" required="True" />
+			</field>
+			
+            <field name="tracking_id" class="oe_inline" position="replace">
+            <field name="notes" string="Remarks"/>
+            </field>
+			
+			<button name="%(stock.split_into)d" string="New Pack" type="action"
+                                      groups="product.group_stock_packaging"
+                                      icon="terp-accessories-archiver+"
+                                      states="draft,assigned,confirmed" position="replace">
+                                      
+		  <button name="%(stock.split_into)d" string="New Pack" type="action"
+                                      groups="product.group_stock_packaging"
+                                      icon="terp-accessories-archiver+"
+                                      states="draft,assigned,confirmed" invisible="1"/>
+		
+			
+			</button>
+			
+			<field name="prodlot_id"
+                                    context="{'location_id':location_id, 'product_id':product_id}"
+                                    domain="[('product_id','=?',product_id)]" class="oe_inline"
+                                    on_change="onchange_lot_id(prodlot_id,product_qty, location_id, product_id, product_uom)"
+                                    position="replace">
+			
+			<field name="prodlot_id"
+                                    context="{'location_id':location_id, 'product_id':product_id}"
+                                    domain="[('product_id','=?',product_id)]" class="oe_inline"
+                                    on_change="onchange_lot_id(prodlot_id,product_qty, location_id, product_id, product_uom)"
+                                    invisible="1"/>
+			</field>
+            
+			<button name="%(stock.track_line)d"
+					states="draft,waiting,confirmed,assigned"
+					string="Split" type="action" icon="gtk-justify-fill" position="replace">
+			<button name="%(stock.track_line)d"
+					states="draft,waiting,confirmed,assigned"
+					string="Split" type="action" icon="gtk-justify-fill" invisible="1"/>
+			</button>
+						
+		<field name="origin" position="after">
+				<field name="name"/>
+                <field name="po_qty" attrs="{'invisible': [('move_type','not in',('in','out'))]}"/>
+                <field name="cons_qty"  attrs="{'invisible': [('move_type','not in',('cons'))]}"/>
+                <field name="expiry_date" attrs="{'required': [('expiry_flag','=',True)]}"/>
+                <field name="batch_no" attrs="{'required': [('expiry_flag','=',True)]}"/>
+                <field name="product_qty" invisible="1"/>
+                <field name="stock_uom" invisible="1"/>
+                <field name="depindent_line_id" invisible="1"/>
+                <field name="move_type" invisible="1"/>
+                <field name="expiry_flag" invisible="1"/>
+        </field>       
+        
+         <field name="origin" position="replace">
+         <field name="origin" invisible="1"/>
+         </field>
+         
+         <field name="company_id" position="replace">
+         <field name="company_id" invisible="1"/>
+         </field>
+
+        <field name="picking_id" domain="[('type','=',type)]" position="replace">
+        <field name="picking_id" domain="[('type','=',type)]" invisible="1"/>
+		</field>
+
+		<field name="picking_id" domain="[('type','=',type)]" position="replace">
+		<field name="picking_id" domain="[('type','=',type)]" invisible="1"/>
+		</field>
+
+		<field name="type" on_change="onchange_move_type(type)" position="replace">
+		<field name="type" on_change="onchange_move_type(type)" invisible="1"/>
+		</field>
+		
+		<field name="create_date" groups="base.group_no_one" position="replace">
+		<field name="create_date" groups="base.group_no_one" invisible="1"/>
+		</field>
+		
+		<field name="partner_id" context="{'contact_display':'partner'}" groups="stock.group_locations" position="replace">
+		<field name="partner_id" context="{'contact_display':'partner'}" groups="stock.group_locations" invisible="1"/>
+		</field>
+		 
+		<field name="date_expected" on_change="onchange_date(date,date_expected)" attrs="{'invisible': [('state', '=', 'done')]}" position="replace">
+		<field name="date_expected" on_change="onchange_date(date,date_expected)" attrs="{'invisible': [('state', '=', 'done')]}" invisible="1"/>
+		</field>
+        
+        <field name="date" attrs="{'invisible': [('state', '!=', 'done')]}" position="replace">
+        <field name="date" attrs="{'invisible': [('state', '!=', 'done')]}" invisible="1"/>
+		</field>
+
+        <button name="%(stock.move_scrap)d"
+                                        string="Scrap" type="action"
+                                        icon="terp-gtk-jump-to-ltr" context="{'scrap': True}"
+                                        states="draft,waiting,confirmed,assigned" colspan="1" position="replace">
+                                        
+		<button name="%(stock.move_scrap)d"
+                                        string="Scrap" type="action"
+                                        icon="terp-gtk-jump-to-ltr" context="{'scrap': True}"
+                                        states="draft,waiting,confirmed,assigned" colspan="1" invisible="1"/>
+                                        
+		</button>
+		
+		<button name="action_confirm" states="draft" string="Process Later" type="object" class="oe_highlight" position="replace">
+		<button name="action_confirm" states="draft" string="Process Later" type="object" class="oe_highlight" invisible="1"/>
+		</button>
+		 
+		<button name="%(stock.action_partial_move_server)d" string="Process Partially" type="action" states="assigned" class="oe_highlight" position="replace">
+		<button name="%(stock.action_partial_move_server)d" string="Process Partially" type="action" states="assigned" class="oe_highlight" invisible="1"/>
+		</button>
+		                    
+		                    
+		<button name="action_done" states="draft,assigned,confirmed" string="Process Entirely" type="object" class="oe_highlight" position="replace">
+		<button name="action_done" states="draft,assigned,confirmed" string="Process Entirely" type="object" class="oe_highlight" invisible="1"/>
+		</button>
+		
+		<button name="force_assign" states="confirmed" string="Set Available" type="object" class="oe_highlight" position="replace">
+		<button name="force_assign" states="confirmed" string="Set Available" type="object" class="oe_highlight" invisible="1"/>
+		</button>
+		
+		<button name="action_cancel" states="assigned,confirmed" string="Cancel Move" type="object" position="replace">
+		<button name="action_cancel" states="assigned,confirmed" string="Cancel Move" type="object" invisible="1"/>
+		</button>
+		
+        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done" statusbar_colors='{"waiting":"blue","confirmed":"blue"}' position="replace">
+		<field name="state" widget="statusbar" statusbar_visible="draft,confirmed,assigned,done" statusbar_colors='{"waiting":"blue","confirmed":"blue"}' invisible="1"/>
+		</field>
+
+		</field>
+	</record>
+    
+    <!-- Stock move tree view -->
+    
+     <record model="ir.ui.view" id="kg_stock_move_tree_inherit">
+        <field name="name">kg.stock.move.tree.inherit</field>
+        <field name="model">stock.move</field>
+        <field eval="2" name="priority"/>
+        <field name="inherit_id" ref="stock.view_move_tree"/>
+        <field name="arch" type="xml">
+			
+		                  
+                    <field name="prodlot_id" groups="stock.group_production_lot" position="replace">
+					<field name="prodlot_id" groups="stock.group_production_lot" invisible="1"/>
+					</field>
+					<!--
+					<field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" position="replace">
+					<field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" invisible="1"/>
+					</field>
+
+                    <field name="product_uos" groups="product.group_uos" position="replace">
+                    <field name="product_uos" groups="product.group_uos" invisible="1"/>
+                    </field>
+                    
+                    <field name="prodlot_id" groups="stock.group_production_lot" position="replace">
+                    <field name="prodlot_id" groups="stock.group_production_lot" invisible="1"/>
+                    </field>
+
+                    <field name="tracking_id" groups="stock.group_tracking_lot" position="replace">
+                    <field name="tracking_id" groups="stock.group_tracking_lot" invisible="1"/>
+					</field>
+					-->
+					
+                    
+					<button name="%(stock.track_line)d" string="Split in Serial Numbers" type="action"
+								icon="gtk-justify-fill" attrs="{'invisible': [('prodlot_id','&lt;&gt;',False)]}"
+								states="draft,waiting,confirmed,assigned,done"
+								groups="stock.group_tracking_lot" position="replace">
+								
+					<button name="%(stock.track_line)d" string="Split in Serial Numbers" type="action"
+								icon="gtk-justify-fill" attrs="{'invisible': [('prodlot_id','&lt;&gt;',False)]}"
+								states="draft,waiting,confirmed,assigned,done"
+								groups="stock.group_tracking_lot" invisible="1" />
+					</button>
+								
+							<field name="tracking_id" groups="stock.group_tracking_lot" position="replace">
+							<field name="tracking_id" groups="stock.group_tracking_lot" invisible="1"/>
+							</field>
+							
+					<button name="setlast_tracking" string="Put in current pack" type="object"
+								groups="product.group_stock_packaging"
+								icon="terp-accessories-archiver" attrs="{'invisible': [('tracking_id','&lt;&gt;',False)]}"
+								states="draft,assigned,confirmed,done" position="replace">
+					
+					<button name="setlast_tracking" string="Put in current pack" type="object"
+								groups="product.group_stock_packaging"
+								icon="terp-accessories-archiver" attrs="{'invisible': [('tracking_id','&lt;&gt;',False)]}"
+								states="draft,assigned,confirmed,done" invisible="1"/>
+					</button>					
+								
+					<button name="%(stock.split_into)d" string="Put in a new pack" type="action"
+								groups="product.group_stock_packaging"
+								icon="terp-accessories-archiver+"
+								states="draft,assigned,confirmed,done" position="replace">
+								
+					<button name="%(stock.split_into)d" string="Put in a new pack" type="action"
+								groups="product.group_stock_packaging"
+								icon="terp-accessories-archiver+"
+								states="draft,assigned,confirmed,done" invisible="1"/>
+								
+					</button>				
+					
+					 <field name="state" position="replace">
+					 <field name="state" invisible="1"/>					 
+					 </field>						
+			
+		</field>
+	</record>
+	
+	<!-- Stock move tree view in stock picking in -->
+	
+	<record model="ir.ui.view" id="kg_stock_move_tree_picking_inherit">
+        <field name="name">kg.stock.move.tree.picking.inherit</field>
+        <field name="model">stock.move</field>
+        <field eval="2" name="priority"/>
+        <field name="inherit_id" ref="stock.view_move_picking_tree"/>
+        <field name="arch" type="xml">
+			
+            <field name="product_uos" groups="product.group_uos" position="replace">
+            <field name="product_uos" groups="product.group_uos" invisible="1"/>
+			</field>
+			
+			<field name="prodlot_id" groups="stock.group_production_lot" position="replace">
+			<field name="prodlot_id" groups="stock.group_production_lot" invisible="1"/>
+			</field>
+			
+            <field groups="stock.group_tracking_lot" name="tracking_id" position="replace">
+            <field groups="stock.group_tracking_lot" name="tracking_id" invisible="1"/>
+			</field>
+
+           <field name="product_qty" on_change="onchange_quantity(product_id, product_qty, product_uom, product_uos)" position="replace">
+           <field name="po_to_stock_qty"/>           
+           </field>
+           
+           <field name="product_uom" string="Unit of Measure" 
+							groups="product.group_uom" position="after">
+			<field name="price_unit" string="Price Unit" readonly="1"/>
+			<field name="tax_id" readonly="1"/>
+			<field name="kg_discount"/>
+			<field name="kg_discount_per"/>
+			<field name="cons_qty"/>
+			<field name="expiry_date"/>
+			<field name="batch_no"/>
+			
+			</field>
+           
+
+
+			
+		</field>
+	</record>
+	
+	<!-- Invisible sale line id from stock move form view -->
+	
+	<record model="ir.ui.view" id="kg_stock_move_sale_form_inherit">
+        <field name="name">kg.stock.move.sale.inherit</field>
+        <field name="model">stock.move</field>
+        <field eval="2" name="priority"/>
+        <field name="inherit_id" ref="sale_stock.stock_move_sale"/>
+        <field name="arch" type="xml">
+			
+			<field name="sale_line_id" position="replace">
+			<field name="sale_line_id" invisible="1"/>
+			</field>
+			
+		</field>
+		
+	</record>
+	
+	<!-- Production Lot Form view -->
+	<record model="ir.ui.view" id="kg_production_lot_form_inherit">
+		<field name="name">kg.production.lot.form.inherit</field>
+		<field name="model">stock.production.lot</field>
+		<field eval="3" name="priority"/>
+		<field name="inherit_id" ref="stock.view_production_lot_form"/>
+		<field name="arch" type="xml">
+
+			<field name="name" position="after">
+			<group>
+			<field name="grn_no"/>
+			<field name="product_qty"/>
+			<field name="pending_qty"/>
+			<field name="issue_qty"/>
+			<field name="product_uom"/>
+			<field name="price_unit"/>
+
+			</group>
+			</field>
+
+
+		
+		</field>
+	</record>
+	
+	
+	<!-- Production Lot Tree view -->
+
+	<record model="ir.ui.view" id="kg_production_lot_tree_inherit">
+		<field name="name">kg.production.lot.tree.inherit</field>
+		<field name="model">stock.production.lot</field>
+		<field eval="2" name="priority"/>
+		<field name="inherit_id" ref="stock.view_production_lot_tree"/>
+		<field name="arch" type="xml">
+				
+				<field name="prefix" position="replace">
+				</field>
+				
+				<field name="name" position="replace">
+				<field name="grn_no"/>
+				</field>
+				
+				<field name="ref" position="replace">
+				</field>
+								  
+				<field name="stock_available" position="replace">
+				<field name="product_qty"/>
+				<field name="pending_qty"/>
+				<field name="product_uom" invisible="0"/>
+				<field name="expiry_date"/>
+				<field name="batch_no"/>
+				<field name="po_qty"/>				
+				</field>
+				
+                <field name="date" position="replace">
+                <field name="po_uom"/>
+				</field>
+
+				
+		</field>
+	</record>
+	
+	<!-- Confirmed Issue list for Sub Store user -->
+	
+	 <record id="action_sub_store_issue" model="ir.actions.act_window">
+            <field name="name">Confirmed Issue</field>
+            <field name="res_model">stock.picking.out</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+			<field name="context">{}</field>
+            <field name="domain">[('state','=','assigned')]</field>
+        </record>
+	
+			
+	<!-- Menu items -->
+			
+	<menuitem action="stock.action_picking_tree4" id="stock.menu_action_picking_tree4" name="Goods Receipts Note" parent="stock.menu_stock_warehouse_mgmt" sequence="1"/>
+	<menuitem action="stock.action_picking_tree" id="stock.menu_action_picking_tree" name="Department Issue" parent="stock.menu_stock_warehouse_mgmt" sequence="2"/> 
+	<menuitem action="stock.action_picking_tree6" id="stock.menu_action_picking_tree6" name="Consumption Entry" parent="stock.menu_stock_warehouse_mgmt" sequence="3"/>
+	<!-- <menuitem action="action_sub_store_issue" id="kg_sub_store_issue" name="Confirmed Issue" parent="stock.menu_stock_warehouse_mgmt" sequence="4"/> -->
+	
+	
+
+		
+	</data>
+</openerp>

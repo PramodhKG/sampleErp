@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+				
+		<record id="kg_depissue_line_tree_view" model="ir.ui.view">
+            <field name="name">kg.depissue.line.tree.view</field>
+            <field name="model">stock.picking</field>
+            <field eval="12" name="priority"/>
+            <field name="type">form</field>
+			<field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+         
+		
+                <xpath expr="/form/header//button[@name='draft_validate']" position="replace">
+                    <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" type="object" class="oe_highlight"/>
+                    <button name="action_assign" states="confirmed" string="Check Availability" type="object" class="oe_highlight"/>
+                </xpath>
+               
+                <xpath expr = "//page[@string='Additional Info']" position="before">
+                    <page string="Select Pending Dep.Indent">
+                        <field name="kg_dep_indent_line" default_focus="1"/>
+                        <button name="update_issue" type='object' string="Update TO Issue"/>
+                     </page>
+		
+		</xpath>
+
+			
+            </field>
+        </record>
+        
+        <!-- Stock picking out form view -->
+		
+		<record id="kg_view_dep_issue_form" model="ir.ui.view">
+                        <field name="name">kg.view.dep.issue.form</field>
+                        <field name="model">stock.picking.out</field>
+                        <field name="type">form</field>
+                        <field name="inherit_id" ref="stock.view_picking_out_form"/>
+                        <field name="arch" type="xml">
+					
+	                   
+
+                     
+				<data>
+                   <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" type="object" class="oe_highlight" position="replace">
+                   <button name="draft_validate" states="draft" string="Confirm &amp; Deliver" type="object" class="oe_highlight" invisible="1"/>
+                   </button>
+                   
+                    <xpath expr="/form/header//button[@name='%(stock.act_stock_return_picking)d']" position="replace">
+                    <button name="%(stock.act_stock_return_picking)d" string="Return Products" states="done" type="action" invisible="1">
+                    </button>
+                </xpath>
+                
+                <xpath expr="/form/header//button[@name='%(stock.act_stock_return_picking)d']" position="replace">
+                    <button name="%(stock.report_picking_list_out)d" string="Print Delivery Slip" type="action" states="done" class="oe_highlight" invisible="1">
+					</button>
+                    
+                </xpath>
+                   
+		
+					<xpath expr = "//page[@string='Additional Info']" position="before">
+						<page string="Select Pending Dep.Indent">
+							<field name="kg_dep_indent_line" colspan="4" nolabel="1">
+								<tree string = "Dep Indent" editable="bottom">
+								<field name="indent_id" readonly="1"/>
+								<field name="product_id" readonly="1"/>
+								<field name="uom" readonly="1"/>
+								<field name="qty" readonly="1"/>
+								<field name="issue_pending_qty" readonly="1"/>
+								</tree>
+								
+								</field>
+							
+							<button name="update_issue" type='object' string="Update TO Issue"/>
+						</page>
+					</xpath>
+					
+					<group>
+						<xpath expr="/form[@string='Input Picking List']/group/group/field[@name='partner_id']" position="replace">
+							<group>
+							<field name="name" required="True" readonly="True" string="Dep.Issue NO"/>
+							<field name="user_id" on_change="onchange_user_id(user_id)" invisible="1"/>
+							<field name="dep_name" readonly="1"/>
+							<field name="active"/>
+							<field name="state"/>
+							</group>
+						</xpath>
+					</group>
+				</data>
+			</field>
+		</record>
+		
+		
+		<!-- Stock picking out tree view -->
+		
+		<record id="view_kg_stock_issue_out_tree" model="ir.ui.view">
+					<field name="name">view.kg.stock.picking.out.tree</field>
+					<field name="model">stock.picking.out</field>
+					<field name="inherit_id" ref="stock.view_picking_out_tree"/>
+					<field name="arch" type="xml">
+					
+					<field name="name" position="replace">
+					<field name="name" string="Issue NO"/>
+					</field>
+					
+					<field name="partner_id" string="Customer" position="replace">
+					<field name="partner_id" string="Customer" invisible="1"/>
+					</field>
+					
+					<field name="origin" position="replace">
+                    <field name="dep_name"/>
+                    <field name="user_id"/>
+                    </field>
+
+					
+                    <field name="backorder_id" position="replace">
+					<field name="backorder_id" invisible="1"/>
+					</field>
+					
+					<field name="min_date" position="replace">
+					<field name="min_date" invisible="1"/>
+					</field>
+										
+                    <field name="invoice_state" groups="account.group_account_invoice" position="replace">
+                    <field name="invoice_state" groups="account.group_account_invoice" invisible="1"/>
+                    </field>
+                    
+                    <field name="stock_journal_id" widget="selection" groups="account.group_account_user" position="replace">
+                    <field name="stock_journal_id" widget="selection" groups="account.group_account_user" invisible="1"/>
+                    </field>
+                
+                
+            </field>
+        </record>
+		
+			
+		<menuitem action="stock.action_picking_tree" id="stock.menu_action_picking_tree" name="Department Issue" parent="stock.menu_stock_warehouse_mgmt" sequence="3"/>
+
+
+		
+	</data>
+</openerp>

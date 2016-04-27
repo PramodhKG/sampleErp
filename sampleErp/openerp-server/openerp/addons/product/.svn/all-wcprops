@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product
+END
+product_pricelist_demo.yml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_pricelist_demo.yml
+END
+partner.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/partner.py
+END
+product_shortcut_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_shortcut_data.xml
+END
+partner_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/partner_view.xml
+END
+product.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product.py
+END
+product_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_data.xml
+END
+product_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_view.xml
+END
+product_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_report.xml
+END
+_common.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/_common.py
+END
+product_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_demo.xml
+END
+product_image_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/product_image_demo.xml
+END
+pricelist.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/pricelist.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/__init__.py
+END
+pricelist_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/pricelist_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/__openerp__.py
+END

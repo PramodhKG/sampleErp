@@ -1,0 +1,143 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_grn/wizard
+END
+pobill_from_purchase_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/pobill_from_purchase_wizard.xml
+END
+grn_to_issue_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/grn_to_issue_wizard.xml
+END
+kg_grn_create.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_grn/wizard/kg_grn_create.py
+END
+opening_stock_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/opening_stock_wizard.xml
+END
+kg_grn_create_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_grn/wizard/kg_grn_create_view.xml
+END
+pobill_from_store2_purchase.py
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/pobill_from_store2_purchase.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/__init__.py
+END
+issue_summary_from_mainst.py
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/issue_summary_from_mainst.py
+END
+dep_indent_to_issue_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/dep_indent_to_issue_wizard.py
+END
+dep_issue_register_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/dep_issue_register_wizard.py
+END
+grn_register_report_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/grn_register_report_wizard.py
+END
+pobill_from_store_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/pobill_from_store_wizard.xml
+END
+issue_summary_from_mainst.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/issue_summary_from_mainst.xml
+END
+dep_indent_to_issue_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/dep_indent_to_issue_wizard.xml
+END
+consumption_summary_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/consumption_summary_wizard.py
+END
+store_issue_slip_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/store_issue_slip_wizard.py
+END
+dep_issue_register_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/dep_issue_register_wizard.xml
+END
+grn_register_report_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/grn_register_report_wizard.xml
+END
+pobill_from_purchase2_accounts.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/pobill_from_purchase2_accounts.py
+END
+grn_to_issue_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/grn_to_issue_wizard.py
+END
+opening_stock_wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/opening_stock_wizard.py
+END
+consumption_summary_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/consumption_summary_wizard.xml
+END
+store_issue_slip_wizard.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/64/openerp-server-7.0/openerp/addons/kg_grn/wizard/store_issue_slip_wizard.xml
+END

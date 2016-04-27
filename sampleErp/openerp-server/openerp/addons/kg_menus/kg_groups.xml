@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+	
+<!--	
+	<record id="group_kg_purchase_user" model="res.groups">
+        <field name="name">kg_purchase_user</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="base.module_category_purchase_management"/>
+    </record>
+-->
+    
+    <record id="group_kg_purchase_admin" model="res.groups">
+        <field name="name">kg_purchase_admin</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="base.module_category_purchase_management"/>
+    </record>
+    
+    <!-- Warehouse Groups -->
+
+    <record id="group_kg_sub_store_user" model="res.groups">
+        <field name="name">kg_sub_store_user</field>
+        <field name="category_id" ref="base.module_category_warehouse_management"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+    </record>
+
+
+    <record id="group_kg_main_store_user" model="res.groups">
+        <field name="name">kg_main_store_user</field>
+        <field name="category_id" ref="base.module_category_warehouse_management"/>
+        <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
+    </record>
+    
+  
+    <!-- Other Groups -->	
+    
+    <record id="group_others" model="res.groups">
+        <field name="name">Others</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="base.module_category_purchase_management"/>
+    </record>
+
+  
+</data>
+</openerp>

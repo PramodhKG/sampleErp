@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+<!-- Product Master form view -->
+
+	<record model="ir.ui.view" id="kg_product_form_inherit">
+        <field name="name">kg.product.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">		
+		<!-- not working and name changed in in base module
+		<field name="categ_id" string="Major Name" position="after">
+			<label for="minor_name" class="oe_edit_only"/>
+			<h2><field name="minor_name"/></h2>
+		</field>
+		-->
+		
+	<field name="categ_id" position="after">
+		<group>
+			<field name="capital"/>
+			<field name="abc"/>
+			<field name="expiry"/>
+		</group>
+	</field>
+
+		<field name="variants" position="replace">
+		<field name="variants" invisible="1"/>
+		</field>	
+		<field name="price_extra" position="replace">
+		<field name="price_extra" invisible="1"/>
+		</field>
+		<field name="price_margin" position="replace">
+		<field name="price_margin" invisible="1"/>
+		</field>
+		
+		<field name="uom_po_id" position="replace">
+		</field>
+		
+		<field name="uom_id" position="after">
+		<field name="uom_po_id"/>
+		<field name="po_uom_coeff" placeholder="UOM * PO Coeff = 1 POM"/>
+		</field>
+			
+		<field name="list_price" position="replace">
+		</field>
+		
+		<field name="sale_ok" position="replace">
+        <field name="sale_ok" invisible="1"/>
+        </field>
+		
+		
+		</field>
+	</record>
+	
+	<record model="ir.ui.view" id="kg_product_field_hidden_inherit">
+        <field name="name">kg.product.field.hidden.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_variant_form_view"/>
+        <field name="arch" type="xml">
+			<group>
+		<field name="variants" position="replace">
+		<field name="variants" invisible="1"/>
+		</field>	
+		<field name="price_extra" position="replace">
+		<field name="price_extra" invisible="1"/>
+		</field>
+		<field name="price_margin" position="replace">
+		<field name="price_margin" invisible="1"/>
+		</field>
+		</group>
+
+		</field>
+	</record>
+	
+	<!-- Product Master Template form view  
+	
+	<record model="ir.ui.view" id="kg_product_template_form_inherit">
+        <field name="name">kg.product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+			
+			
+            
+		</field>
+	</record>
+-->
+	
+	
+	
+	
+	
+	
+	    </data>
+</openerp>

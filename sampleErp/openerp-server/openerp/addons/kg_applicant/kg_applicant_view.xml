@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_applicant_form">
+				<field name="name">kg.applicant.form</field>
+				<field name="model">hr.applicant</field>
+				<field name="inherit_id" ref="hr_recruitment.crm_case_form_view_job"/>
+				<field name="arch" type="xml">
+					
+					<!--<label for="job_id" class="oe_edit_only" invisible="1" position="before">
+					<field name="image_medium" widget='image' class="oe_left oe_avatar"/>
+					<group>
+						<field name="app_date"/>
+	                    <field name="app_job" required="1" on_change="onchange_department(app_job)"/>
+	                    <field name="dep_id"/>
+					    <field name="func_area"/>
+					     <field name="exp_year"/>
+					</group>
+					</label>-->
+					
+					<field name="partner_id"
+                                on_change="onchange_partner_id(partner_id)" invisible="1" position="after">
+						<field name="app_name"/>
+					    <field name="dob"/>
+					    <field name="pre_loc"/>
+					    <field name="nationality"/>
+					    <field name="sex"/>
+					    <field name="mar_status"/>
+					    
+					    
+					    
+					</field>
+					
+
+					
+					
+		            
+		        </field>
+			</record>
+		
+			
+
+			
+			
+    </data>
+</openerp>

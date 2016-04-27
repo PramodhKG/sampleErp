@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="kg_general_grn_form" model="ir.ui.view">
+            <field name="name">kg.general.grn.form</field>
+            <field name="model">kg.general.grn</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form string="General GRN" version="7.0">
+				
+				<header>
+					<button name="kg_grn_confirm" string="Confirm" type="object" states="draft" 
+						class="oe_highlight"/>
+						
+					<button name="kg_grn_approve" string="Approve" type="object" states="confirmed" 
+						class="oe_highlight"/>
+						
+					<button name="grn_cancel" string="Cancel" type="object" states="confirmed,done" 
+						class="oe_highlight"/>
+				
+				</header>
+										
+	
+				<group>
+					<group>
+						<field name="supplier_id"/>
+						<field name="name"/>
+						<field name="dc_no"/>
+						<field name="bill"/>
+                        <field name="dep_name" invisible="1"/>
+                        
+                    </group>
+                    <group>
+						<field name="creation_date"/>
+						<field name="grn_date"/>
+						<field name="dc_date"/>
+						<field name="user_id" on_change="onchange_user_id(user_id)"/>
+						<field name="state" style="width: 30%%"/>
+						
+                    </group>
+                </group>
+                
+                <notebook>
+					
+					<page string="Products">
+                
+						<field name="grn_line" nolabel="1"/>
+						
+						 <group class="oe_subtotal_footer oe_right">
+							<field name="sub_total"/>
+							<field name="other_charge"/>
+							<div class="oe_subtotal_footer_separator oe_inline">
+								<label for="amount_total"/>
+							</div>
+							<field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary"/>
+						</group>
+						<field name="remark" widget="star"/>
+					</page>
+      
+				</notebook>
+				
+               </form>
+           </field>
+        </record>
+        
+        
+     
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="kg_general_grn_tree" model="ir.ui.view">
+            <field name="name">kg.general.grn.view</field>
+            <field name="model">kg.general.grn</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+				<tree string="General GRN">
+					<field name="name"/>
+					<field name="grn_date"/>
+					 <field name="supplier_id"/>
+                    
+					<field name="dc_date"/>
+					<field name="dc_no"/>            
+                   
+                    <field name="state"/>
+                </tree> 
+            </field>
+        </record>
+        
+        <record id="kg_general_grn_line_form" model="ir.ui.view">
+            <field name="name">kg.general.grn.line.form.view</field>
+            <field name="model">kg.general.grn.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+				<form string="General GRN Line" version="7.0">
+			
+				  <group>
+					  
+					<group>
+						<field name="product_id" on_change="onchange_uom_id(product_id)"/>               
+						<field name="uom_id" readonly = "1"/>
+						<field name="cancel_remark"/>
+						
+                    </group> 
+                    <group> 
+						<field name="grn_qty"/>
+						<field name="price_unit"/>
+						<field name="state" invisible="1"/>
+					</group>
+                  </group>
+                  <field name="exp_batch_id" nolabel="1">
+					  <tree editable="bottom">
+						<field name="product_qty"/>
+						<field name="exp_date"/>               
+						<field name="batch_no"/>
+						
+						
+					  </tree>
+				  </field>
+				<button name="grn_line_cancel" string="Cancel" type="object" states="draft,confirmed,done" 
+						class="oe_highlight"/>  
+                
+                </form> 
+            </field>
+        </record>
+        
+        
+         <record id="kg_general_grn_line_tree" model="ir.ui.view">
+            <field name="name">kg.general.grn.line.tree.view</field>
+            <field name="model">kg.general.grn.line</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+				<tree string="General GRN Line">
+				  
+						<field name="product_id"/>               
+						<field name="uom_id"/>
+                    
+						<field name="grn_qty"/>
+						<field name="price_unit"/>
+						<field name="line_total"/>
+						<field name="state"/>
+						
+					
+                </tree> 
+            </field>
+        </record>
+        
+       
+        
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_general_grn" model="ir.actions.act_window">
+			<field name="name">General GRN</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.general.grn</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_general_grn_form"/>
+	</record>
+	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+        
+	<menuitem id="kg_general_grn_menu" parent="stock.menu_stock_warehouse_mgmt" sequence="0" action="action_kg_general_grn" />
+            
+   
+            
+	
+                  
+                  
+    </data>
+</openerp>

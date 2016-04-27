@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_serviceindent_form" model="ir.ui.view">
+            <field name="name">view.kg.serviceindent.form</field>
+            <field name="model">kg.service.indent</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Service Indent" version="7.0">
+		<header>
+				<button name="draft_indent" states="cancel" string="Draft" type="object" class="oe_highlight"/>
+                <button name="confirm_indent" states="draft" string="Confirm" type="object" />
+                <button name="approve_indent" states="confirm" string="Approve" type="object" />
+               <!-- <button name="done_indent" states="draft,approved,cancel" string="Done" type="object" invisible="1"/> -->
+                <button name="cancel_indent" states="done" string="Cancle" type="object" class="oe_highlight"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel" statusbar_colors='{"draft":"blue"}'/>
+
+		</header>
+				<group>
+					<group>
+                    <field name="name"/>
+                    <field name="user_id" on_change="onchange_user_id(user_id)" invisible="1"/>
+                    <field name="dep_name" readonly="True"/>
+                    <field name="state" readonly="1"/>
+                    </group>
+                    <group>
+					<field name="date"/>
+                    <field name="active"/>
+                    <field name="gate_pass"/>
+                    </group>
+				</group>
+					<field colspan="4" mode="tree" name="service_indent_line" nolabel="1" widget="one2many_list" attrs = "{'readonly':[('state','=','done')]}">
+						  <tree string="Service Indent Line"> 
+								<field name="product_id"/>
+								<field name="uom"/>
+								<field name="qty"/>
+
+							</tree>
+							<form string=" Indent Line " >
+										<field name="product_id" on_change="onchange_product_id(product_id,uom)"/>
+										<field name="uom"/>
+										<field name="qty" on_change="onchange_qty(qty,pending_qty)"/>
+										<field name="pending_qty"/>
+										<field name="note"/>
+
+							</form>
+                    </field>
+        
+
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_serviceindent_tree" model="ir.ui.view">
+            <field name="name">kg.serviceindent.tree.view</field>
+            <field name="model">kg.service.indent</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Service Indent">
+                    <field name="name"/>
+					<field name="date"/>
+                    <field name="dep_name"/>
+                    <field name="user_id"/>
+					<field name="state"/>
+
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_serviceindent_form" model="ir.actions.act_window">
+			<field name="name">Service Indent</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.service.indent</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_serviceindent_tree"/>
+	</record>
+	
+	
+	
+	<!-- Service indent line tree view -->
+	
+	<record id="view_kg_serviceindent_line_tree" model="ir.ui.view">
+            <field name="name">kg.depindent.line.tree</field>
+            <field name="model">kg.service.indent.line</field>
+            <field name="type">tree</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Service Indent Line">
+                    <field name="service_id"/>
+                    <field name="product_id"/>
+                    <field name="uom"/>
+                    <field name="pending_qty"/>
+                    
+                    
+                </tree>
+            </field>
+        </record>
+        
+	
+	
+	
+	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+        
+	<menuitem id="kg_so_indent" parent="base.menu_purchase_root" name="Service Entry" 
+				sequence="8" />        
+	<menuitem 
+            id="menu_kg_serviceindent" 
+            name="Service Indent" 
+            parent="kg_so_indent"
+            sequence="1"
+            action="action_kg_serviceindent_form"/>
+    </data>
+</openerp>

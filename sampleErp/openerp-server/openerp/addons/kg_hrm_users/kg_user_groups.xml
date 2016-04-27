@@ -1,0 +1,54 @@
+<?xml version="1.0" ?>
+<openerp>
+<data noupdate="0">
+	  <record id="group_hrm_employee" model="res.groups">
+		<field name="name">kg_hrm_employee</field>
+		<field name="category_id" ref="base.module_category_human_resources"/>
+		<field eval="[(6,0,[ref('hr_payroll.menu_hr_root_payroll'),ref('hr_payroll.menu_department_tree'),
+			ref('hr_payroll.menu_hr_payroll_reporting'),
+			ref('hr_attendance.menu_hr_attendance'),ref('hr.menu_hr_root'),ref('hr.menu_hr_main'),
+			
+            ])]" name="menu_access"/>
+
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>     
+      
+    </record>
+    
+    <record id="group_hrm_admin" model="res.groups">
+        <field name="name">kg_hrm_admin</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+      <field eval="[(6,0,[
+			ref('base.group_user'),           
+            ref('hr_payroll.menu_hr_root_payroll'),
+            ref('hr_payroll.menu_department_tree'),ref('kg_employee_gratuity.kg_menu_employee_gratuity'),
+            ref('hr.menu_hr_root'),ref('hr.menu_hr_main'),ref('hr_payroll.menu_hr_payroll_reporting'),
+            ref('hr_contract.hr_menu_contract_type'),ref('hr_contract.hr_menu_contract'),
+            ref('kg_tax.menu_kg_tax_item'),
+            ref('base.menu_action_res_bank_form'),
+           ref('base.menu_config_address_book')
+            ])]"  name="menu_access"/>
+      
+    </record>
+	
+	
+	    <record id="group_hrm_md" model="res.groups">
+        <field name="name">kg_hrm_md</field>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+      <field eval="[(6,0,[
+			ref('base.group_user'),ref('kg_hrm_menus.menu_hr_master'),           
+            ref('hr_payroll.menu_hr_root_payroll'),
+            ref('kg_emp_contribution.kg_menu_emp_contribution'),
+            ref('hr_payroll.menu_department_tree'),ref('kg_employee_gratuity.kg_menu_employee_gratuity'),
+            ref('hr.menu_hr_root'),ref('hr.menu_hr_main'),ref('hr_payroll.menu_hr_payroll_reporting'),
+            ref('hr_contract.hr_menu_contract_type'),ref('hr_contract.hr_menu_contract'),
+            ref('kg_tax.menu_kg_tax_item'),
+            ref('base.menu_action_res_bank_form'),
+			ref('base.menu_config_address_book'),ref('kg_hrm_menus.menu_pt_master_menu'),
+            ])]"  name="menu_access"/>
+      
+    </record>
+	
+</data>
+</openerp>
+<!--ref('base.menu_crm_case_job_req_main'),ref('kg_ta_advance.menu_advance_master'),,ref('kg_allowance_deduction.monthly_entry_menu')
+ref('kg_monthly_bills.kg_menu_monthly_bills'),ref('kg_monthly_bills.kg_menu_monthly_bills'),-->

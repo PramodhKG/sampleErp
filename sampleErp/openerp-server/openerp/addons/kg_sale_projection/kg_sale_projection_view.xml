@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>    
+
+        <record id="sales_state_tree_view" model="ir.ui.view">
+            <field name="name">Sale Projection</field>
+            <field name="model">kg.sale.projection</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Projection">
+                    <field name="name"/>
+                   
+                    <field name="created_by"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                    
+                </tree>
+            </field>
+        </record>
+
+        <record id="sales_state_form_view" model="ir.ui.view">
+            <field name="name">Sale Projection</field>
+            <field name="model">kg.sale.projection</field>
+            <field name="arch" type="xml">
+                <form string="Sale Projection" version="7.0">
+					<header>
+					<button name="entry_confirm" type="object" string="Confirm" states="draft"/>
+					<button name="entry_approve" type="object" string="Approve" states="confirm"/>
+					</header>
+                    <group>
+                        <group>                            
+                            <field name="name"/>
+                            <field name="created_by"/>
+							
+							
+                             
+                        </group>
+                        <group>
+							                    
+							<field name="date"/>
+							<field name="state"/> 
+							                    
+                        </group>
+                    </group>
+                    
+					<field name="line_ids">
+						
+						<tree string="Sale Projection Line" editable="bottom">
+							<field name="category_id" />
+							<field name="product_id" on_change="onchange_product_id(product_id)"/>
+							<field name="quantity"/>
+                            <field name="uom_id"/>
+                            <field name="delivery_date"/>
+						</tree>
+					</field>   
+					
+					<field name="remarks" nolabel="1"/>                 
+                   
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sales_state" model="ir.actions.act_window">
+            <field name="name">Sale Projection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.sale.projection</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="sales_state_tree_view"/>
+        </record>
+        
+        
+       
+
+         
+
+    </data>
+</openerp>

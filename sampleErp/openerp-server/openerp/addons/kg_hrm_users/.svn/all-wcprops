@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/Clinsync/!svn/ver/9/openerp-server/openerp/addons/kg_hrm_users
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Clinsync/!svn/ver/9/openerp-server/openerp/addons/kg_hrm_users/__openerp__.py
+END
+kg_user_groups.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/Clinsync/!svn/ver/9/openerp-server/openerp/addons/kg_hrm_users/kg_user_groups.xml
+END
+kg_hrm_employee.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Clinsync/!svn/ver/9/openerp-server/openerp/addons/kg_hrm_users/kg_hrm_employee.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Clinsync/!svn/ver/9/openerp-server/openerp/addons/kg_hrm_users/__init__.py
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Clinsync/!svn/ver/9/openerp-server/openerp/addons/kg_hrm_users/__init__.pyc
+END

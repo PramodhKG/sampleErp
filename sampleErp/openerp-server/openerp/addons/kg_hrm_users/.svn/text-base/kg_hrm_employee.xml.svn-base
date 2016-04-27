@@ -1,0 +1,122 @@
+<?xml version="1.0" ?>
+<openerp>
+<data>       
+        
+        
+        <record id="hr_employee" model="ir.model.access">
+			<field name="model_id" ref="hr.model_hr_employee"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Employees</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		   
+        <record id="hr_attendance" model="ir.model.access">
+			<field name="model_id" ref="kg_daily_attendance.model_kg_daily_attendance"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Daily Attendance</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		   
+        <record id="hr_lve_requst" model="ir.model.access">
+			<field name="model_id" ref="kg_holiday_req.model_kg_holiday_req"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Leave Requests</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		   
+        <record id="hr_emp_payslip" model="ir.model.access">
+			<field name="model_id" ref="hr_payroll.model_hr_payslip"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Employee Payslips</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		<record id="hr_emp_edu_line" model="ir.model.access">
+			<field name="model_id" ref="kg_employee.model_kg_education_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Education Line</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		<record id="hr_emp_history_line" model="ir.model.access">
+			<field name="model_id" ref="kg_employee.model_kg_history_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">History Line</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		<record id="hr_emp_payslip_sal_comp" model="ir.model.access">
+			<field name="model_id" ref="hr_payroll.model_hr_payslip_input"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Payslip Salary Comp</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		<record id="hr_emp_payslip_days" model="ir.model.access">
+			<field name="model_id" ref="hr_payroll.model_hr_payslip_worked_days"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Payslip Days</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		<record id="hr_emp_payslip_sal_category" model="ir.model.access">
+			<field name="model_id" ref="hr_payroll.model_hr_payslip_input"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Payslip Salary_Category</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		<record id="hr_emp_payslip_other" model="ir.model.access">
+			<field name="model_id" ref="hr_payroll.model_hr_payslip_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Payslip Others</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		
+		<record id="kg_alloc_leave" model="ir.model.access">
+			<field name="model_id" ref="kg_allocation_leave.model_kg_allocation_leave"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Allocation Requests</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		
+		<record id="kg_alloc_leave_line" model="ir.model.access">
+			<field name="model_id" ref="kg_allocation_leave.model_kg_allocation_leave_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Allocation Requests Line</field>
+			<field eval="0" name="perm_unlink"/>
+			<field eval="0" name="perm_write"/>
+			<field eval="0" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_hrm_employee')]"/>
+		</record>
+		
+		
+</data>
+</openerp>

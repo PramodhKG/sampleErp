@@ -1,0 +1,300 @@
+<?xml version="1.0"?>
+<document filename="Salary_muster.pdf">
+  <template pageSize="(842.0,595.0)" title="Employee Salary Muster" author="Shubashri" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="10.0" y1="10.0" width="812" height="565"/>
+        <pageGraphics>
+        	<setFont name="Helvetica" size="9"/>
+            <drawCentredString x="27.5cm" y="0.5cm">Page No.<pageNumber/></drawCentredString>
+        </pageGraphics>      
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+     <blockTableStyle id="Table4">
+      
+    <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="4,0" stop="4,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="4,-1" stop="4,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="5,0" stop="5,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="5,0" stop="5,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="5,-1" stop="5,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="6,0" stop="6,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="6,0" stop="6,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="6,-1" stop="6,-1"/>
+
+
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="7,0" stop="7,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="7,0" stop="7,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="7,-1" stop="7,-1"/>
+
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="8,0" stop="8,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="8,0" stop="8,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="8,-1" stop="8,-1"/>
+     
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="9,0" stop="9,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="9,-1" stop="9,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="9,0" stop="9,-1"/>
+      
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="10,0" stop="10,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="10,0" stop="10,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="10,-1" stop="10,-1"/>
+      
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="11,0" stop="11,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="11,0" stop="11,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="11,-1" stop="11,-1"/>
+      
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="12,0" stop="12,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="12,0" stop="12,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="12,0" stop="12,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="12,-1" stop="12,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="13,0" stop="13,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="13,0" stop="13,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="13,0" stop="13,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="13,-1" stop="13,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="14,0" stop="14,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="14,0" stop="14,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="14,0" stop="14,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="14,-1" stop="14,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="15,0" stop="15,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="15,0" stop="15,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="15,-1" stop="15,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="16,0" stop="16,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="16,0" stop="16,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="16,0" stop="16,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="16,-1" stop="16,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="17,0" stop="17,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="17,0" stop="17,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="17,0" stop="17,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="17,-1" stop="17,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="18,0" stop="18,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="18,0" stop="18,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="18,0" stop="18,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="18,-1" stop="18,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="19,0" stop="19,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="19,0" stop="19,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="19,0" stop="19,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="19,-1" stop="19,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="20,0" stop="20,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="20,0" stop="20,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="20,0" stop="20,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="20,-1" stop="20,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="21,0" stop="21,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="21,0" stop="21,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="21,0" stop="21,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="21,-1" stop="21,-1"/>
+              
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="22,0" stop="22,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="22,0" stop="22,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="22,0" stop="22,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="22,-1" stop="22,-1"/>
+              
+      
+    </blockTableStyle>     
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="Standard" fontName="Helvetica"/>
+    <paraStyle name="Heading" fontName="Helvetica" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Text body" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="List" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+    <paraStyle name="Table Contents" fontName="Helvetica" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading" fontName="Helvetica" alignment="CENTER" fontSize="8.0" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Table Heading1" fontName="Helvetica-Bold" alignment="CENTER" fontSize="12.0" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="Footer" fontName="Helvetica"/>
+    <paraStyle name="Horizontal Line" fontName="Helvetica" fontSize="6.0" leading="8" spaceBefore="0.0" spaceAfter="14.0"/>
+    <paraStyle name="terp_header" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="Heading 9" fontName="Helvetica-Bold" fontSize="75%" leading="NaN" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_General" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_tblheader_Details" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_default_7" fontName="Helvetica" fontSize="7.0" leading="9" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_6" fontName="Helvetica" fontSize="8.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_61t" fontName="Helvetica-Bold" fontSize="8.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_6_right" fontName="Helvetica" fontSize="5.0" leading="8" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_61" fontName="Helvetica" fontSize="5.0" leading="8" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_left_61" fontName="Helvetica" fontSize="8.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_left_61_bold" fontName="Helvetica-Bold" fontSize="6.0" leading="8" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_right_61" fontName="Helvetica" fontSize="5.0" leading="8" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Right_7" fontName="Helvetica" fontSize="7.0" leading="9" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_7" fontName="Helvetica" fontSize="7.0" leading="9" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_header_Right" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="LEFT" spaceBefore="12.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="10.0" leading="19" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_address" fontName="Helvetica" fontSize="10.0" leading="13" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_8_centre" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_2" fontName="Helvetica" fontSize="2.0" leading="3" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_7_Right" fontName="Helvetica-Bold" fontSize="7.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="Heading 3" fontName="Helvetica-Bold" fontSize="14.0" leading="17" spaceBefore="12.0" spaceAfter="6.0"/>
+    <images/>
+  </stylesheet>
+  <story>
+<pto>
+	
+	
+	
+    <para style="terp_header_Centre">[[ (data['form']['company_id'][1]) ]]</para>
+    <para style="terp_header_Centre">Employee's Salary Muster For the Month  [[ data['form']['start_month'] ]] - [[ data['form']['year'] ]]</para>
+
+    
+    <pto_header>
+     <blockTable colWidths="30,100,55,75,40,45,40,45,45,45,40,40,35,40,40,40,50" repeatRows="1" style="Table4">
+      <tr>
+        <td>          <para style="terp_61t">S.No</para>            </td>
+        <td>          <para style="terp_61t">Emp Name</para>   
+                      <para style="terp_61t">Emp Code</para>   </td>
+        <td>          <para style="terp_61t">Branch</para>          
+                      <para style="terp_61t">DEG</para>     </td>        
+		<td>          <para style="terp_61t">Mob No</para>       </td>      
+		<td>          <para style="terp_61t">No.Pre</para>          </td>      
+		<td>          <para style="terp_61t">Gross Sal</para>    </td>      
+		<td>          <para style="terp_61t">Ba 35%</para>       </td>      
+		<td>          <para style="terp_61t">DA 15%</para>          </td>      
+		<td>          <para style="terp_61t">HRA 20%</para>         </td>      
+		<td>          <para style="terp_61t">Con 15%</para>         </td>      
+		<td>          <para style="terp_61t">TA 15%</para>         </td>      
+		<td>          <para style="terp_61t">Net Grs Sal</para> </td>      
+		<td>          <para style="terp_61t">PF</para>         		 </td>      
+		<td>          <para style="terp_61t">ESI</para>              </td>      
+		<td>          <para style="terp_61t">Mob dect</para>            
+		              <para style="terp_61t">Sal Adv</para>       </td>      
+		<td>          <para style="terp_61t">Other dect</para>       </td>      
+		<td>          <para style="terp_61t">Take Home Sal</para> </td>      
+
+        
+      </tr>
+    </blockTable>
+   </pto_header>
+	<blockTable colWidths="30,100,55,75,40,45,40,45,45,45,40,40,35,40,40,40,50" repeatRows="1" style="Table4">
+      <tr>
+        <td>          <para style="terp_61t">S.No</para>            </td>
+        <td>          <para style="terp_61t">Emp Name</para>   
+                      <para style="terp_61t">Emp Code</para>   </td>
+        <td>          <para style="terp_61t">Branch</para>          
+                      <para style="terp_61t">DEG</para>     </td>        
+		<td>          <para style="terp_61t">Mob No</para>       </td>      
+		<td>          <para style="terp_61t">No.Pre</para>          </td>      
+		<td>          <para style="terp_61t">Gross Sal</para>    </td>      
+		<td>          <para style="terp_61t">Ba 35%</para>       </td>      
+		<td>          <para style="terp_61t">DA 15%</para>          </td>      
+		<td>          <para style="terp_61t">HRA 20%</para>         </td>      
+		<td>          <para style="terp_61t">Con 15%</para>         </td>      
+		<td>          <para style="terp_61t">TA 15%</para>         </td>      
+		<td>          <para style="terp_61t">Net Grs Sal</para> </td>      
+		<td>          <para style="terp_61t">PF</para>         		 </td>      
+		<td>          <para style="terp_61t">ESI</para>              </td>      
+		<td>          <para style="terp_61t">Mob dect</para>            
+		              <para style="terp_61t">Sal Adv</para>       </td>      
+		<td>          <para style="terp_61t">Other dect</para>       </td>      
+		<td>          <para style="terp_61t">Take Home Sal</para> </td>      
+
+        
+      </tr>
+    </blockTable>
+	<para> <seqReset id="prod_serial_no"/> </para>
+
+    <section>
+		
+	
+	<para style="terp_default_8">[[ repeatIn(get_data(data['form']), 'x') ]]</para>
+   
+
+	<blockTable colWidths="30,100,55,75,40,45,40,45,45,45,40,40,35,40,40,40,50" repeatRows="1" style="Table4">
+      <tr>
+        <td>          <para style="terp_61"> <seq id="prod_serial_no"/> </para>        </td>
+        <td>          <para style="terp_left_61">[[ x['emp_name'] ]]</para>   
+					  <para style="terp_left_61">[[ x['code'] ]]</para>   </td>
+        <td>          <para style="terp_left_61">[[ x['branch'] ]]</para>          
+                      <para style="terp_left_61">[[ x['designation'] ]]</para>     </td>        
+		<td>          <para style="terp_left_61">[[ x['mob_num_1'] ]]</para>            
+		              <para style="terp_left_61">[[ x['mob_num_2'] ]]</para>         </td>   
+		<td>          <para style="terp_left_61">[[ x['pre_days'] ]]</para>          </td>       
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f', x['cont_gross']) ]]</para>    </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f', x['basic']) ]]</para>       </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f', x['da']) ]]</para>          </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['hra']) ]]</para>         </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['con']) ]]</para>         </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['ta']) ]]</para>         </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['gross_amt']) ]]</para> </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['pf'] or '0') ]]</para>         		 </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['esi'] or '0') ]]</para>              </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['mob_ded'] or '0') ]]</para>          
+		              <para style="terp_left_61">[[ locale.format('%.0f',x['sal_adv'] or '0') ]]</para>       </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['itax']) ]]</para>             
+		              <para style="terp_left_61">[[ locale.format('%.0f',x['emp_pf']) ]]</para>             
+		              <para style="terp_left_61">[[ locale.format('%.0f',x['emp_esi']) ]]</para>             
+		              <para style="terp_left_61">[[ locale.format('%.0f',x['pt']) ]]</para>       </td>      
+		<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['net_sal']) ]]</para> </td>      
+
+        
+      </tr>
+    </blockTable>
+	</section>
+	
+	
+	<blocktable colWidths="260,40,45,40,45,45,45,40,40,35,40,40,40,50" repeatRows="1" style="Table4">
+		<tr>
+			<td>          <para style="terp_left_61">Grand Total</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_pre_days']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_gross']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_basic']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_da']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_hra']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_con']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_ta']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_net_gross']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_pf']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_esi']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_mob_ded']) ]]</para>         
+						  <para style="terp_left_61">[[ locale.format('%.0f',x['tot_sal_adv']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_other_ded']) ]]</para>          </td>
+			<td>          <para style="terp_left_61">[[ locale.format('%.0f',x['tot_take_hme_sal']) ]]</para>          </td>
+		</tr>
+		
+		
+	</blocktable>
+	
+   
+    </pto> 
+  </story>
+</document>

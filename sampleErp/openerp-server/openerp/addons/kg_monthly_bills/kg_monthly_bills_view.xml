@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="kg_monthly_bills_form_view" model="ir.ui.view">       
+			<field name="name">Monthly Bills</field>
+			<field name="model">kg.monthly.bills</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="kg_monthly_bills" version="7.0">
+					<header>
+						<button name="confirm_entry" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+						<button name="cancel_entry" states="confirm" string="Cancel" type="object"/>
+						<button name="draft_entry" states="cancel" string="Set to Draft" type="object"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+					</header>
+					<sheet>				
+						<group>
+							<group>
+								<field name="creation_date" readonly="1"/>
+								<field name="from_date" required="1"/>
+								<field name="to_date" required="1"/>
+								<field name="active"/>
+							</group>
+							<group>
+								<field name="ser_provider"/>
+								<field name="due_date"/>
+								<field name="total_amt"/>
+								<field name="state" readonly="1"/>
+							</group>
+						</group>
+						<field name="bill_lines" nolabel="1">
+							<tree editable="bottom">
+								<field name="employee_id" />
+								<field name="mob_no"/>
+								<field name="amount" />
+								<field name="description" />
+							</tree>
+						</field>
+					</sheet>
+				</form>
+			</field>					
+		</record>
+		<record id="kg_monthly_bills_tree_view" model="ir.ui.view">
+			<field name="name">Employer Contribution</field>
+			<field name="model">kg.monthly.bills</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="kg_holiday_master">
+					<field name="from_date"/>
+					<field name="state"/>
+					<field name="total_amt"/>
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="action_monthly_bills">
+			<field name="name">Monthly Bills</field>
+			<field name="res_model">kg.monthly.bills</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_monthly_bills_tree_view"/>
+		</record>
+		
+		<!--<menuitem id="kg_menu_monthly_bills" name="Mobile Bills" parent="hr.menu_hr_root" sequence="10"/>
+		 
+		<menuitem id="kg_emp_monthly_bills" name="Mobile/Phone Bills" parent="kg_menu_monthly_bills" sequence="11" action="action_monthly_bills"/>
+	
+	-->
+	</data>
+</openerp>

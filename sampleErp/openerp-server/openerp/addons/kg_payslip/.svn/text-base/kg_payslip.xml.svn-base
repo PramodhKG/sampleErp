@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+			<record model="ir.ui.view" id="kg_payslip_form">
+				<field name="name">kg.payslip.form</field>
+				<field name="model">hr.payslip</field>
+				<field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+				<field name="arch" type="xml">
+					
+					<button string="Confirm" name="hr_verify_sheet" states="draft" class="oe_highlight" position="replace">
+					<button string="Confirm" name="hr_verify_sheet" states="draft" class="oe_highlight" invisible="1"/>
+					</button>
+					
+					<button string="Compute Sheet" name="compute_sheet" type="object" states="draft" class="oe_highlight" position="replace">
+					<button string="Compute Sheet" name="compute_sheet" type="object" states="draft" class="oe_highlight" invisible="1"/>
+					
+					</button>
+					
+					<button name="%(hr_payroll.act_payslip_lines)d" string="Payslip Computation Details" 
+							type="action" position="replace">
+					<button name="%(hr_payroll.act_payslip_lines)d" string="Payslip Computation Details" 
+							type="action" invisible="1"/>
+					</button>
+										
+					<button string="Refund" name="refund_sheet" states="confirm,done" type='object' position="replace">
+					<button string="Generate" name="employee_salary_run" states="draft" type='object'/>
+					</button>
+					
+					<field name="contract_id" domain="[('employee_id','=',employee_id),('date_start','&lt;=',date_to),'|',('date_end','&gt;=',date_from),('date_end','=',False)]" on_change="onchange_contract_id(date_from, date_to, employee_id, contract_id)" 
+								context="{'default_employee_id': employee_id}" position="replace">
+					<field name="contract_id" domain="[('employee_id','=',employee_id),('date_start','&lt;=',date_to),'|',('date_end','&gt;=',date_from),('date_end','=',False)]" on_change="onchange_contract_id(date_from, date_to, employee_id, contract_id)" 
+								context="{'default_employee_id': employee_id}" invisible="1"/>
+					</field>
+					
+					
+					<field name="struct_id" attrs="{'required':[('contract_id','&lt;&gt;',False)]}" position="replace">
+					<field name="struct_id" attrs="{'required':[('contract_id','&lt;&gt;',False)]}" invisible="1"/>
+					</field>
+					
+					<field name="name" position="replace">                    
+					<field name="name" invisible="1"/>                    
+					</field>
+					
+					<field name="number" position="replace">
+					<field name="number" string="Payslip.No" invisible="1"/>
+					</field>
+					
+					
+					<field name="date_from" position="before">
+					<field name="emp_name"/>
+					</field>
+					
+					<field name="date_to" position="after">
+					<field name="tot_paid_days" readonly="1"/>
+					</field>
+
+                    <field name="credit_note" position="replace">
+                    <field name="cross_amt"/>
+                    
+                    
+                    <field name="tot_allowance"/>
+                    <field name="tot_deduction"/>
+                    <field name="round_val"/>
+                    <field name="tot_contribution" invisible="1"/>
+                    <field name="credit_note" invisible="1"/>
+					</field>	
+									
+			
+				</field>
+			</record>
+			
+			<record model="ir.ui.view" id="kg_payslip_tree">
+				<field name="name">kg.payslip.tree</field>
+				<field name="model">hr.payslip</field>
+				<field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+				<field name="arch" type="xml">
+					
+					<field name="employee_id" position="after">
+					<field name="emp_name"/>
+					</field>
+					<field name="state" position="after">
+					<field name="tot_paid_days"/>
+					<field name="round_val"/>
+					</field>
+					
+				</field>
+			</record>
+			
+			<record id="kg_batch_payslip_form" model="ir.ui.view">
+				<field name="name">kg.batch.payslip.form</field>
+				<field name="model">hr.payslip.run</field>
+				<field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+				<field name="arch" type="xml">
+					
+					<field name="credit_note" position="replace">
+					<field name="date_start" style="width: 30%%" class="att_month_change"/>
+					<field name="date_end" style="width: 30%%" class="att_month_change"/>
+					<field name="state"/>
+					<field name="credit_note" invisible="1"/>
+					</field>
+				
+				</field>
+			</record>
+			
+			<record id="kg_salary_stru_form" model="ir.ui.view">
+				<field name="name">salary.stru.form</field>
+				<field name="model">hr.payroll.structure</field>
+				<field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+				<field name="arch" type="xml">			
+					
+					<field name="parent_id" position="after">
+					<field name="state"/>
+					</field>					
+					
+				</field>
+			</record>
+			
+			
+		<record model="ir.ui.view" id="kg_payslip_search_filter">
+			<field name="name">kg.payslip.filter</field>
+			<field name="model">hr.payslip</field>
+			<field name="inherit_id" ref="hr_payroll.view_hr_payslip_filter"/>
+			<field name="arch" type="xml">
+			 
+				<filter string="Employees" icon="terp-personal" name="employee_id" context="{'group_by':'employee_id'}" position="before">
+				
+				<filter string="Month" icon="terp-personal" name="date_from" context="{'group_by':'date_from'}"/>
+					
+				</filter>
+				
+			</field>
+		</record>
+            
+    </data>
+</openerp>

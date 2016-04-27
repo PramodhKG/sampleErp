@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_dep_standard_issue_form" model="ir.ui.view">
+            <field name="name">view.kg.dep.standard.issue.form</field>
+            <field name="model">kg.dep.standard.issue</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Standard Issue" version="7.0">
+		
+				<group>
+                    <field name="name"/>
+                    <field name="std_name"/>
+					<field name="date"/>
+                </group>
+
+                     <field colspan="4" string="Standard Lines" mode="tree" name="std_lineid" nolabel="1" widget="one2many_list">
+									 
+                      <tree string="Standard Issue Line"> 
+                            <field name="product_id"/>
+                            <field name="uom"/>
+                            <field name="qty"/>
+                        </tree>
+                        <form string=" Standard Issue Line " >
+									<field name="product_id"/>
+                                    <field name="uom"/>
+                                    <field name="qty"/>
+                                    <field name="note"/>
+
+                        </form>
+                    </field>
+        
+
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_dep_standard_issue_tree" model="ir.ui.view">
+            <field name="name">kg.dep.standard.issue.tree.view</field>
+            <field name="model">kg.dep.standard.issue</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Standard Issue">
+                    <field name="name"/>
+                    <field name="std_name"/>
+                   
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_dep_standard_issue_form" model="ir.actions.act_window">
+			<field name="name">Standard Issue</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.dep.standard.issue</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_dep_standard_issue_tree"/>
+	</record>
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+	<menuitem 
+            id="kg_dep_standard_issue" 
+            name="Dep.Standard Issue Qty" 
+            parent="kg_depmaster.kg_depmaster_parent_menu"
+            sequence="12"
+            action="action_kg_dep_standard_issue_form"/>
+    </data>
+</openerp>

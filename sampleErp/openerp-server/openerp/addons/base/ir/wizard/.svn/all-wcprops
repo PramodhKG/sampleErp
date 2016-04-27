@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/wizard
+END
+wizard_menu.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/wizard/wizard_menu.py
+END
+wizard_menu_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/wizard/wizard_menu_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/wizard/__init__.py
+END

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="daily_attendance_form_view" model="ir.ui.view">
+			<field name="name">daily.attendance</field>
+			<field name="model">kg.daily.attendance</field>
+			<field name="arch" type="xml">
+				<form string="Daily Attendance" version="7.0">
+				<header>						
+					<button name="confirm_entry" states="open" string="Confirm" type="object" class="oe_highlight"/>
+					<button name="cancel_entry" states="confirm" string="Cancel" type="object" class="oe_highlight"/>
+					<button name="draft_entry" states="cancel" string="Set to Draft" type="object" class="oe_highlight"/>
+				</header>															
+					<group>
+					<group>
+						<field name="employee_id" />
+						<field name="att_code"/>
+						<field name="in_time"/>
+						<field name="duration"/>
+						<field name="early_by"/>
+						<field name="shift"/>
+						<field name="user_id"/>
+					</group>
+					<group>
+					   <field name="employee_code" />
+					   <field name="date"/>
+				       <field name="out_time"/>
+					   <field name="status"/>
+					   <field name="late_by"/>
+					   <field name="state"/>
+					</group>
+					</group>
+				   
+				</form>
+			</field>
+	  
+
+	</record>
+		
+		<record id="daily_attendance_tree_view" model="ir.ui.view">
+			<field name="name">daily.attendance.tree</field>
+			<field name="model">kg.daily.attendance</field>
+			<field name="arch" type="xml">
+				<tree string="Daily Attendance">
+					<field name="employee_id"/>
+					<field name="employee_code"/>
+					<field name="att_code"/>
+					<field name="in_time"/>
+					<field name="out_time"/>
+					<field name="duration"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		
+		
+		
+		 <record id="daily_action_form" model="ir.actions.act_window">
+			<field name="name">Daily Attendance</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.daily.attendance</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="daily_attendance_tree_view"/>
+		</record>
+
+	<menuitem 
+            id="kg_daily_attendance" 
+            name="Daily Attendance" 
+            parent="hr_attendance.menu_hr_attendance"
+            sequence="25"
+            action="daily_action_form"/>
+
+</data>
+	</openerp>

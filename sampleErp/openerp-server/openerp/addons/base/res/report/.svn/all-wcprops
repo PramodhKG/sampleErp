@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/report
+END
+partner_address.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/report/partner_address.xml
+END
+business_card.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/report/business_card.xml
+END
+partner_address.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/report/partner_address.xsl
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/report/__init__.py
+END
+business_card.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/res/report/business_card.xsl
+END

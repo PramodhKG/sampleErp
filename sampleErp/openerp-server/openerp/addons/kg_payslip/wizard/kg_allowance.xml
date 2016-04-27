@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_allo_ded" model="ir.ui.view">
+            <field name="name">Earnings and Deduction</field>
+            <field name="model">kg.allowance</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Earnings and Deduction">
+                <separator string="Earnings and Deduction" colspan="4"/>                   
+                    <notebook tabpos="up" colspan="4">						
+                    <page string="Filters" name="filters">
+						<field name="filter" colspan="4"/>
+						<field name="type"/>
+						<field name="pay_type" widget="many2many_tags"/>
+						
+						<separator string="Payslip Date" colspan="4"/>
+						<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+						<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+					</page>				
+					                                                     
+                    </notebook>                
+                     <separator colspan="4"/>
+                    <group col="4" colspan="4">
+                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_allo_ded" model="ir.actions.act_window">  
+            <field name="name">Earnings Deduction Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.allowance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+            
+            
+		<menuitem
+            icon="STOCK_PRINT"
+            name="Earnings Deduction Report"
+            parent="kg_payslip.menu_kg_hrm_reports" sequence = "27" 
+            action="action_allo_ded"
+            id="kg_allo_ded"
+            />
+
+    </data>
+</openerp>

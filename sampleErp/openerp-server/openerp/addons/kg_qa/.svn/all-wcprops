@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_qa
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_qa/__openerp__.py
+END
+kg_qa_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_qa/kg_qa_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_qa/__init__.py
+END
+kg_qa.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_qa/kg_qa.py
+END

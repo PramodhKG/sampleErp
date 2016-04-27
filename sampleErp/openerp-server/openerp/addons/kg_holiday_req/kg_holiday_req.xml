@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_hol_req_entry" model="ir.ui.view">
+            <field name="name">holiday.req</field>
+            <field name="model">kg.holiday.req</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+			<form string="Leave Request" version="7.0">
+			<header>
+				<button name="confirm_entry" states="draft" string="To Approve" type="object" class="oe_highlight" groups="kg_hrm_users.group_hrm_employee" />
+				<button name="cancel_entry" states="confirm" string="Cancel"  type="object" groups="kg_hrm_users.group_hrm_employee"/>
+                <button name="approve_entry" states="confirm" string="Approve" type="object" class="oe_highlight" groups="kg_hrm_users.group_hrm_admin"/>
+                <field name="state" widget="statusbar" statusbar_visible="confirm,validate"/>
+			</header>
+			<sheet>	
+				<group>
+					<group>
+						
+						<field name="employee_id" on_change="onchange_employee(employee_id)"/>
+						<field name="leave_type"/>
+						 <label for="no_of_days" string="Duration" help="The default duration interval between the start date and the end date is 8 hours.  Feel free to adapt it to your needs."/>
+                            <div>
+                                <group col="3">
+                                    <field name="date_from" nolabel="1" on_change="onchange_date_from(date_to, date_from)" required="1" class="oe_inline"/><label string="-" class="oe_inline"/>
+                                    <field name="date_to" nolabel="1" on_change="onchange_date_to(date_to, date_from)" required="1" class="oe_inline"/>
+                                </group>
+                                <div>
+                                    <field name="no_of_days" class="oe_inline"/> days
+                                </div>
+                            </div>
+						
+                    </group>
+                    <group>					
+						
+						<field name="employee_code"/>
+						<field name="department_id"/>
+						<field name="approved_days" attrs="{'invisible':[('state','=','draft')]}" groups="kg_hrm_users.group_hrm_admin"/>
+						<field name="reason"/>
+                    </group>
+				</group>
+				
+				
+				
+               </sheet>
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="hol_req_tree_view" model="ir.ui.view">
+            <field name="name">holiday.req</field>
+            <field name="model">kg.holiday.req</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+				<tree string="Leave Request">				               
+					<field name="employee_code"/>
+					<field name="employee_id"/>
+					<field name="department_id"/>
+					
+					<field name="leave_type"/>
+					<field name="no_of_days"/>
+					<field name="state"/>
+				</tree>
+            </field>
+        </record>
+        
+        
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_hol_req_entry" model="ir.actions.act_window">
+			<field name="name">Leave Requests</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.holiday.req</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="hol_req_tree_view"/>
+	</record>	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->       
+     
+
+	
+	<!--<menuitem 
+            id="kg_leave_req" 
+            parent="kg_allocation_leave.menu_alloc_leave"
+            sequence="9"
+            action="action_hol_req_entry"/>
+            -->
+	     
+    </data>
+</openerp>

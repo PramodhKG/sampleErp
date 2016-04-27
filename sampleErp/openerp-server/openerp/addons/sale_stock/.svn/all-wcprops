@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock
+END
+res_config.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/res_config.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/__init__.py
+END
+res_config_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/res_config_view.xml
+END
+sale_stock_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/sale_stock_demo.xml
+END
+stock.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/stock.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/__openerp__.py
+END
+stock_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/stock_view.xml
+END
+company.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/company.py
+END
+sale_stock.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/sale_stock.py
+END
+company_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/company_view.xml
+END
+sale_stock_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/sale_stock_data.xml
+END
+sale_stock_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/sale_stock_view.xml
+END
+sale_stock_workflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/sale_stock_workflow.xml
+END

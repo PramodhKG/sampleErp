@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/__init__.py
+END
+res_config_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/res_config_view.xml
+END
+board_hr_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/board_hr_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/__openerp__.py
+END
+hr_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr_demo.xml
+END
+hr.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr.py
+END
+hr_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr_data.xml
+END
+hr_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr_view.xml
+END
+hr_department.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr_department.py
+END
+hr_department_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr_department_view.xml
+END
+hr_installer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/hr_installer.xml
+END
+res_config.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/hr/res_config.py
+END

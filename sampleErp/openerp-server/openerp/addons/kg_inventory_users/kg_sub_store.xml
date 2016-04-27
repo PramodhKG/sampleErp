@@ -1,0 +1,110 @@
+<?xml version="1.0" ?>
+<openerp>
+<data noupdate="0">       		
+		
+		
+		
+	    <record id="sub_kg_depindent" model="ir.model.access">
+			<field name="model_id" ref="kg_depindent.model_kg_depindent"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Department Indent</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		<record id="sub_kg_depindent_line" model="ir.model.access">
+			<field name="model_id" ref="kg_depindent.model_kg_depindent_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Department Indent Line</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		<record id="sub_kg_service_indent" model="ir.model.access">
+			<field name="model_id" ref="kg_service_indent.model_kg_service_indent"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Service Indent</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		<record id="sub_kg_service_indent_line" model="ir.model.access">
+			<field name="model_id" ref="kg_service_indent.model_kg_service_indent_line"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Service Indent Line</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		<record id="sub_stock_move" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_move"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Stock Move</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		<record id="sub_stock_picking" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_picking"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Stock Picking</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		<record id="sub_kg_depmaster" model="ir.model.access">
+			<field name="model_id" ref="kg_depmaster.model_kg_depmaster"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Department</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		<record id="sub_kg_outward_master" model="ir.model.access">
+			<field name="model_id" ref="kg_outwardmaster.model_kg_outwardmaster"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Outward Master</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		<record id="sub_kg_stock_partial_picking" model="ir.model.access">
+			<field name="model_id" ref="stock.model_stock_partial_picking"/>
+			<field eval="1" name="perm_read"/>
+			<field name="name">Partial Picking</field>
+			<field eval="1" name="perm_unlink"/>
+			<field eval="1" name="perm_write"/>
+			<field eval="1" name="perm_create"/>
+			<field model="res.groups" name="group_id" search="[('name', '=', u'kg_sub_store_user')]"/>
+		</record>
+		
+		
+		
+		
+		
+		
+    </data>
+</openerp>
+	

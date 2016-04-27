@@ -1,0 +1,32 @@
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+
+import openerp.addons.decimal_precision as dp
+
+class kg_inwardmaster(osv.osv):
+
+	_name = "kg.inwardmaster"
+	_description = "Inward Master"
+	_columns = {
+		
+		'name': fields.char('Inward Type', size=128, required=True, select=True),
+		'date': fields.date('Date'),
+		'bill': fields.boolean('Bill Indication'),
+		'return': fields.boolean('Return Indication'),
+		'valid': fields.boolean('Valid Indication'),
+		'active': fields.boolean('Active'),
+
+		
+	}
+	
+	_defaults = {
+	
+	'date': fields.date.context_today,
+	
+	}
+
+
+	
+kg_inwardmaster()

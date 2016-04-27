@@ -1,0 +1,223 @@
+import math
+import re
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+from itertools import groupby
+from openerp import netsvc
+
+
+import openerp.addons.decimal_precision as dp
+
+class kg_purchase_order(osv.osv):
+
+	_name = "purchase.order"
+	_inherit = "purchase.order"
+	_columns = {
+		
+		'bill_type': fields.selection([('cash','Cash Bill'),('credit','Credit Bill')], 'Bill Type', required=True, readonly=True, states={'draft':[('readonly',False)]}),
+		'other_charge': fields.float('Other Charges',readonly=True, states={'draft':[('readonly',False)]}),
+		'discount': fields.float('Discount',readonly=True, states={'draft':[('readonly',False)]}),
+		'note': fields.text('Notes'),
+		'vendor_bill_no': fields.float('Vendor.Bill.No', readonly=True, states={'draft':[('readonly',False)]}),
+		'vendor_bill_date': fields.date('Vendor.Bill.Date', readonly=True, states={'draft':[('readonly',False)]}),
+		'note': fields.text('Notes'),
+		'location_id': fields.many2one('stock.location', 'Destination', domain=[('usage','<>','view')], states={'confirmed':[('readonly',True)], 'approved':[('readonly',True)],'done':[('readonly',True)]} ),
+		'kg_poindent_lines':fields.many2many('purchase.requisition.line','kg_poindent_po_line' , 'poline_id', 'piline_id', 'POIndent Lines',domain="[('requisition_id.state','=','in_progress'),'&',('line_state','=','pending')]", readonly=True, states={'draft': [('readonly', False)]}),
+		'payment_term_id': fields.many2one('account.payment.term', 'Payment Term', readonly=True, states={'draft':[('readonly',False)]}),
+		'pricelist_id':fields.many2one('product.pricelist', 'Pricelist', states={'confirmed':[('readonly',True)], 'approved':[('readonly',True)],'done':[('readonly',True)]}, help="The pricelist sets the currency used for this purchase order. It also computes the supplier price for the selected products/quantities."),
+		'invoice_method': fields.selection([('picking','Based on incoming shipments'), ('other','shipments')], 'Invoicing Control',
+            readonly=True, states={'draft':[('readonly',False)], 'sent':[('readonly',False)]}),
+		
+		
+   		
+	
+	}
+	
+	_defaults = {
+	
+	'bill_type' :'credit',
+	
+	}
+	
+	def write(self, cr, uid, ids):
+		pass
+	
+	def update_poline(self,cr,uid,ids,context=False):
+		"""
+		Purchase order line should be created from purchase indent while click on update to PO Line button
+		"""
+		poindent_line_obj = self.pool.get('purchase.requisition.line')
+		po_line_obj = self.pool.get('purchase.order.line')
+		prod_obj = self.pool.get('product.product')
+		order_line = []			   
+		res={}
+		order_line = []
+		res['order_line'] = []
+		obj =  self.browse(cr,uid,ids[0])
+		if obj.order_line:
+			order_line = map(lambda x:x.id,obj.order_line)
+			po_line_obj.unlink(cr,uid,order_line)
+		if obj.kg_poindent_lines:
+			poindent_line_ids = map(lambda x:x.id,obj.kg_poindent_lines)
+			poindent_line_browse = poindent_line_obj.browse(cr,uid,poindent_line_ids)
+			poindent_line_browse = sorted(poindent_line_browse, key=lambda k: k.product_id.id)
+			groups = []
+			for key, group in groupby(poindent_line_browse, lambda x: x.product_id.id):
+				groups.append(map(lambda r:r,group))
+			for key,group in enumerate(groups):
+				qty = sum(map(lambda x:float(x.product_qty),group)) #TODO: qty
+				poindent_line_ids = map(lambda x:x.id,group)
+				prod_browse = group[0].product_id			
+				uom =False
+				for ele in group:
+					uom = (ele.product_id.product_tmpl_id and ele.product_id.product_tmpl_id.uom_id.id) or False
+					print "UOM", uom
+					qty = (ele.product_qty) or False
+					break
+					
+				vals = {
+			
+				'product_id':prod_browse.id,
+				'product_uom':uom,
+				'product_qty':qty,
+				'pending_qty':qty,
+				
+				
+				}
+			
+				if ids:
+					self.write(cr,uid,ids[0],{'order_line':[(0,0,vals)]})
+				
+			if ids:
+				if obj.order_line:
+					order_line = map(lambda x:x.id,obj.order_line)
+					for line_id in order_line:
+						self.write(cr,uid,ids,{'order_line':[]})
+		self.write(cr,uid,ids,res)		
+		return True
+		
+	def poindent_line_move(self, cr, uid,ids, poindent_lines , context=None):
+		return {}
+		   
+	def wkf_approve_order(self, cr, uid, ids, context=None):
+		print "PO confirm is called,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+		self.write(cr, uid, ids, {'state': 'approved', 'date_approve': fields.date.context_today(self,cr,uid,context=context)})
+		po_order_obj=self.pool.get('purchase.order')
+		for id in ids:
+			cr.execute(""" select piline_id from kg_poindent_po_line where poline_id = %s """ %(str(id)))
+			data = cr.dictfetchall()
+			val = [d['piline_id'] for d in data if 'piline_id' in d] # Get a values form list of dict if the dict have with empty values
+			for pi_id in val:
+				pi_obj=self.pool.get('purchase.requisition.line')
+				pi_line_obj=self.pool.get('purchase.requisition.line').search(cr, uid, [('id','=',pi_id)]) 
+				for id in pi_line_obj:
+					pi_obj.write(cr, uid, id, {'line_state' : 'done'})
+		return True
+		
+	def _prepare_order_picking(self, cr, uid, order, context=None):
+		print "po_order{{{{{{{{{{{{{{{{{{{{{{{{{{{{{", order
+
+		return {
+			'name': self.pool.get('ir.sequence').get(cr, uid, 'stock.picking.in'),
+			'origin': order.name + ((order.origin and (':' + order.origin)) or ''),
+			'partner_id': order.dest_address_id.id or order.partner_id.id,
+			'invoice_state': '2binvoiced',
+			'type': 'in',
+			'partner_id': order.dest_address_id.id or order.partner_id.id,
+			'purchase_id': order.id,
+			'company_id': order.company_id.id,
+			'move_lines' : [],
+			'state' : 'confirmed',
+		}
+	
+
+	def _prepare_order_line_move(self, cr, uid, order, order_line, picking_id, context=None):
+		print "po_order ::::::::>>>>>>>>>>>>>>>>>>>>", order
+		print "order_line ::::::::::::<<<<<<<<<<<<<<<", order_line
+
+		return {
+			'name': order_line.name or '',
+			'product_id': order_line.product_id.id,
+			'product_qty': order_line.product_qty,
+			'product_uos_qty': order_line.product_qty,
+			'product_uom': order_line.product_uom.id,
+			'product_uos': order_line.product_uom.id,
+			'location_id': order.partner_id.property_stock_supplier.id,
+			'location_dest_id': order.location_id.id,
+			'picking_id': picking_id,
+			'partner_id': order.dest_address_id.id or order.partner_id.id,
+			'move_dest_id': order_line.move_dest_id.id,
+			'state': 'draft',
+			'type':'in',
+			'purchase_line_id': order_line.id,
+			'company_id': order.company_id.id,
+			'price_unit': order_line.price_unit
+		}
+
+
+	def update_potogrn(self, cr, uid, ids, order_lines, picking_id=False, context=None):
+		obj = self.browse(cr,uid,ids[0])
+		order=obj
+		if order.state!='approved':
+			raise osv.except_osv(
+						_('Purchase Order in Draft State'),
+						_('Confirm this PO then create GRN !!!!!'))
+		picking_obj=self.pool.get('stock.picking')
+		picking_id = self.pool.get('stock.picking').create(cr, uid, self._prepare_order_picking(cr, uid, order, context=context))
+		todo_moves = []
+		stock_move = self.pool.get('stock.move')
+		wf_service = netsvc.LocalService("workflow")
+		order_lines=order.order_line
+		for order_line in order_lines:
+			
+			if order_line.pending_qty == 0:
+				raise osv.except_osv(
+						_('Order Qty Received'),
+						_('All this order Qty has beed received already. Pending Qty is Zero !!!!!'))
+				move = stock_move.create(cr, uid, self._prepare_order_line_move(cr, uid, order, order_line, picking_id, context=context))
+				if order_line.move_dest_id:
+					order_line.move_dest_id.write({'location_id': order.location_id.id})
+				todo_moves.append(move)
+		stock_move.action_confirm(cr, uid, todo_moves)
+		stock_move.force_assign(cr, uid, todo_moves) 
+		wf_service.trg_validate(uid, 'stock.picking', picking_id, 'button_confirm', cr)
+		return [picking_id]
+
+		
+	def action_picking_create(self, cr, uid, ids, context=None):
+		picking_ids = []
+		for order in self.browse(cr, uid, ids):
+			pass
+		
+
+
+kg_purchase_order()
+
+
+class kg_purchase_order_line(osv.osv):
+	
+	_name = "purchase.order.line"
+	_inherit = "purchase.order.line"
+	
+	_columns = {
+
+	'discount': fields.float('Discount'),
+	'other_charges': fields.float('Other Charges'),
+	'product_qty': fields.float('Quantity', digits_compute=dp.get_precision('Product Unit of Measure')),
+	'pending_qty': fields.float('Pending Qty'),
+	'product_uom': fields.many2one('product.uom', 'Product Unit of Measure'),
+	'price_unit': fields.float('Unit Price', digits_compute= dp.get_precision('Product Price')),
+	'name': fields.text('Description'),
+	'date_planned': fields.date('Scheduled Date', select=True),
+
+	}
+	
+	_defaults = {
+	
+	'date_planned' : fields.date.context_today,
+	
+	}
+	
+kg_purchase_order_line()	

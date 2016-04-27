@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+
+
+			<record model="ir.ui.view" id="view_kg_mail_form">
+				<field name="name">kg.mail.form</field>
+				<field name="model">hr.employee</field>
+				<field name="inherit_id" ref="hr.view_employee_form"/>
+				<field name="arch" type="xml">
+						
+					<field name="notes" position="after">
+					<label for="email_field"/>
+					<field name="email_field" placeholder="Type content to be mailed" colspan="4"/>	
+					<button name="confirm_entry" string="Send Mail" type="object" />
+								
+					</field>
+				</field>
+			</record>
+			
+
+      
+    </data>
+</openerp>

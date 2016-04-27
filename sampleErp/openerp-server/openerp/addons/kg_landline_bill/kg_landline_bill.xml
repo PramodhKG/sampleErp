@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		<record id="form_view_kg_landline_bills" model="ir.ui.view">       
+			<field name="name">LandLine Bills</field>
+			<field name="model">kg.landline.bill</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="kg_landline_bill" version="7.0">
+					<header>
+						<button name="confirm_entry" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+						<button name="approve_entry" states="confirm" string="Approve" type="object" class="oe_highlight"/>
+						<button name="cancel_entry" states="approve" string="Cancel" type="object"/>
+						<button name="draft_entry" states="cancel" string="Set to Draft" type="object"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+					</header>
+					<sheet>				
+						<group>
+							<group>
+								<field name="creation_date" readonly="1"/>
+								<field name="dept_name" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="land_bill_date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="land_line_no" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="cheque_no" required="1" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','approve')]}"/>
+								<field name="land_allowed_amt" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="state"/>
+								
+							</group>
+							<group>
+								<field name="active"/>
+								<field name="location" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="due_date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="land_bill_no" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="cheque_date" attrs="{'invisible':[('state','=','draft')],'readonly':[('state','=','approve')]}"/>
+								<field name="land_total_amt" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="balance_amt" attrs="{'readonly':[('state','!=','draft')]}"/>
+								
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>					
+		</record>
+		<record id="tree_view_kg_mobile_bills" model="ir.ui.view">
+			<field name="name">LandLine bills</field>
+			<field name="model">kg.landline.bill</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="kg_mobile_bills">
+					<field name="dept_name"/>
+					<field name="location"/>
+					<field name="land_line_no"/>
+					<field name="land_allowed_amt"/>
+					<field name="land_bill_no"/>
+					<field name="land_bill_date"/>
+					<field name="state"/>
+					<field name="land_total_amt"/>
+					<field name="active"/>
+				</tree>
+			</field>
+		</record>
+		<record model="ir.actions.act_window" id="kg_landline_bills_kg">
+			<field name="name">Landline Bills</field>
+			<field name="res_model">kg.landline.bill</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="tree_view_kg_mobile_bills"/>
+		</record>
+		
+		<!-- <menuitem id="landline_bills_kg_menu" name="Landline Bills" parent="hr.menu_hr_root" sequence="10"/>-->
+		 
+		<menuitem id="menu_bills_landline" name="Landline / Internet Bills" parent="kg_mobile_bills.mobile_bills_kg_menu" action="kg_landline_bills_kg"
+		sequence="13"/>
+		
+		
+		</data>
+</openerp>

@@ -1,0 +1,14 @@
+import kg_salary_master_wiz	
+import kg_leave_summary_wiz
+import kg_salary_revision_wiz
+import kg_employee_payslip_wiz
+import kg_attendance_wiz
+import kg_monthly_atten_wiz
+import kg_pf_pdf
+import kg_esi_pdf
+import kg_employeesal_muster
+import kg_emp_sal_details
+import kg_cumul_ded_wizard
+import kg_allowance
+import kg_mobile_bills_wiz
+import kg_esi_pf_wizard

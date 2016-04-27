@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+  
+    <!-- Other Groups -->	
+    
+    <record id="hrm_group_others" model="res.groups">
+        <field name="name">Others</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="category_id" ref="base.module_category_human_resources"/>
+    </record>
+
+  
+</data>
+</openerp>

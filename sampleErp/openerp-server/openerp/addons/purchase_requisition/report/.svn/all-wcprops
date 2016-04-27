@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/report
+END
+purchase_requisition.rml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/report/purchase_requisition.rml
+END
+requisition.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/report/requisition.py
+END
+purchase_requisition.sxw
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/report/purchase_requisition.sxw
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/report/__init__.py
+END

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/security
+END
+ir.model.access.csv
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/security/ir.model.access.csv
+END
+product_security.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/product/security/product_security.xml
+END

@@ -1,0 +1,203 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir
+END
+osv_memory_autovacuum.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/osv_memory_autovacuum.py
+END
+ir_filters.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_filters.xml
+END
+ir_attachment.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_attachment.py
+END
+ir_attachment_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_attachment_view.xml
+END
+ir_translation.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_translation.py
+END
+ir_values.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_values.py
+END
+ir_translation_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_translation_view.xml
+END
+ir_model.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_model.py
+END
+ir_values_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_values_view.xml
+END
+ir_ui_menu.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_ui_menu.py
+END
+ir_cron.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_cron.py
+END
+ir_model_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_model_view.xml
+END
+ir_cron_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_cron_view.xml
+END
+ir_ui_menu_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_ui_menu_view.xml
+END
+ir_config_parameter.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_config_parameter.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/__init__.py
+END
+ir_fields.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_fields.py
+END
+ir_config_parameter_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_config_parameter_view.xml
+END
+ir_rule.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_rule.py
+END
+ir_ui_view.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_ui_view.py
+END
+ir_filters.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_filters.py
+END
+ir_actions.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_actions.xml
+END
+ir_sequence.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/3/openerp-server-7.0/openerp/addons/base/ir/ir_sequence.py
+END
+ir_needaction.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_needaction.py
+END
+ir_rule_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_rule_view.xml
+END
+ir_ui_view_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_ui_view_view.xml
+END
+ir_sequence_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/3/openerp-server-7.0/openerp/addons/base/ir/ir_sequence_view.xml
+END
+ir_default.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_default.py
+END
+osv_memory_autovacuum.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/osv_memory_autovacuum.xml
+END
+ir_actions.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_actions.py
+END
+ir_exports.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_exports.py
+END
+ir_mail_server.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_mail_server.py
+END
+ir_mail_server_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/ir/ir_mail_server_view.xml
+END

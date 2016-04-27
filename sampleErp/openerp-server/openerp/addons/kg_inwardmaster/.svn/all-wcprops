@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_inwardmaster
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_inwardmaster/__init__.py
+END
+kg_inwardmaster.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_inwardmaster/kg_inwardmaster.py
+END
+kg_inwardmaster_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_inwardmaster/kg_inwardmaster_view.xml
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_inwardmaster/__openerp__.py
+END

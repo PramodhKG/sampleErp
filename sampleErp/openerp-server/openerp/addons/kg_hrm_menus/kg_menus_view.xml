@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+	<!-- Other menu Changes -->
+				
+		<menuitem id="menu_others" name= "Others" sequence="12" groups="hrm_group_others"/>
+	
+		<menuitem id="hr_attendance.menu_hr_time_tracking" name="Time Tracking" parent="menu_others" sequence="3" 
+					/>
+	 
+		<menuitem action="hr_attendance.open_view_attendance" id="hr_attendance.menu_open_view_attendance" 
+					parent="menu_others" sequence="7" /> 
+		
+		<menuitem name="HR Master"
+            id="menu_hr_master"
+            sequence="91"/>
+           
+            
+			<menuitem  name="General Masters" id="menu_masters_menu" parent="menu_hr_master" sequence="2"/>
+		
+			<menuitem action="hr.open_module_tree_department" id="menu_hr_master_dep" parent="menu_masters_menu" sequence="9"/>
+		
+			<menuitem action="hr.action_hr_job" id="menu_hr_jobs" parent="menu_masters_menu" sequence="10"/>
+			
+			<menuitem action="kg_shift_time.shift_time_action_form" id="menu_hr_master_shift" parent="menu_masters_menu" sequence="8"/>
+		
+			<menuitem id="menu_hr_master_ear_ded" action="hr_payroll.action_salary_rule_form" name="Earnings and Deduction Type" parent="menu_masters_menu" sequence="2"/>
+		
+			<menuitem action="base.action_res_bank_form" id="menu_hr_master_bank" name = "Bank Master" parent="menu_masters_menu" sequence="3" />
+
+			<menuitem action="base.action_country_state" id="menu_hr_master_state" name="State Master" parent="menu_masters_menu" sequence="4"/>
+	
+			<menuitem action="base.action_country" id="menu_hr_master_country" name="Country Master" parent="menu_masters_menu" sequence="5"/>
+		
+			<menuitem action="kg_holiday_master.action_holiday_master" id="menu_hr_hol_master" name="Holiday Master" parent="menu_masters_menu" sequence="6"/>
+		
+			<menuitem action="base.action_res_users" id="menu_hr_master_users" parent="menu_masters_menu" sequence="7"/>
+			
+			<menuitem action="kg_branch.branch_action_form" id="menu_hr_branch_master" parent="menu_masters_menu" sequence="1"/>
+			
+			<menuitem action="kg_clin_reports.action_kg_mobile_bills_reports" id="report_menu_kg_mobile_bills" parent="menu_gen_rep" sequence="10"/>
+     					
+     					
+     	<menuitem name="PT Masters" 
+		id="menu_pt_master_menu"
+		parent="menu_hr_master" sequence="1"/>
+			
+			<menuitem action="kg_pt_master.action_pt_master" parent="menu_pt_master_menu" id="master_pt_menu" sequence="1"/>
+
+     	
+     	
+		<menuitem name="Contributions Masters" 
+		id="menu_contribution_menu" 
+		parent="menu_hr_master" sequence="0"/>
+			
+			<menuitem action="kg_emp_contribution.action_employer_contribution" parent="menu_contribution_menu" id="menu_emp_contribution" sequence="3"/>
+			
+			<menuitem action="kg_employee_contribution.action_employee_contribution" parent="menu_contribution_menu" id="menu_employee_contribution" sequence="1"/>
+			
+   
+	<!-- Menu Cofiguration 
+			<menuitem id="hr.menu_hr_configuration" name="Configuration" parent="menu_masters_menu" sequence="51"/>
+			
+				<menuitem id="hr.menu_view_employee_category_form" action="hr.open_view_categ_form" parent="hr.menu_hr_configuration"
+				sequence="2"/>
+				-->
+				
+				
+	<menuitem name="Earnings/Deductions"
+			id = "menu_human_resource"
+			sequence="29" parent="hr.menu_hr_root"/>
+			
+			<menuitem action="kg_allowance_deduction.action_monthly_entry" name= "Earnings / Deductions Entry" id= "menu_allow_deduc" parent="menu_human_resource" sequence="1"/>
+			
+			<menuitem action="kg_advance_deduction.action_adv_ded_form" id="menu_advance_deduc" parent="menu_human_resource" sequence="2"/>
+   
+   
+	<!-- HR Reports Menu -->
+    
+		<menuitem name="Reports"
+            id="menu_hr_reports" 
+             parent="hr.menu_hr_root"
+            sequence="92"/>
+            
+        
+        <!--Excel Reports Menu -->
+			<menuitem  name="Excel Reports" id="menu_excel_rep" parent="menu_hr_reports" sequence="0"/>
+     
+				<menuitem name="Employee PF Report" parent="menu_excel_rep" sequence = "1" 
+					action="kg_clin_reports.action_kg_excel_pf_report" id="kg_pf_excel"/>
+   
+				<menuitem name="Employee ESI Report" parent="menu_excel_rep" sequence = "2" 
+					action="kg_clin_reports.action_excel_esi_report" id="kg_esi_excel"/>
+					
+        <!-- General Reports Menu -->
+            
+			<menuitem  name="PDF Reports" id="menu_gen_rep" parent="menu_hr_reports" sequence="3"/>
+			
+				<menuitem action="kg_clin_reports.action_allo_ded" id="menu_earnings_deduction_report" parent="menu_gen_rep" sequence="8"/>
+				
+				<menuitem action="kg_clin_reports.action_cumul_deduc" id="menu_cumulative_deduction_report" parent="menu_gen_rep" sequence="9"/>
+				
+				<menuitem action="kg_clin_reports.action_daily_attend_days" id="menu_daily_att_report" parent="menu_gen_rep" sequence="1"/>
+			
+				<menuitem action="kg_clin_reports.action_monthly_attend_days" id="menu_monthly_att_report" parent="menu_gen_rep" sequence="2"/>
+				
+				<menuitem action="kg_clin_reports.action_employee_esi_pf_report" id="menu_pf_esi_employee_list_report" parent="menu_gen_rep" sequence="3"/>
+			
+				<!--<menuitem action="kg_clin_reports.action_empsal_muster" id="menu_sal_muster_report" parent="menu_gen_rep" sequence="3"/>
+			
+				<menuitem action="kg_clin_reports.action_leave_summary_days" id="menu_leave_summary_report" parent="menu_gen_rep" sequence="4"/>
+			
+				<menuitem action="kg_clin_reports.action_salary_revision" id="menu_salary_revision_report" parent="menu_gen_rep" sequence="5"/>
+			-->
+				<menuitem action="kg_clin_reports.action_emp_salary_det" name = "Employee's Salary Muster" id="menu_salary_payslip_report" parent="menu_gen_rep" sequence="6"/>
+    
+					
+		<!-- Statutory Reports Menu 
+					
+			<menuitem  name="Statutory Reports" id="menu_stat_rep" parent="menu_hr_reports" sequence="4"/>
+			-->
+				<menuitem name="PF PDF Report" parent="menu_gen_rep" sequence = "7" 
+					action="kg_clin_reports.action_pfpdf" id="kg_stat_pf_pdf" />
+					
+				<menuitem name="ESI PDF Report" parent="menu_gen_rep" sequence = "8"  action="kg_clin_reports.action_esipdf"
+					id="kg_stat_esi_pdf" />
+
+    </data>
+</openerp>

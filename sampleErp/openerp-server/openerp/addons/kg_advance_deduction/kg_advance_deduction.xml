@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="kg_adv_ded_form_view" model="ir.ui.view">
+			<field name="name">Cumulative Deduction</field>
+			<field name="model">kg.advance.deduction</field>
+			<field name="arch" type="xml">
+				<form string="Cumulative Deduction" version="7.0">
+					<header>
+					<button name="confirm_entry" type="object" string="Confirm" states="draft" groups="kg_hrm_users.group_hrm_md,kg_hrm_users.group_hrm_admin"/>
+					<button name="approve_entry" type="object" string="Approve" states="confirm" groups="kg_hrm_users.group_hrm_md"/>
+					<button name="cancel_entry" type="object" string="Cancel" states="confirm" groups="kg_hrm_users.group_hrm_md"/>
+					<button name="expire_entry" type="object" string="Expire" states="confirm" invisible="1"/>
+					</header>			
+					<group>
+						<group>
+						<field name="employee_id" on_change="onchange_employee_code(employee_id,emp_name)"/>
+						<field name="ded_type"/>
+						<field name="tot_amt"/>
+						<label for="period"/>
+						<div>
+						<field name="period" class="oe_inline" on_change="onchange_repay_amount(tot_amt,period)"/> months
+						</div>
+						<field name="amt_paid" invisible="1"/>
+						<field name="allow" groups="kg_hrm_users.group_hrm_md"/>
+						</group>
+						<group>
+						<field name="emp_name"/>
+						<field name="date"/>						
+						<field name="pay_amt"/>						
+						<field name="cum_date" invisible="1"/>						
+						<field name="state"/>
+						<field name="round_bal" invisible="1"/>
+						<field name="expiry" invisible="1"/>
+						<field name="remarks"  />
+						</group>												
+					</group>				   
+				</form>
+			</field> 
+		</record>
+		
+		<record id="kg_adv_ded_tree_view" model="ir.ui.view">
+			<field name="name">Cumulative Deduction</field>
+			<field name="model">kg.advance.deduction</field>
+			<field name="arch" type="xml">
+				<tree toolbar="True" string="Cumulative Deduction">
+					<field name="employee_id"/>
+					<field name="emp_name"/>
+					<field name="ded_type"/>
+					<field name="tot_amt"/>
+					<field name="amt_paid"/>					
+					<field name="bal_amt"/>					
+					<field name="allow"/>
+					<field name="state"/>					
+					
+				</tree>
+			</field>
+		</record>
+		
+		<record id="cum_ded_group_view" model="ir.ui.view">
+            <field name="name">Cumulative Deduction</field>
+            <field name="model">kg.advance.deduction</field>
+            <field name="arch" type="xml">
+                <search string="Cumulative Deduction Entry">                    
+                    <group expand="0" string="Group By...">
+                        <filter string="Employee" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>                        
+                        <filter string="Type" icon="terp-gtk-select-all" domain="[]" context="{'group_by':'ded_type'}"/>
+                        <filter string="State" icon="terp-gtk-select-all" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+                </search>
+			</field>
+		</record>
+		
+		 <record id="action_adv_ded_form" model="ir.actions.act_window">
+			<field name="name">Advance Deduction</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.advance.deduction</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_adv_ded_tree_view"/>
+		</record>
+
+		<!--<menuitem action="action_adv_ded_form" 
+			id="menu_adv_ded" 
+			parent="hr_payroll.menu_hr_root_payroll" 
+			sequence="2"/>-->
+
+</data>
+	</openerp>

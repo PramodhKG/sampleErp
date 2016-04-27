@@ -1,0 +1,68 @@
+# Monthly Attendance Entry Module
+
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import openerp.addons.decimal_precision as dp
+import time
+from datetime import date
+from datetime import datetime
+from datetime import timedelta
+from dateutil import relativedelta
+import datetime
+import calendar
+#from dateutil.relativedelta import relativedelta
+
+class kg_daily_attendance(osv.osv):
+
+	_name = "kg.daily.attendance"
+	_description = "Daily Attendance"
+	_order = "date desc"
+	
+	_columns = {
+		
+		'employee_id':fields.many2one('hr.employee', 'Employee Name',readonly=True, states={'open':[('readonly',False)]}),
+		'employee_code': fields.char('Employee Code', size=128,readonly=True, states={'open':[('readonly',False)]}),
+		'att_code':fields.char('Attendance Code', size=128,readonly=True, states={'open':[('readonly',False)]}),
+		'date': fields.date('Date',readonly=True, states={'open':[('readonly',False)]}),
+		'shift': fields.char('Shift',readonly=True, states={'open':[('readonly',False)]}),
+		'in_time':fields.char('In Time',size=5,readonly=True, states={'open':[('readonly',False)]}),
+		'out_time':fields.char('Out Time',size=5,readonly=True, states={'open':[('readonly',False)]}),
+		'duration':fields.char('Duration',size=5,readonly=True, states={'open':[('readonly',False)]}),
+		'late_by':fields.char('Late By',size=5,readonly=True, states={'open':[('readonly',False)]}),
+		'early_by':fields.char('Early By',size=5,readonly=True, states={'open':[('readonly',False)]}),
+		'status':fields.char('Status',readonly=True, states={'open':[('readonly',False)]}),
+		'state': fields.selection([('confirm','Confirmed'),('open','Draft'),('cancel','Cancelled')], 'State', readonly=True),
+		'user_id' : fields.many2one('res.users', 'User', readonly=False,select=True),
+		
+		
+	}
+	
+	_defaults = {
+	
+	'state': 'open',
+	'user_id': lambda self, cr, uid, c: self.pool.get('res.users').browse(cr, uid, uid, c).id ,
+	
+	}
+	
+	def confirm_entry(self, cr, uid, ids,context=None):		
+		self.write(cr,uid,ids,{'state':'confirm'})
+		return True
+		
+	def cancel_entry(self, cr, uid, ids,context=None):
+		self.write(cr,uid,ids,{'state':'cancel'})
+		return True
+		
+	def draft_entry(self, cr, uid, ids,context=None):		
+		self.write(cr,uid,ids,{'state':'open'})
+		return True
+	
+	def unlink(self, cr, uid, ids, context=None):
+		for att in self.browse(cr, uid, ids, context=context):
+			if att.state != 'open':
+				raise osv.except_osv(_('Warning!'),
+				_('You cannot delete this Entry which is not in open state !!'))
+		return super(kg_daily_attendance, self).unlink(cr, uid, ids, context)
+	
+	
+kg_daily_attendance()

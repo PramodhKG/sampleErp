@@ -1,0 +1,437 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard
+END
+pos_box.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/pos_box.xml
+END
+account_automatic_reconcile.py
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_automatic_reconcile.py
+END
+account_journal_select.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_journal_select.py
+END
+account_report_partner_balance.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_partner_balance.py
+END
+account_use_model.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_use_model.py
+END
+account_report_central_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_central_journal.py
+END
+account_use_model_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_use_model_view.xml
+END
+account_financial_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_financial_report.py
+END
+account_report_print_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_print_journal.py
+END
+account_move_bank_reconcile.py
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_bank_reconcile.py
+END
+account_report_common_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_common_view.xml
+END
+account_move_bank_reconcile_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_bank_reconcile_view.xml
+END
+account_report_aged_partner_balance.py
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_aged_partner_balance.py
+END
+account_reconcile_partner_process.py
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_reconcile_partner_process.py
+END
+pos_box.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/pos_box.py
+END
+account_subscription_generate.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_subscription_generate.py
+END
+account_reconcile_partner_process_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_reconcile_partner_process_view.xml
+END
+account_change_currency.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_change_currency.py
+END
+account_move_line_reconcile_select.py
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_line_reconcile_select.py
+END
+account_subscription_generate_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_subscription_generate_view.xml
+END
+account_state_open_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_state_open_view.xml
+END
+account_period_close.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_period_close.py
+END
+account_fiscalyear_close_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_fiscalyear_close_view.xml
+END
+account_tax_chart.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_tax_chart.py
+END
+account_report_common_partner.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_common_partner.py
+END
+account_vat.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_vat.py
+END
+account_open_closed_fiscalyear.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_open_closed_fiscalyear.py
+END
+account_vat_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_vat_view.xml
+END
+account_open_closed_fiscalyear_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_open_closed_fiscalyear_view.xml
+END
+account_invoice_refund_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_invoice_refund_view.xml
+END
+account_chart.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_chart.py
+END
+account_report_general_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_general_journal.py
+END
+account_move_line_unreconcile_select.py
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_line_unreconcile_select.py
+END
+account_report_general_journal_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_general_journal_view.xml
+END
+account_move_line_unreconcile_select_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_line_unreconcile_select_view.xml
+END
+account_reconcile_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_reconcile_view.xml
+END
+account_unreconcile.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_unreconcile.py
+END
+account_fiscalyear_close_state.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_fiscalyear_close_state.py
+END
+account_unreconcile_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_unreconcile_view.xml
+END
+account_automatic_reconcile_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_automatic_reconcile_view.xml
+END
+account_journal_select_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_journal_select_view.xml
+END
+account_move_line_select.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_line_select.py
+END
+account_report_partner_balance_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_partner_balance_view.xml
+END
+account_report_common_journal.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_common_journal.py
+END
+account_move_line_select_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_line_select_view.xml
+END
+account_report_central_journal_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_central_journal_view.xml
+END
+account_financial_report_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_financial_report_view.xml
+END
+account_report_print_journal_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_print_journal_view.xml
+END
+account_report_common.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_common.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/__init__.py
+END
+account_validate_account_move.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_validate_account_move.py
+END
+account_report_account_balance.py
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_account_balance.py
+END
+account_invoice_state.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_invoice_state.py
+END
+account_report_aged_partner_balance_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_aged_partner_balance_view.xml
+END
+account_report_account_balance_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_account_balance_view.xml
+END
+account_invoice_state_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_invoice_state_view.xml
+END
+account_state_open.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_state_open.py
+END
+account_change_currency_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_change_currency_view.xml
+END
+account_move_line_reconcile_select_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_move_line_reconcile_select_view.xml
+END
+account_fiscalyear_close.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_fiscalyear_close.py
+END
+account_period_close_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_period_close_view.xml
+END
+account_tax_chart_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_tax_chart_view.xml
+END
+account_fiscalyear_close_state.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_fiscalyear_close_state.xml
+END
+account_validate_move_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_validate_move_view.xml
+END
+account_report_partner_ledger.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_partner_ledger.py
+END
+account_report_partner_ledger_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_partner_ledger_view.xml
+END
+account_report_general_ledger.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_general_ledger.py
+END
+account_report_general_ledger_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_general_ledger_view.xml
+END
+account_report_common_account.py
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_report_common_account.py
+END
+account_invoice_refund.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_invoice_refund.py
+END
+account_reconcile.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_reconcile.py
+END
+account_chart_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/wizard/account_chart_view.xml
+END

@@ -1,0 +1,343 @@
+## Employee Master Form Module Customization ##
+import smtplib
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+from email.MIMEImage import MIMEImage
+import math
+import re
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+import openerp.addons.decimal_precision as dp
+import netsvc
+import time
+from datetime import date
+from datetime import datetime
+from datetime import timedelta
+from dateutil import relativedelta
+import calendar
+today = datetime.now()
+
+class kg_employee(osv.osv):
+	
+	_name = 'hr.employee'	
+	_inherit = 'hr.employee'
+	#_rec_name = 'emp_code'
+	
+	_columns = {
+	
+	'emp_code': fields.char('Employee Code', size=128,required = True),	
+	'join_date': fields.date('Joining Date', required=True),
+	'payslip': fields.boolean('Appears On Payslip'),
+	'department_id':fields.many2one('hr.department', 'Department', required=True),
+	'round_off': fields.float('Current Month Balance', readonly=True),
+	'last_month_bal': fields.float('Last Month Balance', readonly=True),
+	'training_period': fields.selection([('one', '1 Month'),
+										('two', '2 Months'),
+										('three', '3 Months'),
+										('four', '4 Months'),
+										('five', '5 Months'),
+										('six', '6 Months'),
+										('seven', '7 Months'),
+										('eight', '8 Months'),
+										('nine', '9 Months'),
+										('ten', '10 Months'),
+										('ele', '11 Months'),
+										('twe', '12 Months')], 'Training Period'),
+										
+	'probation': fields.selection([('one', '1 Month'),
+										('two', '2 Months'),
+										('three', '3 Months'),
+										('four', '4 Months'),
+										('five', '5 Months'),
+										('six', '6 Months'),
+										('seven', '7 Months'),
+										('eight', '8 Months'),
+										('nine', '9 Months'),
+										('ten', '10 Months'),
+										('ele', '11 Months'),
+										('twe', '12 Months')], 'Probation Period'),
+										
+	'notice': fields.selection([('one', '1 Month'),
+										('two', '2 Months'),
+										('three', '3 Months'),
+										('four', '4 Months'),
+										('five', '5 Months'),
+										('six', '6 Months'),
+										('seven', '7 Months'),
+										('eight', '8 Months'),
+										('nine', '9 Months'),
+										('ten', '10 Months'),
+										('ele', '11 Months'),
+										('twe', '12 Months')], 'Notice Period'),
+										
+	'confirm_date': fields.date('Date of Confirmation'),
+	'employee_status':fields.selection([('prob','Probation'),('confirm','Confirmation')],'Employee Status'),
+	'salary_revision': fields.date('Salary Revision Due date'),
+	'due_date': fields.date('Due Date'),
+	'due_confirm': fields.date('Due date of Confirmation'),
+	'cer_dob_date': fields.date('DOB Certificate'),
+	'father_name': fields.char('Father Name', size=128,required=True),
+	'mother_name': fields.char('Mother Name', size=128, required=True),
+	'father_occ': fields.char('Father Occupation',size=128),
+	'mother_occ': fields.char('Mother Occupation', size=128),
+	'ann_date': fields.date('Anniversary Date'),
+	'wi_hus_name': fields.char('Wife/Husband Name', size=128),
+	'present_add': fields.char('Present Address', size=256, required=True),
+	'pre_city': fields.char('City', size=128, required=True),
+	'pre_state': fields.many2one('res.country.state', 'State', required=True),
+	'pre_country': fields.many2one('res.country', 'Country', required=True),
+	'pin_code': fields.char('Postal Code', required=True),
+	'pre_phone_no': fields.char('Phone Number', required=True),
+	'same': fields.boolean('Same as Present Address'),
+	'permanent_add': fields.char('Permanent Address', size=256, required=True),
+	'city': fields.char('City', size=128, required=True),
+	'kg_state': fields.many2one('res.country.state', 'State', required=True),
+	'country': fields.many2one('res.country', 'Country', required=True),
+	'code': fields.char('Postal Code', required=True),
+	'phone_no': fields.char('Phone Number', required=True),
+	
+	'education_line_id':fields.one2many('kg.education.line','entry_id','Educational Details'),
+	'history_line_id':fields.one2many('kg.history.line','history_id','Working History'),
+	
+	'refer_line_id':fields.one2many('kg.reference.det.line','refer_id','Reference Details'),
+	
+	'pan': fields.char('Pan Card No', size=128),
+	'mobile_no': fields.char('Mobile No', size=128),
+	'blood': fields.char('Blood Group', size=128),
+	'per_email': fields.char('Personal Email', size=128),
+	'eme_contact_no': fields.char('Emergency Contact No', size=128),
+	'con_person': fields.char('Contact Person', size=128),
+	'relation': fields.char('Relationship', size=128),
+	
+	'week_off':fields.selection([('sun', 'SUNDAY'),
+								('mon', 'MONDAY'),
+								('tue', 'TUESDAY'),
+								('wed', 'WEDNESDAY'),
+								('thu', 'THURSDAY'),
+								('fri', 'FRIDAY'),
+								('sat', 'SATURDAY')], 'Week Off'),
+	'leave_type': fields.selection([('tut', 'TUTOR'),('emp', 'EMPLOYEE')], 'Leave Type'),
+	'location': fields.selection([('factory-u1','Factory-UNIT-I'),('factory-u2','Factory-UNIT-II'),('HO','Head Office'),('branch','Branch')], 'Location'),
+	'branch':fields.many2one('kg.branch','Branch',required = True),
+	'state':fields.many2one('res.country.state', 'State',invisible=True),
+	'shift_type': fields.many2one('kg.shift.time', 'Shift Type'),
+	'res_date': fields.date('Releaving Date'),
+	'res_reason': fields.selection([('a', 'A'),('b', 'B'),('c', 'C'),('d','D')],'Reason for Leaving'),
+	'thottam':fields.boolean('Thottam'),
+	'band_level':fields.char('Band Level'),
+	'pos_level':fields.integer('Position'),
+	'birth_place': fields.many2one('res.country.state', 'Place Of Birth'),
+	'email_field': fields.text('Email Content', size=128),
+	'user_ids' : fields.many2one('res.users', 'User', readonly=False,select=True),
+	'rsm': fields.boolean('Is RSM'),
+	'rsm_name':fields.many2one('hr.employee','RSM Name',domain=[('rsm', '=', True)]),
+	'asi': fields.boolean('Is ASI'),
+	'asi_id': fields.many2one('hr.employee','ASI Name',domain=[('asi', '=', True)]),
+	'crm_id': fields.integer('CRM ID',invisible=True),
+	'com_catg': fields.selection([
+				('com','Applicable'),
+				('no_com','Not Applicable'),
+				],'Commission Status', required=True),
+	'status':fields.selection([('in_service','In Service'),('resigned','Resigned')],'Status'),
+	'call_state':fields.selection([('in','In(Tamil Nadu)'),('out','Out(Tamil Nadu)')],'Call State'),
+	'releaving_date':fields.date('Releaving Date'),
+	'releaving_reason':fields.text('Reason for Leaving')
+	}
+	
+	_order = "emp_code"
+	
+	
+	_sql_constraints = [
+		('code', 'unique(emp_code)', 'Employee code must be unique per Company !!'),
+	]
+	
+	def _alldate_validation(self, cr, uid, ids, context=None):
+		rec = self.browse(cr, uid, ids[0])
+		print "rec...................", rec
+		today = date.today()
+		print "today................", type(today), today		
+		join_date = datetime.strptime(rec.join_date,'%Y-%m-%d').date()
+		print "rec.join_date...........", type(join_date), join_date
+		if join_date > today:
+			return False
+		return True
+		
+	
+	def onchange_address(self, cr, uid, ids,same,present_add,pre_city,pre_state,pre_country,pin_code,pre_phone_no,context=None):
+		value = {'permanent_add':'','city':'','kg_state':'','country':'','code':'','phone_no':''}
+		print "siuhfui  ",same ,present_add,pre_city,pre_state
+		if same == True:
+			value = {'permanent_add':present_add,'city':pre_city,'kg_state':pre_state,'country':pre_country,
+					'code':pin_code,'phone_no':pre_phone_no}
+		return {'value': value}
+	
+				
+	def _dob_validation(self, cr, uid, ids, context=None):
+		rec = self.browse(cr, uid, ids[0])
+		today = date.today()
+		if rec.cer_dob_date:
+			dob_date = datetime.strptime(rec.cer_dob_date,'%Y-%m-%d').date()
+			if dob_date >= today:
+				return False
+			return True
+		else:
+			pass
+			
+	def send_mail(self, cr, uid, ids,context=None):	
+		
+		entry = self.browse(cr,uid,ids[0])
+		obj = self.pool.get('hr.employee')
+		name = entry.name
+		print name
+		code = str(entry.emp_code)
+		dept = str(entry.department_id.name)
+		mail_id = str(entry.work_email)
+		company = str(entry.address_id.name)
+		content=str(entry.email_field)
+
+		
+		msg="Subject : Welcome To "+company+" \nWe are very pleased to have you as a part of our organisation \nHello "+name+"\nYour ID:  "+code+"\nDepartment : "+dept+"\nEmail address :  "+mail_id+"\nEmail Content   "+content  
+
+		print msg
+		
+	
+		try:
+			smtpObj = smtplib.SMTP('10.100.1.123')
+			smtpObj.sendmail("hr@clinsynccro.com",mail_id, msg)
+			print "Successfully sent email"
+			
+		except Exception:
+			raise osv.except_osv(_('Sorry !'),_('Unable to Send mail'))
+			
+		return True
+		
+		
+	
+	_constraints = [
+		
+		(_alldate_validation, 'Joining date should be less than current date !!',['join_date']),
+		#(_dob_validation, 'Date of birth should be less than current date !!',['dob_date']),
+		
+		]  
+	
+	_defaults = {
+	
+		'join_date' : fields.date.context_today,
+		'payslip': True,
+		'user_ids': lambda self, cr, uid, c: self.pool.get('res.users').browse(cr, uid, uid, c).id ,
+		
+	}
+	
+	
+kg_employee()
+
+class kg_education_line(osv.osv):
+	
+	_name = 'kg.education.line'	
+	
+	_columns = {
+	
+	'entry_id':fields.many2one('hr.employee','Entry Line'),
+	
+	'ug_id': fields.char('Graduation/Degree', size=128),
+	'ug_study': fields.char('Field Of Study', size=128),
+	'ug_grade': fields.char('Grade', size=128),
+	'ug_institute': fields.char('Institute', size=128),
+	'ug_uni': fields.char('University', size=128),
+	'ug_date': fields.date('Provision Date',required=True),
+	
+	}
+	
+	def _date_check(self, cr, uid, ids, context=None):
+		rec = self.browse(cr, uid, ids[0])
+		print "rec...................", rec
+		today = date.today()
+		print "today................", type(today), today
+		print "start_date..................",type(rec.ug_date), rec.ug_date
+		start_date = datetime.strptime(rec.ug_date,'%Y-%m-%d').date()
+		print type(start_date), start_date
+		if start_date > today:
+			return False
+		return True
+		
+	_constraints = [
+		
+		(_date_check, 'Provision Date should be less than current date for Educational Details !!',['ug_date']),
+		#(_dob_validation, 'Date of birth should be less than current date !!',['dob_date']),
+		
+		]
+kg_education_line()
+
+
+class kg_history_line(osv.osv):
+	
+	_name = 'kg.history.line'	
+	
+	_columns = {
+	
+	'history_id':fields.many2one('hr.employee','Entry Line'),
+	
+	'work_exp': fields.char('Work Exp', size=128),
+	'org1': fields.char('Company name', size=128),
+	'position': fields.char('position Title', size=128),
+	'position_level': fields.char('Position Level', size=128),
+	'spec': fields.char('Specialization', size=128),
+	'indus': fields.char('Industry', size=128),
+	'from_date': fields.date('From Date',required=True),
+	'to_date': fields.date('To Date',required=True),
+	
+	}
+	
+	def _from_date_validation(self, cr, uid, ids, context=None):
+		rec = self.browse(cr, uid, ids[0])
+		print "rec...................", rec
+		today = date.today()
+		print "today................", type(today), today
+		print "start_date..................",type(rec.from_date), rec.from_date
+		start_date = datetime.strptime(rec.from_date,'%Y-%m-%d').date()
+		end_date = datetime.strptime(rec.to_date,'%Y-%m-%d').date()
+		
+		print type(start_date), start_date
+		print type(end_date), end_date
+			
+		if start_date > today or end_date > today:
+			return False
+		return True
+		
+	
+		
+	_constraints = [
+		
+		(_from_date_validation, 'From date and To Date should be less than current date for Work History !!',['start_date','end_date']),
+		
+		
+		
+		]  
+kg_history_line()
+	
+	
+class kg_reference_det_line(osv.osv):
+	
+	
+	_name = 'kg.reference.det.line'
+	
+	
+	_columns = {
+	
+				'refer_id' : fields.many2one('hr.employee','Refer ID'),
+				'name':fields.char('Name',required = True),
+				'contact_num':fields.char('Contact Number',required = True),
+				'relation':fields.char('Relation Ship',required = True),
+				'designation':fields.char('Designation',),
+				'address':fields.text('Address',required = True)
+			}
+			
+
+kg_reference_det_line()	
+
+
+	
+	
+

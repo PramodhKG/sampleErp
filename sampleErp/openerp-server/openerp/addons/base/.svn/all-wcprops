@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base
+END
+base_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/base_data.xml
+END
+currency_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/currency_data.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/__init__.py
+END
+base.sql
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/base.sql
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/__openerp__.py
+END
+base_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/base_demo.xml
+END
+base_menu.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/base/base_menu.xml
+END

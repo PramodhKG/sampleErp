@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_serviceorder_form" model="ir.ui.view">
+		<field name="name">view.kg.serviceorder.form</field>
+		<field name="model">kg.service.order</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+		<form string="Service order" version="7.0">
+			
+			<header>
+				<button name="draft_order" states="cancel" string="Draft" type="object" class="oe_highlight"/>
+                <button name="confirm_order" states="draft" string="Confirm" type="object" />
+                <button name="approve_order" states="confirm" string="Approve" type="object" />
+               <!-- <button name="done_order" states="draft,approved,cancel" string="Done" type="object" invisible="1"/> -->
+                <button name="cancel_order" states="done" string="Cancle" type="object" class="oe_highlight"/>
+                <button name="so_direct_print" states="done" string="Print SO" type="object" class="oe_highlight"/>
+                <button name="%(action_so_bill_creation)d" states="done" string="Create SO Bill" type="action" class="oe_highlight"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,cancel" statusbar_colors='{"draft":"blue"}'/>
+
+			</header>
+                <group>
+                    <group>
+                    <field name="kg_seq_id" on_change="onchange_seq_id(kg_seq_id,name)"
+								attrs="{'required': [('so_flag','=',True)]}"/>
+                    <field name="user_id" on_change="onchange_user_id(user_id)" invisible="1"/>
+                    <field name="dep_name" readonly="True"/>
+                    <field name="partner_id" on_change="onchange_partner_id(partner_id)"/>
+                    <field name="pricelist_id" invisible="1"/>
+                    <field name="delivery_type"/>
+                    <field name="payment_mode"/>
+                    <field name="so_bill"/>
+                    </group> 
+                    <group>
+					<field name="name" attrs="{'required': [('so_flag','=',True)]}"/>
+					<field name="date"/>
+                    <field name="active"/>
+                    <field name="partner_address"/>
+                    <field name="delivery_mode"/>
+                    <field name="currency_id"/>
+                    <field name="state" readonly="1"/>
+                    <field name="so_flag" id = "so_flag" invisible="1"/>
+                    </group>
+				</group>
+					
+				<notebook>
+				<page string="Service Order" attrs="{'invisible': [('so_flag', '=', False)]}">
+				<field colspan="4" mode="tree" name="service_order_line" nolabel="1" widget="one2many_list" attrs = "{'readonly':[('state','=','done')]}">
+				  <tree string="Service order Line"> 
+						<field name="product_id"/>
+						<field name="product_uom"/>
+						<field name="product_qty"/>
+						<field name="price_unit"/>
+						<field name="kg_discount"/>
+						<field name="kg_discount_per"/>
+						<field name="price_subtotal"/>
+						<field name="note"/>
+						<field name="kg_discount_per_value" invisible="1"/>
+					</tree>										
+				</field>
+                    
+				<group>
+					<group>
+					<field name="po_expenses_type1"/>
+					<field name="value1" attrs="{'readonly':[('po_expenses_type1','=',False)]}"/>
+					</group>
+					<group>
+					<field name="po_expenses_type2"/>
+					<field name="value2" attrs="{'readonly':[('po_expenses_type2','=',False)]}"/>
+					</group>					
+				</group>
+
+				<group class="oe_subtotal_footer oe_right">
+					<field name="discount"/>
+					<field name="other_charge"/>
+					<field name="amount_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+					<field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+					<div class="oe_subtotal_footer_separator oe_inline">
+					<label for="amount_total"/>
+					<button name="button_dummy"
+						states="draft" string="(update)" type="object" class="oe_edit_only oe_link"/>
+					</div>
+					<field name="amount_total" nolabel="1" class="oe_subtotal_footer_separator" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+				</group>
+				</page>
+           
+			   <page string="Select Service Indent">
+		   
+					<field name="kg_serindent_lines">
+						<tree string="Service Indent Line" editable="bottom">
+						<field name="service_id" readonly="1"/>
+						<field name="product_id" readonly="1"/>
+						<field name="uom" readonly="1"/>
+						<field name="pending_qty" readonly="1"/>
+						</tree>
+					</field>
+					<button name="update_soindent" type='object' string="Save Record"/>
+				</page>
+				<page string="Remarks">
+					<field name="remark"/>				
+				</page>
+				
+				</notebook>		
+			</form>
+		</field>
+	</record>
+        
+        <!-- Service Order Line Form  View -->
+        
+        <record id="view_kg_serviceorder_line_form" model="ir.ui.view">
+            <field name="name">view.kg.serviceorder.line.form</field>
+            <field name="model">kg.service.order.line</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Service Order Line" version="7.0">
+				<group>
+					
+					<group>
+					<field name="product_id" required="1" on_change="onchange_product_id(product_id,product_uom)"/>
+					<field name="product_qty" on_change="onchange_qty(product_qty,soindent_qty,pending_qty)"/>
+					<field name="price_unit" required="1"/>
+					<field name="kg_discount_per" on_change="onchange_discount_value_calc(kg_discount_per, product_qty, price_unit)"/>
+					<field name="soindent_line_id" invisible="1"/>
+					<field name="note"/>
+					</group>
+					
+					<group>
+					<field name="product_uom" required="1"/>
+					<field name="soindent_qty" readonly="1"/>
+					<field name="kg_discount" on_change="onchange_disc_amt(kg_discount,product_qty,price_unit,kg_disc_amt_per)"/>
+					<field name="kg_discount_per_value" invisible="1"/>
+					<field name="kg_disc_amt_per" invisible="1"/>
+					<field name="pending_qty"/>
+					<field name="taxes_id" widget="many2many_tags"
+                        domain="[('parent_id','=',False),('type_tax_use','!=','sale')]"/>
+					</group>
+					
+				</group>
+				</form>
+			</field>
+		</record>
+        
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_serviceorder_tree" model="ir.ui.view">
+            <field name="name">kg.serviceorder.tree.view</field>
+            <field name="model">kg.service.order</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Service order">
+                    <field name="name"/>
+					<field name="date"/>
+                    <field name="dep_name"/>
+                    <field name="user_id"/>
+					<field name="state"/>
+
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_serviceorder_form" model="ir.actions.act_window">
+			<field name="name">Service order</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.service.order</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_serviceorder_tree"/>
+	</record>
+	
+	
+	
+	<!-- Service order line tree view -->
+	
+	<record id="view_kg_serviceorder_line_tree" model="ir.ui.view">
+            <field name="name">kg.deporder.line.tree</field>
+            <field name="model">kg.service.order.line</field>
+            <field name="type">tree</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Service order Line">
+                    <field name="service_id"/>
+                    <field name="product_id"/>
+                    <field name="product_qty"/>
+                    <field name="product_qty"/>
+                    
+                    
+                </tree>
+            </field>
+        </record>
+        
+	
+	
+	
+	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+        
+	
+    </data>
+</openerp>

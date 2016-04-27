@@ -1,0 +1,799 @@
+## HRM with Payroll System for Dr.GB Health care  ##
+
+import math
+import re
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+import openerp.addons.decimal_precision as dp
+import netsvc
+from datetime import date
+from datetime import datetime
+from datetime import timedelta
+from dateutil import relativedelta
+import datetime as lastdate
+import calendar
+
+
+class kg_payslip(osv.osv):
+	
+	_name = 'hr.payslip'	
+	_inherit = 'hr.payslip'
+	_order = "date desc"	
+	
+	_columns = {
+	
+	'worked_days_line_ids': fields.one2many('hr.payslip.worked_days', 'payslip_id', 'Payslip Worked Days',
+			readonly=True, states={'draft': [('readonly', False)]}),
+	'tot_sal': fields.float('Total Salary',readonly=True),
+	'round_val': fields.float('Net Salary', readonly=True),
+	'balance_val': fields.float('Balance Salary', readonly=True),
+	'cross_amt': fields.float('Cross Amount',readonly=True),
+	'date_from': fields.date('Date From', readonly=False, required=True),
+	'date_to': fields.date('Date To', readonly=False, required=True),
+	'emp_name': fields.char('Employee Code', size=128, readonly=True),
+	'tot_paid_days': fields.float('Total Paid Days'),
+	'tot_allowance': fields.float('Total Allowance',readonly=True),
+	'tot_deduction': fields.float('Total Deduction',readonly=True),
+	'tot_contribution': fields.float('Total Contribution',readonly=True),
+	
+	'att_id': fields.many2one('kg.monthly.attendance','Attendance Ref'),
+	'dep_id': fields.many2one('hr.department','Department Name'),
+	'cum_ded_id': fields.many2one('kg.advance.deduction','Cumulative Deduction', readonly=True),
+	'date': fields.date('Creation Date')
+	
+	}
+	
+	def _get_last_month_first(self, cr, uid, context=None):
+		
+		today = lastdate.date.today()
+		print "today-----------", today
+		first = lastdate.date(day=1, month=today.month, year=today.year)
+		mon = today.month - 1
+		if mon == 0:
+			mon = 12
+		else:
+			mon = mon
+		tot_days = calendar.monthrange(today.year,mon)[1]
+		test = first - lastdate.timedelta(days=tot_days)
+		res = test.strftime('%Y-%m-%d')
+		print "---------------",res
+		return res
+		
+	def _get_last_month_end(self, cr, uid, context=None):
+		today = lastdate.date.today()
+		first = lastdate.date(day=1, month=today.month, year=today.year)
+		last = first - lastdate.timedelta(days=1)
+		res = last.strftime('%Y-%m-%d')
+		return res
+	
+	_defaults = {
+	
+		'date_from': _get_last_month_first,
+		'date_to': _get_last_month_end,
+		'date': lambda *a: time.strftime('%Y-%m-%d'),
+		
+		}	
+	
+		
+	def get_contract(self, cr, uid, employee, date_from, date_to, context=None):
+		"""
+		@param employee: browse record of employee
+		@param date_from: date field
+		@param date_to: date field
+		@return: returns the ids of all the contracts for the given employee that need to be considered for the given dates
+		"""
+		contract_obj = self.pool.get('hr.contract')
+		clause = []	
+		clause_final =  [('employee_id', '=', employee.id)] 
+		contract_ids = contract_obj.search(cr, uid, clause_final, context=context)
+		return contract_ids
+	
+	def onchange_employee_id(self, cr, uid, ids, date_from, date_to, employee_id=False, contract_id=False, context=None):
+		empolyee_obj = self.pool.get('hr.employee')
+		contract_obj = self.pool.get('hr.contract')
+		worked_days_obj = self.pool.get('hr.payslip.worked_days')
+		input_obj = self.pool.get('hr.payslip.input')
+		
+		if context is None:
+			context = {}
+		#delete old worked days lines
+		old_worked_days_ids = ids and worked_days_obj.search(cr, uid, [('payslip_id', '=', ids[0])], context=context) or False
+		if old_worked_days_ids:
+			worked_days_obj.unlink(cr, uid, old_worked_days_ids, context=context)
+
+		#delete old input lines
+		old_input_ids = ids and input_obj.search(cr, uid, [('payslip_id', '=', ids[0])], context=context) or False
+		if old_input_ids:
+			input_obj.unlink(cr, uid, old_input_ids, context=context)
+
+
+		#defaults
+		res = {'value':{
+					  'line_ids':[],
+					  'input_line_ids': [],
+					  'worked_days_line_ids': [],
+					  #'details_by_salary_head':[], TODO put me back
+					  'name':'',
+					  'contract_id': False,
+					  'struct_id': False,
+					  }
+			}
+		if (not employee_id) or (not date_from) or (not date_to):
+			return res
+		ttyme = datetime.fromtimestamp(time.mktime(time.strptime(date_from, "%Y-%m-%d")))
+		employee_id = empolyee_obj.browse(cr, uid, employee_id, context=context)
+		res['value'].update({
+					'name': _('Salary Slip of %s for %s') % (employee_id.name, tools.ustr(ttyme.strftime('%B-%Y'))),
+					'company_id': employee_id.company_id.id,
+		})
+
+		if not context.get('contract', False):
+			#fill with the first contract of the employee
+			contract_ids = self.get_contract(cr, uid, employee_id, date_from, date_to, context=context)
+		else:
+			if contract_id:
+				#set the list of contract for which the input have to be filled
+				contract_ids = [contract_id]
+			else:
+				#if we don't give the contract, then the input to fill should be for all current contracts of the employee
+				contract_ids = self.get_contract(cr, uid, employee_id, date_from, date_to, context=context)
+
+		if not contract_ids:
+			return res
+		contract_record = contract_obj.browse(cr, uid, contract_ids[0], context=context)
+		res['value'].update({
+					'contract_id': contract_record and contract_record.id or False
+		})
+		struct_record = contract_record and contract_record.struct_id or False
+		if not struct_record:
+			return res
+		res['value'].update({
+					'struct_id': struct_record.id,
+		})
+		#computation of the salary input
+		worked_days_line_ids = self.get_worked_day_lines(cr, uid, ids,contract_ids, date_from, date_to, context=context)
+		input_line_ids = self.get_inputs(cr, uid, contract_ids, date_from, date_to, context=context)
+		res['value'].update({
+					'worked_days_line_ids': worked_days_line_ids,
+					'input_line_ids': input_line_ids,
+		})
+		return res
+		
+	def get_worked_day_lines(self, cr, uid,ids,contract_ids, date_from, date_to, context=None):
+		
+		def was_on_leave(employee_id, datetime_day, context=None):
+			res = False
+			day = datetime_day.strftime("%Y-%m-%d")
+			holiday_ids = self.pool.get('hr.holidays').search(cr, uid, [('state','=','validate'),('employee_id','=',employee_id),('type','=','remove'),('date_from','<=',day),('date_to','>=',day)])
+			if holiday_ids:
+				res = self.pool.get('hr.holidays').browse(cr, uid, holiday_ids, context=context)[0].holiday_status_id.name
+			return res
+
+		res = []
+		for contract in self.pool.get('hr.contract').browse(cr, uid, contract_ids, context=context):
+			if not contract.working_hours:
+				emp_id = contract.employee_id.id
+				start_date = "'"+date_from+"'"
+				end_date = 	"'"+date_to+"'"
+				month_att_obj = self.pool.get('kg.monthly.attendance')				
+				sql = """ select mon_tot_days,worked from kg_monthly_attendance where employee_id=%s and start_date=%s and end_date=%s""" %(emp_id,start_date,end_date)
+				cr.execute(sql)
+				data = cr.dictfetchall()
+				print "data...................", data
+				val , val1 = 0, 0
+				if data:					
+					val = [d['mon_tot_days'] for d in data if 'mon_tot_days' in d]
+					val = val[0]
+					val1 = [d['worked'] for d in data if 'worked' in d]
+					val1 = val1[0]
+				else:
+					pass
+					#raise osv.except_osv(
+						#_('Error !!'),
+						#_('Attendance entry not availabe for employee -  %s !!'%(contract.employee_id.name)))					
+				ttyme = datetime.fromtimestamp(time.mktime(time.strptime(date_from, "%Y-%m-%d")))
+				name = tools.ustr(ttyme.strftime('%B-%Y'))
+				worked_day_obj = self.pool.get('hr.payslip.worked_days')					
+				attendances = {
+					 'name': name,
+					 'sequence': 1,
+					 'code': 'WORK100',
+					 'number_of_days': val,
+					 'number_of_hours': val,
+					 'contract_id': contract.id,
+				}				
+				res += [attendances] 
+			return res	
+		
+	def salary_slip_calculation(self, cr, uid, ids, context=None):
+		
+		""" This function have full functionality of payroll process
+		based on earnings and deductions, PF, Income Tax and other calculations """
+		
+		all_ded_obj = self.pool.get('kg.allowance.deduction')
+		all_ded_line_obj = self.pool.get('kg.allowance.deduction.line')
+		sal_catg = self.pool.get('hr.salary.rule.category')
+		line_obj = self.pool.get('hr.payslip.line')
+		con_obj = self.pool.get('hr.contract')
+		rule_obj = self.pool.get('hr.salary.rule')
+		cum_obj = self.pool.get('kg.advance.deduction')
+		emp = self.pool.get('hr.employee')
+		
+		# The Below type Allowance & Deduction should be created before salary slip run #
+		
+		basic_rule_id = rule_obj.search(cr, uid, [('code','=','BASIC')])
+		allo_rule_id = rule_obj.search(cr, uid, [('code','=','HRA')])
+		spal_rule_id = rule_obj.search(cr, uid, [('code','=','SPA')])
+		ot_rule_id = rule_obj.search(cr, uid, [('code','=','OT')])
+		pf_rule_id = rule_obj.search(cr, uid, [('code','=','PF')])
+		esi_rule_id = rule_obj.search(cr, uid, [('code','=','ESI')])
+		cum_rule_id = rule_obj.search(cr, uid, [('code','=','CUMDED')])
+		itax_rule_id = rule_obj.search(cr, uid, [('code','=', 'ITAX')])
+		epf_rule_id = rule_obj.search(cr, uid, [('code','=', 'EMP_PF')])
+		emp_esi_rule_id = rule_obj.search(cr, uid, [('code','=', 'EMP_ESI')])
+		pt_rule_id = rule_obj.search(cr, uid, [('code','=', 'PT')])
+		
+		for slip_rec in self.browse(cr, uid, ids, context=context):
+			print "slip_rec-------------...", slip_rec
+			emp_rec = slip_rec.employee_id
+			print "emp_rec********#########&&&&&&&",emp_rec
+			dep_id = emp_rec.department_id.id
+			emp_nam = emp_rec.emp_code
+			emp_bal_amt = emp_rec.round_off
+			print "Previous balanace......emp_bal_amt...............",emp_bal_amt
+			print "emp_rec----------------------", emp_rec
+			emp_id = slip_rec.employee_id.id
+			start_date = "'"+slip_rec.date_from+"'"
+			end_date = 	"'"+slip_rec.date_to+"'"
+			
+			# Employee Attendance details calculation
+						
+			sql = """ select worked,mon_tot_days,id,absent,working_days from kg_monthly_attendance where employee_id=%s and start_date=%s
+									and end_date=%s and state='confirm' """ %(emp_id,start_date,end_date,)
+			cr.execute(sql)
+			data = cr.dictfetchall()
+			print "data---------------------------------",data
+			worked, mon_tot_days = 0,0
+			att_id = False
+			if data:					
+				
+				val1 = [d['worked'] for d in data if 'worked' in d]
+				worked = val1[0]
+				
+				val3 = [d['working_days'] for d in data if 'working_days' in d]
+				working_days= val3[0]
+								
+				val7 = [d['mon_tot_days'] for d in data if 'mon_tot_days' in d]
+				mon_tot_days = val7[0]	
+				tot_days = mon_tot_days
+				print "tot_days--------------->>>>", tot_days
+				
+				val2 = [d['absent'] for d in data if 'absent' in d]
+				absent = val2[0]
+				
+				
+								
+			else:
+				print "No attendance entry available"
+				#raise osv.except_osv(
+						#_('Error !!'),
+						#_('Attendance entry not availabe for employee -  %s !!'%(slip_rec.employee_id.name)))
+				
+			con_id = con_obj.search(cr, uid, [('employee_id', '=', emp_id)])
+			con_rec= con_obj.browse(cr, uid,con_id)	
+			if not con_id:
+				raise osv.except_osv(
+						_('Error :: No Contract Details !!'),
+						_('Contract entry not availabe for employee -  %s !!'%(slip_rec.employee_id.name)))
+			else:
+				con_rec= con_obj.browse(cr, uid,con_id)				
+				con_rec = con_rec[0]
+			alw = sal_catg.search(cr, uid, [('code','=','ALW')])
+			ded = sal_catg.search(cr, uid, [('code','=','DED')])
+			comp = sal_catg.search(cr, uid, [('code','=','COMP')])
+			basic_id = sal_catg.search(cr, uid, [('code','=','BASIC')])
+			alw_id = alw[0]
+			ded_id = ded[0]
+			comp_id = comp[0]
+			
+			# Basic Pay calculation
+			
+			basic_sql = """ select wage,allowance,spl_allowance from hr_contract where employee_id=%s """%(emp_id)
+			cr.execute(basic_sql)
+			data = cr.dictfetchone()
+			print "data ================",data
+		
+			if data:
+				emp_basic = con_rec.wage				 
+				allowance = con_rec.allowance
+				spl_allowance = con_rec.spl_allowance
+				one_day_basic = emp_basic / working_days
+				slip_basic = 0.00
+				slip_basic2 = 0.00
+				
+				# PF Employee Basic
+				
+				if con_rec.pf_status == True and mon_tot_days > working_days :
+					slip_basic = one_day_basic * working_days				
+					basic_vals_pf = {
+					'slip_id': slip_rec.id,
+					'code': 'BASIC',
+					'category_id': basic_id[0],
+					'contract_id':con_rec.id,
+					'employee_id': emp_id,
+					'salary_rule_id':basic_rule_id[0],
+					'name': 'Basic Pay',
+					'amount': slip_basic
+					}					
+					basic_pf_entry = self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,basic_vals_pf)]})
+					
+						
+				# Non-PF employee Basic
+				
+				else:					
+					
+					slip_basic2 = one_day_basic * tot_days
+					basic_vals = {
+					
+						'slip_id': slip_rec.id,
+						'code': 'BASIC',
+						'category_id': basic_id[0],
+						'contract_id':con_rec.id,
+						'employee_id': emp_id,
+						'salary_rule_id':basic_rule_id[0],
+						'name': 'Baisc Pay',
+						'amount': slip_basic2			
+						}
+													
+					basic_entry = self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,basic_vals)]})
+					
+				# Contract allowance amount calculation
+				one_day_all=0.00
+				all_amt = 0.00
+				if allowance > 0:
+					one_day_all = allowance / working_days
+					print "one_day_all..................",one_day_all
+					all_amt = one_day_all * mon_tot_days
+					print "all_amt......................",all_amt
+					all_vals = {
+					
+						'slip_id': slip_rec.id,
+						'code': 'ALW',
+						'category_id': alw_id,
+						'contract_id':con_rec.id,
+						'employee_id': emp_id,
+						'salary_rule_id':allo_rule_id[0],
+						'name': 'HRA',
+						'amount': all_amt		
+						}													
+					all_entry = self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,all_vals)]})
+				else:
+					print "Contract allowance is Zero"
+					
+				# Contract Special allowance amount calculation
+				one_day_spall=0.00
+				spall_amt = 0.00
+				if spl_allowance > 0:
+					one_day_spall = spl_allowance / working_days
+					print "one_day_spall..................",one_day_spall
+					spall_amt = one_day_spall * mon_tot_days
+					print "spall_amtl..................",spall_amt
+					spall_vals = {
+					
+						'slip_id': slip_rec.id,
+						'code': 'ALW',
+						'category_id': alw_id,
+						'contract_id':con_rec.id,
+						'employee_id': emp_id,
+						'salary_rule_id':spal_rule_id[0],
+						'name': 'Special Allowance',
+						'amount': spall_amt		
+						}													
+					spall_entry = self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,spall_vals)]})
+				else:
+					print "Contract Special allowance is Zero"
+					
+				
+					
+			else:
+				raise osv.except_osv(
+				_('Configuration Error !!'),
+				_('Configure Employee Basic Pay and Allowance in Contract form !!'))
+				
+			# Calculate Total Other Allowance entry of this month
+			
+			alw_ids = all_ded_obj.search(cr, uid,[('start_date','=',slip_rec.date_from),
+									('end_date','=',slip_rec.date_to),('type','=',alw_id),
+									('state','=','confirm')])
+			mon_tot_ear = 0.00
+			for i in alw_ids:
+				rec = all_ded_obj.browse(cr, uid, i)
+				cat_id = rec.type.id
+				type_name = rec.pay_type.name
+				rule_id = rec.pay_type.id
+				sql = """ select amount from kg_allowance_deduction_line where entry_id=%s and employee_id=%s """%(i,emp_id)
+				cr.execute(sql)
+				data = cr.dictfetchone()
+				if data:				
+					amt = data.values()[0]
+					mon_tot_ear += amt				
+					vals = {
+					
+					'slip_id': slip_rec.id,
+					'code': rec.pay_type.code,
+					'category_id': cat_id,
+					'contract_id':con_rec.id,
+					'employee_id': emp_id,
+					'salary_rule_id':rule_id,
+					'name': type_name,
+					'amount': amt,
+							
+					}
+					
+					if amt > 0:
+						self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,vals)]})
+						rec.write({'payslip': True})
+				else:
+					print "No Allowance Entry for this employee"
+				
+				
+			print "mon_tot_ear------------------", mon_tot_ear
+			
+			# Calculate Total Deduction entry of this month
+			
+			ded_ids = all_ded_obj.search(cr, uid,[('start_date','=',slip_rec.date_from),
+									('end_date','=',slip_rec.date_to),('type','=',ded_id),
+									('state','=','confirm')])
+			mon_tot_ded = 0.00
+			for j in ded_ids:
+				rec = all_ded_obj.browse(cr, uid, j)
+				cat_id = rec.type.id
+				type_name = rec.pay_type.name
+				rule_id = rec.pay_type.id
+				sql = """ select amount from kg_allowance_deduction_line where entry_id=%s and employee_id=%s """%(j,emp_id)
+				cr.execute(sql)
+				data = cr.dictfetchone()
+				if data:				
+					ded_amt = data.values()[0]
+					mon_tot_ded += ded_amt				
+					ded_vals = {
+					
+					'slip_id': slip_rec.id,
+					'code': rec.pay_type.code,
+					'category_id': cat_id,
+					'contract_id':con_rec.id,
+					'employee_id': emp_id,
+					'salary_rule_id':rule_id,
+					'name': type_name,
+					'amount': ded_amt,
+							
+					}
+					
+					if ded_amt > 0:
+						self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,ded_vals)]})
+						rec.write({'payslip': True})
+				else:
+					print "No Deduction Entry for this employee"
+					
+			# Employee professional tax Amount Calculation
+			
+			pt_amt = 0.00
+			employee_rec=emp.browse(cr,uid,emp_id)
+			print "employee_rec.............",employee_rec
+			if con_rec.pt_status == True:			
+				position=employee_rec.pos_level
+				print "position...........",position
+				if position == 1:
+					pt_amt=200
+					print "pt_amt..........",pt_amt
+				else:
+					pt_amt=150
+					print "pt_amt_else..........",pt_amt
+					
+				
+				pt_vals = {
+					
+					'slip_id': slip_rec.id,
+					'code': 'PT',
+					'category_id': ded_id,
+					'contract_id':con_rec.id,
+					'employee_id': emp_id,
+					'salary_rule_id':pt_rule_id[0],
+					'name': 'Professional Tax ',
+					'amount': pt_amt,
+					
+							
+				    }
+				print "pt_vals.............",pt_vals			
+				self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,pt_vals)]})
+			else:
+				print "PT Not applicable for this employee"
+					
+			# Employee PF Amount Calculation
+			
+			pf_amt = 0.00
+			if con_rec.pf_status == True:				
+							
+				pf_basic = one_day_basic * mon_tot_days
+				if pf_basic < 6500:
+					pf_amt = pf_basic * 12 / 100
+					print "pf ------------- amt---------------....", pf_amt
+				elif pf_basic > 6500:
+					pf_amt = 6500 * 12 / 100
+					print "pf ------------- amt---------------....", pf_amt
+				
+				
+				pf_vals = {
+					
+					'slip_id': slip_rec.id,
+					'code': 'PF',
+					'category_id': ded_id,
+					'contract_id':con_rec.id,
+					'employee_id': emp_id,
+					'salary_rule_id':pf_rule_id[0],
+					'name': 'Employee - PF ',
+					'amount': pf_amt,
+							
+					}				
+				self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,pf_vals)]})
+			else:
+				print "PF Not applicable for this employee"
+				
+			# Employee ESI Calculation #
+			mon_tot_all = mon_tot_ear or 0
+			esi_amt = 0.00
+			if con_rec.esi == True:				
+				esi_basic = ((one_day_basic + one_day_all + one_day_spall) * mon_tot_days)
+				if esi_basic > 15000:
+					esi_amt=0.00
+				else:
+					esi_amt = esi_basic * 1.75 / 100
+					esi_amt = (round(esi_amt,2))
+				print "esi_amt ------------- amt---------------....", esi_amt					
+				
+				esi_vals = {
+					
+					'slip_id': slip_rec.id,
+					'code': 'ESI',
+					'category_id': ded_id,
+					'contract_id':con_rec.id,
+					'employee_id': emp_id,
+					'salary_rule_id':esi_rule_id[0],
+					'name': 'Employee State Insurance(ESI)',
+					'amount': esi_amt,
+							
+					}				
+				self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,esi_vals)]})
+			else:
+				print "ESI Not applicable for this employee"
+				
+				
+			# Cumulative Advance Deduction Calculation
+			
+			ele=False
+			due_amt = 0.00
+			cum_ids = cum_obj.search(cr, uid, [('employee_id','=',emp_id),
+								('state','=','confirm'),('allow','=',True)])
+			print "cum_ids...........................", cum_ids
+			
+			if cum_ids:
+				for ele in cum_ids:
+					cum_rec = cum_obj.browse(cr, uid, ele)
+					print "cum_rec.......................",cum_rec
+					if cum_rec.amt_paid < cum_rec.tot_amt:
+						due_amt = cum_rec.pay_amt + cum_rec.round_bal
+						name = cum_rec.ded_type
+						cum_ded_vals = {
+						
+						'slip_id': slip_rec.id,
+						'code': 'CUMDED',
+						'category_id': ded_id,
+						'contract_id':con_rec.id,
+						'employee_id': emp_id,
+						'salary_rule_id':cum_rule_id[0],
+						'name': 'Cumulative Advance Deduction - ' + name,
+						'amount': due_amt,
+								
+							}					
+						self.write(cr,uid,slip_rec.id,{'line_ids':[(0,0,cum_ded_vals)]})
+						tot_paid = cum_rec.amt_paid
+						tot_paid += due_amt
+						bal_amt = cum_rec.tot_amt - tot_paid
+						if bal_amt == 0:
+							cum_rec.write({'state': 'expire', 'round_bal': 0.00})
+						else:
+							pass
+														
+						print "tot_paid...........,,,,,,,,,,,,............",tot_paid					
+						cum_rec.write({'amt_paid': tot_paid, 'bal_amt': bal_amt, 'round_bal': 0.00})
+						
+					else:
+						pass
+						
+				else:
+					print "No Cumulative deduction for this employee"
+			
+			emp_tot_sal = slip_basic + slip_basic2 +  all_amt + spall_amt + mon_tot_ear - mon_tot_ded - pf_amt - pt_amt- esi_amt - due_amt 
+			slip_allowance = all_amt + spall_amt + mon_tot_ear
+			slip_allowance = (round(slip_allowance,2))
+			slip_ded = mon_tot_ded + pf_amt + esi_amt + due_amt + pt_amt
+			slip_ded = (round(slip_ded,2))
+			
+			
+			emp_tot_sal = (round(emp_tot_sal,2))
+			print "tot sala after rounf off..............",emp_tot_sal
+			
+
+			cross_amt = slip_basic + slip_basic2 + all_amt + spall_amt + mon_tot_ear 
+			cross_amt = (round(cross_amt,2))
+			
+			if emp_rec:				
+				slip_rec.write({
+								
+								'round_val': emp_tot_sal or 0.00, 
+								
+								'emp_name': emp_nam,
+								'tot_paid_days': tot_days or 0.00, 
+								'tot_allowance':slip_allowance or 0.00, 
+								'tot_deduction':slip_ded or 0.00,
+								
+								'att_id':att_id,
+								'dep_id':dep_id, 
+								'cross_amt': cross_amt or 0.00,
+								'cum_ded_id':ele,
+								})
+						
+	
+			else:
+				pass
+				
+					
+		return True		
+		
+		
+		
+		
+			
+	def hr_verify_sheet(self, cr, uid, ids, context=None):
+		self.salary_slip_calculation(cr, uid, ids, context)
+		return self.write(cr, uid, ids, {'state': 'done'}, context=context)
+		
+	
+	def employee_salary_run(self, cr, uid, ids, context=None):
+		
+		""" This function will generate employee payslip 
+		if any changes needed after salary process has done """
+		
+		print "ids....................", ids
+		slip_obj = self.pool.get('hr.payslip')
+		slip_rec = self.browse(cr, uid, ids[0])
+		ex_ids = slip_obj.search(cr, uid, [('employee_id','=', slip_rec.employee_id.id),
+					('date_from','=',slip_rec.date_from),('date_to','=',slip_rec.date_to),
+					('state','=', 'done')])
+		print "ex_ids.....................", ex_ids
+		for i in ex_ids:
+			sql = """ delete from hr_payslip where id=%s """%(i)
+			cr.execute(sql)
+		emp_rec = slip_rec.employee_id
+		print "emp_rec...................", emp_rec		
+		last_mon_bal = slip_rec.employee_id.last_month_bal
+		round_bal = slip_rec.employee_id.round_off
+		emp_rec.write({'round_off': last_mon_bal})
+		self.salary_slip_calculation(cr,uid, ids)
+		slip_rec.write({'state': 'done'})		
+
+kg_payslip()
+
+
+class kg_batch_payslip(osv.osv):
+	
+	_name = 'hr.payslip.run'	
+	_inherit = 'hr.payslip.run'	
+	
+	_columns = {
+	
+	'name': fields.char('Month', size=64, readonly=True),
+	'date_start': fields.date('Date From', required=True, readonly=False),
+	'date_end': fields.date('Date To', required=True, readonly=False),
+	'slip_date': fields.date('Creation Date'),
+	'slip_ids': fields.one2many('hr.payslip', 'payslip_run_id', 'Payslips', required=False, readonly=True),
+	'state': fields.selection([
+			('draft', 'Draft'),			
+			('done', 'Done'),
+			('close', 'Close'),
+		], 'Status', select=True, readonly=True),
+	
+	}
+	
+	def _get_last_month_first(self, cr, uid, context=None):
+		
+		today = lastdate.date.today()
+		first = lastdate.date(day=1, month=today.month, year=today.year)
+		mon = today.month - 1
+		if mon == 0:
+			mon = 12
+		else:
+			mon = mon
+		tot_days = calendar.monthrange(today.year,mon)[1]
+		test = first - lastdate.timedelta(days=tot_days)
+		res = test.strftime('%Y-%m-%d')
+		return res
+		
+	def _get_last_month_end(self, cr, uid, context=None):
+		today = lastdate.date.today()
+		first = lastdate.date(day=1, month=today.month, year=today.year)
+		last = first - lastdate.timedelta(days=1)
+		res = last.strftime('%Y-%m-%d')
+		return res
+		
+	def _get_last_month_name(self, cr, uid, context=None):
+		today = lastdate.date.today()
+		first = lastdate.date(day=1, month=today.month, year=today.year)
+		last = first - lastdate.timedelta(days=1)
+		res = last.strftime('%B-%Y')
+		return res
+		
+	def _check_employee_slip_dup(self, cr, uid, ids, context=None):		
+		obj = self.pool.get('hr.payslip.run')
+		slip = self.browse(cr, uid, ids[0])
+		date_from = slip.date_start
+		to_date = slip.date_end
+		dup_ids = obj.search(cr, uid, [( 'date_start','=',date_from),( 'date_end','=',to_date),
+									( 'state','=','done')])
+		if len(dup_ids) > 1:
+			return False
+		return True
+		
+	#_constraints = [
+		
+		#(_check_employee_slip_dup, 'Payslip has been created already for this month. Check Month and State !!',['amount']),
+		
+		#] 
+		
+	
+	_defaults = {
+	
+		'name' : _get_last_month_name,
+		'date_start': _get_last_month_first,
+		'date_end': _get_last_month_end,
+		'slip_date': lambda *a: time.strftime('%Y-%m-%d'),
+		
+		}
+	
+	
+	def unlink(self, cr, uid, ids, context=None):
+		for batch in self.browse(cr, uid, ids, context=context):
+			if batch.state not in  ['draft']:
+				raise osv.except_osv(_('Warning!'),_('You cannot delete this Batch which is not in draft state !!'))
+		return super(kg_batch_payslip, self).unlink(cr, uid, ids, context)
+
+kg_batch_payslip()
+
+
+class kg_salary_structure(osv.osv):
+	
+	_name = 'hr.payroll.structure'	
+	_inherit = 'hr.payroll.structure'
+	
+	_columns = {
+	
+	'state': fields.selection([('draft','Draft'),('approved','Approved')], 'Status', readonly=True),
+		
+	}
+	
+	_defaults = {
+	
+	'state': 'draft',
+	
+	}
+	
+	def unlink(self, cr, uid, ids, context=None):
+		contract_obj = self.pool.get('hr.contract')
+		data = contract_obj.search(cr, uid, (['struct_id','=', ids[0]]))
+		if batch.state not in  ['draft']:
+			raise osv.except_osv(_('Warning!'),_('You cannot delete this Batch which is not draft state !!'))
+		return super(kg_batch_payslip, self).unlink(cr, uid, ids, context)
+	
+kg_salary_structure()

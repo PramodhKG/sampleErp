@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_monthly_all_ded_entry" model="ir.ui.view">
+            <field name="name">monthly.all.ded.entry</field>
+            <field name="model">kg.allowance.deduction</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+			<form string="Monthly Allowance and Deduction Entry" version="7.0">					
+							
+			<header>
+                <button name="confirm_entry" states="draft" string="Confirm" type="object" class="oe_highlight"/>
+                <button name="cancel_entry" states="confirm" string="Cancel" type="object"/>
+				<button name="draft_entry" states="cancel" string="Set to Draft" type="object"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+			</header>
+			
+				<group>
+					<group>
+						<field name="start_date" style="width: 30%%" class="att_month_change"/>
+						<field name="type"/>										
+						<field name="state" readonly="1" style="width: 30%%" class="indent_state_change" /> 
+                    </group>
+                    <group>					
+						<field name="end_date" style="width: 30%%" class="att_month_change"/>
+						<field name="active" invisible="1"/>
+						<field name="pay_type"/>
+                    </group>
+				</group>
+
+				<field colspan="4" mode="tree" name="entry_line" nolabel="1" widget="one2many_list">
+					  <tree string="Monthly Allowance and Deduction Entry" editable="bottom"> 
+							<field name="employee_id" on_change="onchange_employee_code(employee_id,emp_name )"/>
+							<field name="emp_name"/>
+							<field name="amount"/>
+						</tree>
+						<form string="Entry Line">
+							<group>
+								<group>
+									<field name="emp_name"/>
+								</group>
+								<group>
+									<field name="amount"/>
+								</group>
+							</group>
+								
+						</form>
+				</field>
+
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="monthly_entry_tree_view" model="ir.ui.view">
+            <field name="name">monthly.entry</field>
+            <field name="model">kg.allowance.deduction</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+				<tree string="Monthly Allowance and Deduction Entry">				               
+					<field name="start_date"/>
+					<field name="end_date"/>
+					<field name="type" string="Type"/>
+					<field name="pay_type"/>
+					<field name="state"/>
+				</tree>
+            </field>
+        </record>
+        
+        <record id="monthly_entry_search_view" model="ir.ui.view">
+            <field name="name">Monthly Entry</field>
+            <field name="model">kg.allowance.deduction</field>
+            <field name="arch" type="xml">
+                <search string="Monthly Entry">                    
+                    <group expand="0" string="Group By...">
+                        <filter string="Month" icon="terp-personal" domain="[]" context="{'group_by':'start_date'}"/>
+                        <filter string="Type" icon="terp-personal" domain="[]" context="{'group_by':'type'}"/>                        
+                        <filter string="Pay Type" icon="terp-gtk-select-all" domain="[]" context="{'group_by':'pay_type'}"/>
+                        <filter string="State" icon="terp-gtk-select-all" domain="[]" context="{'group_by':'state'}"/>
+					</group>
+                </search>
+             </field>
+         </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_monthly_entry" model="ir.actions.act_window">
+			<field name="name">Monthly Entry</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.allowance.deduction</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="monthly_entry_tree_view"/>
+	</record>	
+	
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->       
+
+	<menuitem 
+            id="monthly_entry_menu" 
+            name="Earning / Deduction Entry" 
+            parent="hr_payroll.menu_hr_root_payroll"
+            sequence="1"
+            action="action_monthly_entry"/>
+         
+	     
+    </data>
+</openerp>

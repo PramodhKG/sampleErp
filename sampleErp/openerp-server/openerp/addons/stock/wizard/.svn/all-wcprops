@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard
+END
+stock_inventory_merge.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_inventory_merge.py
+END
+stock_traceability.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_traceability.py
+END
+stock_inventory_merge_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_inventory_merge_view.xml
+END
+stock_inventory_line_split.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_inventory_line_split.py
+END
+stock_inventory_line_split_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_inventory_line_split_view.xml
+END
+stock_change_product_qty.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_change_product_qty.py
+END
+stock_partial_move.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_partial_move.py
+END
+stock_return_picking.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_return_picking.py
+END
+stock_change_product_qty_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_change_product_qty_view.xml
+END
+stock_partial_move_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_partial_move_view.xml
+END
+stock_return_picking_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_return_picking_view.xml
+END
+stock_splitinto.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_splitinto.py
+END
+stock_change_standard_price.py
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_change_standard_price.py
+END
+stock_splitinto_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_splitinto_view.xml
+END
+stock_change_standard_price_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_change_standard_price_view.xml
+END
+stock_invoice_onshipping.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_invoice_onshipping.py
+END
+stock_invoice_onshipping_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_invoice_onshipping_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/__init__.py
+END
+stock_partial_picking.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_partial_picking.py
+END
+stock_partial_picking_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_partial_picking_view.xml
+END
+stock_fill_inventory.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_fill_inventory.py
+END
+stock_fill_inventory_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_fill_inventory_view.xml
+END
+stock_move.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_move.py
+END
+stock_location_product.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_location_product.py
+END
+stock_move_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_move_view.xml
+END
+stock_location_product_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/stock/wizard/stock_location_product_view.xml
+END

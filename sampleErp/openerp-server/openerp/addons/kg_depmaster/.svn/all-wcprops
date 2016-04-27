@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depmaster
+END
+kg_depmaster_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/kgherp/!svn/ver/18/openerp-server-7.0/openerp/addons/kg_depmaster/kg_depmaster_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depmaster/__init__.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depmaster/__openerp__.py
+END
+kg_depmaster.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_depmaster/kg_depmaster.py
+END

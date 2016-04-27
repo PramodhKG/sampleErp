@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="kg_shift_time_form_view" model="ir.ui.view">
+			<field name="name">kg.shift.time.form</field>
+			<field name="model">kg.shift.time</field>
+			<field name="arch" type="xml">
+				<form string="Shift Time Master" version="7.0">				
+					<group>						
+						<field name="name"/>
+						<field name="company_id"/>						
+					</group>				   
+				</form>
+			</field> 
+		</record>
+		
+		<record id="kg_shift_time_tree_view" model="ir.ui.view">
+			<field name="name">kg.shift.time.tree</field>
+			<field name="model">kg.shift.time</field>
+			<field name="arch" type="xml">
+				<tree toolbar="True" string="Shift Time Master">
+					<field name="name"/>
+					<field name="company_id"/>
+				</tree>
+			</field>
+		</record>
+		
+		 <record id="shift_time_action_form" model="ir.actions.act_window">
+			<field name="name">Shift Time Master</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.shift.time</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="kg_shift_time_tree_view"/>
+		</record>
+
+	<menuitem id="kg_master_menu" name="Masters" parent="hr.menu_hr_root" sequence="85"/>
+	<menuitem action="shift_time_action_form" id="menu_shift_time_action_form" parent="kg_master_menu" sequence="1"/>
+
+</data>
+	</openerp>

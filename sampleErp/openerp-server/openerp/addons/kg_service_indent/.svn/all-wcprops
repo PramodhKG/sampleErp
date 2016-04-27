@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_service_indent
+END
+kg_service_indent.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/52/openerp-server-7.0/openerp/addons/kg_service_indent/kg_service_indent.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_service_indent/__openerp__.py
+END
+kg_service_indent_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/kgherp/!svn/ver/52/openerp-server-7.0/openerp/addons/kg_service_indent/kg_service_indent_view.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_service_indent/__init__.py
+END

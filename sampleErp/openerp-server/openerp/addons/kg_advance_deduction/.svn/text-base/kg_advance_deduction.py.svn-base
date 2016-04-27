@@ -1,0 +1,139 @@
+from openerp import tools
+from openerp.osv import osv, fields
+from openerp.tools.translate import _
+import time
+import openerp.addons.decimal_precision as dp
+
+class kg_advance_deduction(osv.osv):
+
+	_name = "kg.advance.deduction"
+	_description = "Advance Deduction"
+	_order = "date desc"
+	
+	_columns = {
+		
+		'date': fields.date('Creation Date', readonly=True),
+		'employee_id': fields.many2one('hr.employee','Employee Name', required=True,
+				readonly=True, states={'draft':[('readonly',False)]}),
+		'emp_name': fields.char('Employee Code', size=128, readonly=True),
+		'ded_type': fields.selection([('adv', 'ADVANCE'),('ins1', 'ACDT.INSU1'),('ins2', 'MEDI.INSU2'),
+						('tre', 'TREATMENT'),('rent', 'RENT')], 
+						'Cumulative Deduction Type', required=True,	readonly=True, states={'draft':[('readonly',False)]}),
+		'tot_amt': fields.float('Total Amount', required=True,readonly=True, states={'draft':[('readonly',False)]}),
+		'pay_amt': fields.float('Repay Pay Amount', required=True,
+					readonly=True, states={'draft':[('readonly',False)]}),
+		'period': fields.integer('Repay Period', required=True,readonly=True, states={'draft':[('readonly',False)]}),
+		'cum_date': fields.date('Cumulative Deduction Date',readonly=True, states={'draft':[('readonly',False)]}),
+		'state'	: fields.selection([('draft', 'Draft'),('confirm', 'Confirmed'),('cancel', 'Cancel'),
+					('expire', 'Expired')],'Status', readonly=True),
+		'expiry': fields.boolean('Expiry'),
+		'amt_paid': fields.float('Amount Paid So Far'),
+		'allow': fields.boolean('Applicable This Month'),
+		'bal_amt': fields.float('Balance Amount'),
+		'round_bal': fields.float('Round Balance'),
+		
+		
+		}
+		
+	_defaults = {
+	
+		'date': time.strftime('%Y-%m-%d'),
+		'state': 'draft',
+		'allow': True,
+		
+	}
+	
+	def _check_duplicate_entry(self, cr, uid, ids, context=None):
+		ded_obj = self.pool.get('kg.advance.deduction')
+		for entry in self.browse(cr, uid, ids):
+			dup_ids = ded_obj.search(cr, uid,[('employee_id','=',entry.employee_id.id),
+						('ded_type','=',entry.ded_type),('state','=','confirm')])
+			print "dup_ids....................", dup_ids
+			if len(dup_ids) > 1:
+				return False
+		return True		
+		
+	def _zero_amount_check(self, cr, uid, ids, context=None):
+		for entry in self.browse(cr, uid, ids):
+			print "entry...............", entry, entry.tot_amt
+			if entry.tot_amt > 0:
+				return True
+		return False
+		
+	def _validation_month_amount(self,cr,uid,ids,context=None):
+		for entry in self.browse(cr, uid, ids):
+			due_amt = entry.period * entry.pay_amt
+			if due_amt > entry.tot_amt:
+				return False
+		return True
+				
+	
+	_constraints = [
+        
+        (_check_duplicate_entry, 'System not allow to save duplicate entries. Check Employee and Deduction Type !!',['amount']),
+        (_zero_amount_check, 'System not allow to save entry with Zero value. !!',['amount']),
+        (_validation_month_amount, 'Repay amount and periods are not matching !!',['amount']),
+        
+        ] 
+	
+	def confirm_entry(self, cr, uid,ids,context):
+		rec = self.browse(cr, uid, ids[0])
+		amt = rec.tot_amt - rec.pay_amt * rec.period
+		print "amt................", amt
+		self.write(cr, uid, ids, {'state': 'confirm', 'round_bal': amt})
+		
+	def cancel_entry(self, cr, uid, ids, context):
+		rec = self.browse(cr,uid, ids[0])
+		if rec.amt_paid == 0:
+			self.write(cr, uid, ids, {'state': 'draft'})
+		else:
+			raise osv.except_osv(_('Invalid Action !'),_('You can not cancel this entry. Which is linked with payroll process !!'))
+	
+	def expire_entry(self, cr, uid, ids,context):
+		print "expire_entry..........called................."
+		entry = self.browse(cr,uid, ids[0])
+		if entry.tot_amt == entry.amt_paid:
+			self.write(cr, uid, ids, {'state': 'expire'})
+		else:
+			pass	
+		
+	def onchange_employee_code(self, cr, uid, ids, employee_id,emp_name, context=None):
+		value = {'emp_name': ''}
+		if employee_id:
+			emp = self.pool.get('hr.employee').browse(cr, uid, employee_id, context=context)
+			value = {'emp_name': emp.emp_code}
+		return {'value': value}
+		
+	def onchange_amount(self, cr, uid,ids,tot_amt,amt_paid, context=None):
+		print "onchange_amount.................", tot_amt
+		value = {'amt_paid': ''}
+		if tot_amt:
+			value = {'amt_paid': tot_amt}
+		return {'value': value}			
+		
+		
+	def create(self, cr, uid, vals,context=None):
+		if vals.has_key('employee_id') and vals['employee_id']:
+			emp_rec = self.pool.get('hr.employee').browse(cr,uid,vals['employee_id'])
+			if emp_rec:
+				vals.update({'emp_name':emp_rec.emp_code})		
+		order =  super(kg_advance_deduction, self).create(cr, uid, vals, context=context)
+		return order
+		
+	def write(self, cr, uid,ids, vals, context=None):
+		if vals.has_key('employee_id') and vals['employee_id']:
+			emp_rec = self.pool.get('hr.employee').browse(cr,uid,vals['employee_id'])
+			if emp_rec:
+				vals.update({'emp_name':emp_rec.name})						 
+		res = super(kg_advance_deduction, self).write(cr, uid, ids,vals, context)		
+		return res
+		
+	def unlink(self, cr, uid, ids, context=None):
+		for entry in self.browse(cr, uid, ids, context=context):
+			if entry.state == 'confirm':
+				raise osv.except_osv(
+				_('Invalid Action !'),
+				_('You cannot delete this entry which is Confirmed !!'))
+		return super(kg_advance_deduction, self).unlink(cr, uid, ids, context)	
+	
+kg_advance_deduction()

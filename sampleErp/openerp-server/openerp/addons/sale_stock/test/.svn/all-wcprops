@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/test
+END
+cancel_order_sale_stock.yml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/test/cancel_order_sale_stock.yml
+END
+picking_order_policy.yml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/test/picking_order_policy.yml
+END
+prepaid_order_policy.yml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/test/prepaid_order_policy.yml
+END
+sale_order_onchange.yml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/sale_stock/test/sale_order_onchange.yml
+END

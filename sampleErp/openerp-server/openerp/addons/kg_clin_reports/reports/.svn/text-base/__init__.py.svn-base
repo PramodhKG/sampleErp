@@ -1,0 +1,5 @@
+import kg_salary_master_rpt
+import kg_attendance_rpt
+import kg_monthly_attend_rpt
+import kg_epfo_report
+import kg_esi_report

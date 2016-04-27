@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process
+END
+merge_order.yml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/merge_order.yml
+END
+invoice_on_poline.yml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/invoice_on_poline.yml
+END
+rfq2order2done.yml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/rfq2order2done.yml
+END
+cancel_order.yml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/cancel_order.yml
+END
+generate_invoice_from_reception.yml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/generate_invoice_from_reception.yml
+END
+run_scheduler.yml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/run_scheduler.yml
+END
+edi_purchase_order.yml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase/test/process/edi_purchase_order.yml
+END

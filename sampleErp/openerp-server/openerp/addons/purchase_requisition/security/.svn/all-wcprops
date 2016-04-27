@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/security
+END
+ir.model.access.csv
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/security/ir.model.access.csv
+END
+purchase_tender.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/purchase_requisition/security/purchase_tender.xml
+END

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	
+	<record id="kg_purchase_invoice_form" model="ir.ui.view">
+		<field name="name">kg.purchase.invoice.form</field>
+		<field name="model">account.invoice</field>
+		<field name="type">form</field>
+		<field name="inherit_id" ref="account.invoice_supplier_form"/>
+		<field name="arch" type="xml">
+			
+			<button name="%(account.action_account_invoice_refund)d" type='action' string='Ask Refund' 
+					states='open,paid' groups="account.group_account_invoice" position="before">
+					
+			<button name="confirm_pobill" states="proforma" string="Confirm" type="object" 
+					class="oe_highlight" groups="kg_inventory_users.group_kg_main_store_user"/>
+			<button name="approve_pobill" states="proforma2" string="Approve" type="object" 
+						class="oe_highlight" groups="kg_inventory_users.group_kg_po_admin"/>
+			</button>
+			
+			<button name="invoice_open" states="draft,proforma2" string="Validate" class="oe_highlight" 
+							groups="account.group_account_invoice" position="replace">
+			<button name="invoice_open" states="draft,proforma2" string="Validate" class="oe_highlight" 
+							groups="account.group_account_invoice" invisible="1"/>
+							
+			</button>
+			
+			<button name="%(account.action_account_invoice_refund)d" type='action' string='Ask Refund' states='open,paid' 
+					groups="account.group_account_invoice" position="replace">			
+			<button name="%(account.action_account_invoice_refund)d" type='action' string='Ask Refund' 
+						states='open,paid' groups="account.group_account_invoice" invisible="1"/>
+			</button>
+		
+			<field name="fiscal_position" widget="selection" position="replace">
+			<field name="fiscal_position" widget="selection" invisible="1"/>
+			</field>                        
+			<field name="date_due" position="replace">
+			</field>
+			
+			<field name="reference_type" class="oe_inline oe_edit_only" position="replace">
+			</field>
+			
+			<field name="reference" class="oe_inline" position="replace">
+			</field>
+			
+			<field name="supplier_invoice_number" position="replace">
+			<field name="supplier_invoice_number" required="1"/>
+			<field name="sup_inv_date" required="1"/>
+			
+			
+			<field name="grn_id"/>
+			<field name="grn_date"/>
+			<field name="confirmed_by"/>
+			<field name="inv_confirm_date" readonly="True"/>
+			<field name="bill_type" readonly="1"/>
+
+			</field>
+			
+			<field name="check_total" groups="account.group_supplier_inv_check_total" position="replace">
+			<field name="check_total" string="Supplier Bill Value" groups="account.group_supplier_inv_check_total"/>
+			
+			<field name="po_id"/>
+			<field name="po_date"/>
+			<field name="approved_by"/>
+			<field name="inv_approve_date" readonly="True"/>
+			<field name="department"/>
+			</field>
+			
+			<field name="name" position="replace">
+			</field>
+						
+			<field name="discount" groups="sale.group_discount_per_so_line" position="after">
+			<field name="kg_disc_amt"/>
+			<field name="poline_id" invisible="1"/>
+			</field>
+
+			
+			<field name="account_analytic_id" groups="analytic.group_analytic_accounting"
+				domain="[('type','!=','view'), ('company_id', '=', parent.company_id)]" position="replace">
+			</field>
+			
+			<field name="tax_line" position="before">
+			<group>
+				<group>
+				<field name="po_expenses_type1"/>
+				<field name="value1"/>
+				</group>
+				<group>
+				<field name="po_expenses_type2"/>
+				<field name="value2"/>				
+				</group>
+			</group>
+			</field>
+		
+			<field name="amount_total" class="oe_subtotal_footer_separator" 
+					widget="monetary" options="{'currency_field': 'currency_id'}" position="before">
+			<field name="other_charge" widget="monetary"/>
+			</field>
+			<field name="residual" widget="monetary" options="{'currency_field': 'currency_id'}" position="replace">
+			<field name="residual" widget="monetary" options="{'currency_field': 'currency_id'}" invisible="1"/>
+			</field>
+			
+			<field name="amount_untaxed" widget="monetary" 
+					options="{'currency_field': 'currency_id'}" position="before">
+			<field name="tot_discount"/>
+			</field>
+
+
+		
+		</field>
+	</record>
+	
+	
+	<record id="kg_purchase_invoice_tree" model="ir.ui.view">
+		<field name="name">kg.purchase.invoice.tree</field>
+		<field name="model">account.invoice</field>
+		<field name="type">tree</field>
+		<field name="inherit_id" ref="account.invoice_tree"/>
+		<field name="arch" type="xml">
+			
+            <field name="date_invoice" position="replace">
+			</field>
+			<field name="number" position="replace">
+				<field name="name" string="Invfdg No"/>
+			</field>
+            <field name="date_due" position="replace">
+			
+			<field name="date_invoice"/>
+			<field name="po_id"/>
+			
+			<field name="po_date"/>
+			<field name="grn_id"/>
+			<field name="grn_date"/>
+			<field name="department"/>
+			</field>
+            <field name="user_id" position="replace">
+            </field>
+            <field name="residual" sum="Residual Amount" position="replace">
+			</field>
+			
+			<field name="amount_total" sum="Total Amount" position="before">
+			<field name="amount_tax" string="Tax Amount"/>
+			</field>
+			
+			<field name="currency_id" position="replace">
+			<field name="supplier_invoice_number"/>
+			</field>
+			
+		</field>
+	</record>
+	            
+
+			
+
+	</data>
+</openerp>

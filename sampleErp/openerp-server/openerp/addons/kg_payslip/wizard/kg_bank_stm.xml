@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_emp_bank_stm" model="ir.ui.view">
+            <field name="name">Employee Bank Statement</field>
+            <field name="model">kg.bank.stm</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Employee Bank Statement">
+                <separator string="Employee Bank Statement" colspan="4"/>                   
+                    <notebook tabpos="up" colspan="4">						
+                    <page string="Filters" name="filters">
+						<field name="filter" colspan="4"/>
+						<field name="pay_sch"/>
+						<field name="bank_id"/>
+						<separator string="Payslip Date" colspan="4"/>
+						<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+						<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+					</page>
+					<!--
+					<page string="Bank Name" name="slip_id">
+						<group colspan="2" col="2">
+						<separator string="Bank Name" colspan="2" col="2" />
+						<field name = "bank_id"/>
+						</group>
+					 </page> -->
+					
+					<page string="Department Name" name="dep_id">
+						<group colspan="2" col="2">
+						<separator string="Department Name" colspan="2" col="2" />
+						<field name = "dep_id"/>
+						</group>
+					 </page>
+                                                                         
+                    </notebook>                
+                     <separator colspan="4"/>
+                    <group col="4" colspan="4">
+                        <button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+                        <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_emp_bank_stm" model="ir.actions.act_window">  
+            <field name="name">Employee Bank Statement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.bank.stm</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+            
+            
+		<menuitem
+            icon="STOCK_PRINT"
+            name="Employee Bank Statement"
+            parent="kg_payslip.menu_kg_hrm_reports" sequence = "2" 
+            action="action_emp_bank_stm"
+            id="kg_emp_bank_stm"
+            />
+
+    </data>
+</openerp>

@@ -1,0 +1,176 @@
+import time
+from report import report_sxw
+from reportlab.pdfbase.pdfmetrics import stringWidth
+import locale
+
+class kg_monthly_attend_rpt(report_sxw.rml_parse):
+	_name = 'kg.monthly.attend.rpt'
+	
+	
+	def __init__(self, cr, uid, name, context=None):
+		if context is None:
+			context = {}
+		super(kg_monthly_attend_rpt, self).__init__(cr, uid, name, context=context)
+		self.query = ""
+		self.period_sql = ""
+		self.localcontext.update( {
+			'time': time,
+			'get_filter': self._get_filter,
+			'get_start_date':self._get_start_date,
+			'get_data':self.get_data,
+			'locale':locale,
+		})
+		self.context = context
+		
+	def get_data(self,form):
+		res = {}
+		where_sql = []
+		
+		if form['emp_name']:
+			emp_ids1=form['emp_name']
+			where_sql.append("mon.employee_id = %s"%(emp_ids1))
+							
+		if where_sql:
+			where_sql = ' and '+' or '.join(where_sql)
+		else:
+			where_sql='' 
+		print "where_sql --------------------------->>>", where_sql	
+		a = tuple(form['month'])
+		
+		print "aaaaaaaaaaaa............................", a
+		
+		self.cr.execute('''
+		
+			  SELECT
+			  
+			    emp.name_related as emp_name,
+			    mon.month_tot_day as total_days,
+			    mon.employee_name as emp_code,
+			    mon.mon_tot_days as worked_days,
+			    mon.cl as cl,
+			    mon.sickleave as festival_leave,
+			    mon.ot as ot,
+			    mon.on_duty as on_duty,
+			    mon.el as el,
+			    mon.arrear as arrear,
+			    mon.absent as absent
+			    
+				FROM  kg_monthly_attendance mon
+					
+				JOIN hr_employee emp ON (emp.id=mon.employee_id)
+				
+			  where Extract(month from start_date) = %s '''+ where_sql+ '''
+			   order by mon.employee_name''',(a))
+			   
+		data=self.cr.dictfetchall()
+		print "data..................",data
+		return data
+		
+	def _get_filter(self, data):
+		if data.get('form', False) and data['form'].get('filter', False):
+			if data['form']['filter'] == 'filter_month':
+				return _('Date')
+			
+		return _('No Filter')
+		
+	def _get_start_date(self, data):
+		if data.get('form', False) and data['form'].get('month', False):
+			return data['form']['month']
+		return ''
+		
+	"""def _get_end_date(self, data):
+		if data.get('form', False) and data['form'].get('date_to', False):
+			return data['form']['date_to']
+		return ''		   """
+report_sxw.report_sxw('report.kg.monthly.attend.rpt', 'hr.payslip', 
+			'addons/kg_payslip/report/kg_monthly_attend_rpt.rml', 
+			parser=kg_monthly_attend_rpt, header = False)
+	
+"""def __init__(self, cr, uid, name, context=None):
+		if context is None:
+			context = {}
+		super(kg_monthly_attend_rpt, self).__init__(cr, uid, name, context=context)
+		self.query = ""
+		self.period_sql = ""
+		self.localcontext.update( {
+			'time': time,
+			'get_filter': self._get_filter,
+			'get_start_date':self._get_start_date,
+			'get_end_date':self._get_end_date,
+			'get_data':self.get_data,
+			'locale':locale,
+		})
+		self.context = context
+		
+	def get_data(self,form):
+		res = {}
+		where_sql = []
+		dep = []		
+		
+		if form['emp_name']:
+			emp_ids1=form['emp_name'][0]
+			where_sql.append("month.employee_id = %s"%(emp_ids1))
+		
+		if form['dep_id']:
+			for dep_ids2 in form['dep_id']:
+				dep.append("emp.department_id = %s"%(dep_ids2))
+				
+		if dep:
+			dep = ' and '+' or '.join(dep)
+		else:
+			dep=''
+				
+		if where_sql:
+			where_sql = ' and '+' or '.join(where_sql)
+		else:
+			where_sql=''
+		print "where_sql --------------------------->>>", where_sql	
+		print "emp_id----------------------->>>",dep
+		
+		self.cr.execute('''
+		
+			  SELECT
+			  
+			    emp.name_related as emp_name,
+			    month.month_tot_day as total_days,
+			    month.employee_name as emp_code,
+			    month.mon_tot_days as worked_days,
+			    month.cl as cl,
+			    month.sickleave as festival_leave,
+			    month.ot as ot,
+			    month.on_duty as on_duty,
+			    month.el as el,
+			    month.arrear as arrear,
+			    month.absent as absent
+			    
+			    
+				FROM  kg_monthly_attendance month
+					
+				JOIN hr_employee emp ON (emp.id=month.employee_id)
+				
+			  where month.start_date >=%s and month.end_date <=%s '''+ where_sql+ dep  + '''
+			   order by month.id''',(form['date_from'],form['date_to']))
+			   
+		data=self.cr.dictfetchall()
+		print "data..................",data
+		return data
+		
+	def _get_filter(self, data):
+		if data.get('form', False) and data['form'].get('filter', False):
+			if data['form']['filter'] == 'filter_date':
+				return _('Date')
+			
+		return _('No Filter')
+		
+	def _get_start_date(self, data):
+		if data.get('form', False) and data['form'].get('date_from', False):
+			return data['form']['date_from']
+		return ''
+		
+	def _get_end_date(self, data):
+		if data.get('form', False) and data['form'].get('date_to', False):
+			return data['form']['date_to']
+		return ''		   
+report_sxw.report_sxw('report.kg.monthly.attend.rpt', 'hr.payslip', 
+			'addons/kg_payslip/report/kg_monthly_attend_rpt.rml', 
+			parser=kg_monthly_attend_rpt, header = False)"""

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	
+	
+	<record id="kg_depmaster_form_view" model="ir.ui.view">
+            <field name="name">kg_depmaster.form</field>
+            <field name="model">kg.depmaster</field>
+            <field name="arch" type="xml">
+                <form string="Dep Master" version="7.0">
+				
+		<group>
+			<group>
+            <field name="name"/>
+			<field name="dep_name"/>
+			<field name="stock_location"/>
+			<field name="main_location"/>
+			<field name="used_location"/>
+            
+			</group>
+			<group>
+			<field name="issue_period" invisible="1"/>
+			<field name="issue_date" invisible="1"/>
+			<field name="date" readonly="1"/>
+			<field name="active"/>
+			<field name="sub_indent"/>
+			<field name="consumerga"/>
+            <field name="cost"/>
+			<field name="product_id" invisible="1"/>
+			</group>
+		</group>
+                   <!-- <field name="code"/>
+					<field name="name"/>
+					<field name="date"/>
+					<field name="type"/> -->
+					</form>
+            </field> 
+      
+
+        </record>
+        <record id="kg_depmaster_list_view" model="ir.ui.view">
+            <field name="name">kg.depmaster.list</field>
+            <field name="model">kg.depmaster</field>
+            <field name="priority">1</field>
+            <field name="arch" type="xml">
+                <tree string="Dep Master">
+                    <field name="name"/>
+					<field name="dep_name"/>
+					<field name="cost"/>
+                </tree>
+            </field>
+        </record>
+         <!-- <record id="kg_depmaster_tree_view" model="ir.ui.view">
+            <field name="name">kg.depmaster.tree</field>
+            <field name="model">kg.depmaster</field>
+            <field name="field_parent">child_id</field>
+            <field name="arch" type="xml">
+                <tree toolbar="True" string="Department">
+                    <field name="code"/>
+					<field name="name"/>
+                </tree>
+            </field>
+        </record>
+-->		
+		 <record id="kg_depmaster_action_form" model="ir.actions.act_window">
+            <field name="name">DepMaster</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.depmaster</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="kg_depmaster_list_view"/>
+        </record>
+
+		<menuitem id="kg_depmaster_parent_menu" parent="base.menu_purchase_root" name="Masters Details" sequence="39" />
+		<menuitem action="kg_depmaster_action_form" id="menu_depmaster_action_form" parent="kg_depmaster_parent_menu" sequence="2"/>
+
+</data>
+	</openerp>

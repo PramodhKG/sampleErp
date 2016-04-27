@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll
+END
+hr_payroll_demo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll_demo.xml
+END
+hr_payroll.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll.py
+END
+hr_payroll_sequence.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll_sequence.xml
+END
+hr_payroll_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll_data.xml
+END
+hr_payroll_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll_view.xml
+END
+hr_payroll_workflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll_workflow.xml
+END
+hr_payroll.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll.pyc
+END
+hr_payroll_report.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/hr_payroll_report.xml
+END
+res_config.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/res_config.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/__init__.py
+END
+res_config_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/res_config_view.xml
+END
+res_config.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/res_config.pyc
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/__init__.pyc
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_payroll/__openerp__.py
+END

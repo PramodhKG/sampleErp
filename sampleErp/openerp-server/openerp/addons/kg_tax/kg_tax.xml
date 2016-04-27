@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+
+    <record model="ir.ui.view" id="view_kg_tax_form">
+        <field name="name">kg_tax form</field>
+        <field name="model">kg.tax</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="kg_tax" version="7.0">
+		<header>
+					
+					 
+					<button name="confirm_data" states="draft" string="Submit" type="object" />
+					
+		</header>
+		
+		<group>
+			<group>
+				
+		<field name="val_from"  attrs="{'readonly':[('state','==','confirm')]}"/>	
+		<field name="employee_id" on_change="onchange_employee_name(code,employee_id,designation,company,phone,email)" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="designation" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="company"  attrs="{'readonly':[('state','==','confirm')]}"/>	
+							
+
+				
+                           
+						
+			</group>
+			<group>
+				<field name="val_to"  attrs="{'readonly':[('state','==','confirm')]}"/>
+				<field name="code"  attrs="{'readonly':[('state','==','confirm')]}"/>	
+				<field name="pan" attrs="{'readonly':[('state','==','confirm')]}"/>
+				<field name="phone"  attrs="{'readonly':[('state','==','confirm')]}"/>
+				<field name="email"  attrs="{'readonly':[('state','==','confirm')]}"/>
+				<field name="state" invisible="1"/>	
+					
+			</group>
+			
+		</group>
+		
+		<group string="Deduction Sources">
+		<group>
+		<field name="house_rent" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="address_house_rent" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="institution_house_loan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="date_house_loan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="addr_house_loan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="house_loan_interest" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="house_loan_premium" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="medi_premiun_self_fly" attrs="{'readonly':[('state','==','confirm')]}"/>
+		
+		
+		
+		</group>
+		<group>
+		<field name="medi_premium_parent" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="pension_plan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="life_insu_plan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="mutual_fund" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="unit_life_insu_plan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="national_saving" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="infra_bond" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="public_provident_fund" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="expenditure_children" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="five_yr_depo_bank" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="five_yr_depo_po" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="others" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="interest_edu_loan" attrs="{'readonly':[('state','==','confirm')]}"/>
+		<field name="total" attrs="{'readonly':[('state','==','confirm')]}" />
+		
+		</group>
+		
+		</group>
+			
+		    </form>
+		</field>   
+    </record>
+    
+    
+    <record model="ir.ui.view" id="view_kg_tax_tree">
+        <field name="name">kg_tax tree</field>
+        <field name="model">kg.tax</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree string="kg_tax" version="7.0">
+				<field name="employee_id" />
+				<field name="code" />	
+				<field name="total"/>
+				<field name="state"/>	
+		    </tree>
+		</field>   
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_kg_tax">
+        <field name="name">TDS</field>
+        <field name="res_model">kg.tax</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_kg_tax_tree"/>
+    </record>
+    
+    
+   
+      
+  <menuitem name="TDS" id="menu_tds" parent="hr.menu_hr_root" sequence="3"/>
+    <menuitem name="TDS Declaration" id="menu_kg_tax_item" parent="menu_tds" action="action_kg_tax"/>
+    
+  
+      
+      
+    </data>
+</openerp>

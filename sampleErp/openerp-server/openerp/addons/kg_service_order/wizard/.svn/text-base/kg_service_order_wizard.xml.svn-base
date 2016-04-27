@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_service_order_report" model="ir.ui.view">
+            <field name="name">Service Order Report</field>
+            <field name="model">kg.service.order.wizard</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+             <form string="Service Report">
+                <separator string="Service Order Report" colspan="4"/>
+                   
+                    <notebook tabpos="up" colspan="4">
+						<page string="Filters" name="filters">
+							<field name="filter" colspan="4"/>
+							<separator string="Service Order Date" colspan="4"/>
+							<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+							<field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+						</page>
+                        <page string="Service Order" name="order">
+                            <group colspan="2" col="2">
+								<separator string="SO Number" colspan="2" col="2" />
+								<field name="order"/>
+							</group>
+                        </page>
+                        <page string="Supplier Name" name="supplier">
+                            <group colspan="2" col="2">
+								<separator string="Supplier" colspan="2" col="2" />
+								<field name="supplier" domain="[('supplier','=',True)]"/>
+							</group>
+                        </page>
+                        
+                        <page string="Delivery Type" name="delivery_id">
+                            <group colspan="2" col="2">
+								<separator string="Delivery Type" colspan="2" col="2" />
+								<field name="delivery_id"/>
+							</group>
+                        </page>
+                                                                         
+                    </notebook>                
+                    <separator colspan="4"/>
+						<group col="4" colspan="4">
+							<button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+							<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						</group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_so_report" model="ir.actions.act_window">  
+            <field name="name">Service Order Report</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.service.order.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+           
+		<menuitem
+            icon="STOCK_PRINT"
+            name="Service Order Report"
+            parent="kg_depindent.menu_kg_indent_reports" sequence = "12" 
+            action="action_so_report"
+            id="kg_so_report001"
+            />
+
+    </data>
+</openerp>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates>
+<div t-name="kg_depindent.action" class="oe_web_example oe_web_example_stopped">
+    <h4 class="oe_web_example_timer">00:00:00</h4>
+    <p class="oe_web_example_start">
+        <button type="button">Start</button>
+    </p>
+    <p class="oe_web_example_stop">
+        <button type="button" onclick="javascript:alert('sdfdsf');">Stop</button>
+    </p>
+</div>
+</templates>

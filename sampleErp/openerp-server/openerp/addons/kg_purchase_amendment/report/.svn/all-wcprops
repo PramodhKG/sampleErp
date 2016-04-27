@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_amendment/report
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_amendment/report/__init__.py
+END
+kg_purchase_order_report.py
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_amendment/report/kg_purchase_order_report.py
+END
+kg_purchase_order_report.rml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_amendment/report/kg_purchase_order_report.rml
+END
+kg_care.gif
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/kg_purchase_amendment/report/kg_care.gif
+END

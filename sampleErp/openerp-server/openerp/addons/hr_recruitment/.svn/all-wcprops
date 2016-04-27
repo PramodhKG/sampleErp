@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment
+END
+hr_recruitment_menu.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/hr_recruitment_menu.xml
+END
+board_hr_recruitment_statistical_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/board_hr_recruitment_statistical_view.xml
+END
+hr_recruitment_demo.yml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/hr_recruitment_demo.yml
+END
+hr_recruitment_installer_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/hr_recruitment_installer_view.xml
+END
+hr_recruitment.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Clinsync/!svn/ver/6/openerp-server/openerp/addons/hr_recruitment/hr_recruitment.py
+END
+hr_recruitment_data.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/hr_recruitment_data.xml
+END
+hr_recruitment_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/6/openerp-server/openerp/addons/hr_recruitment/hr_recruitment_view.xml
+END
+hr_recruitment.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Clinsync/!svn/ver/6/openerp-server/openerp/addons/hr_recruitment/hr_recruitment.pyc
+END
+res_config.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/res_config.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/__init__.py
+END
+res_config_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/res_config_view.xml
+END
+res_config.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/res_config.pyc
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/__init__.pyc
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/hr_recruitment/__openerp__.py
+END

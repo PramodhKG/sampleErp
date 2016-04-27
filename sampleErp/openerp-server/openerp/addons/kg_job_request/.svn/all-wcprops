@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_job_request
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_job_request/__init__.py
+END
+__init__.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_job_request/__init__.pyc
+END
+kg_job_request.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/Clinsync/!svn/ver/3/openerp-server/openerp/addons/kg_job_request/kg_job_request.py
+END
+__openerp__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/Clinsync/!svn/ver/2/openerp-server/openerp/addons/kg_job_request/__openerp__.py
+END
+kg_job_request_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/Clinsync/!svn/ver/4/openerp-server/openerp/addons/kg_job_request/kg_job_request_view.xml
+END
+kg_job_request.pyc
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/Clinsync/!svn/ver/7/openerp-server/openerp/addons/kg_job_request/kg_job_request.pyc
+END

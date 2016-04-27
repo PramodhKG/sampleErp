@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/process
+END
+supplier_invoice_process.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/process/supplier_invoice_process.xml
+END
+statement_process.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/process/statement_process.xml
+END
+customer_invoice_process.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/kgherp/!svn/ver/2/openerp-server-7.0/openerp/addons/account/process/customer_invoice_process.xml
+END

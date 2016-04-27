@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!--
+          =====================
+          master Form view
+          =====================
+        -->
+
+        <record id="view_kg_dep_standard_entry_form" model="ir.ui.view">
+            <field name="name">view.kg.dep.standard.entry.form</field>
+            <field name="model">kg.dep.standard.entry</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Standard Entry" version="7.0">
+				<group>
+                   <field name="name"/>
+                    <field name="dep_name"/>
+                    <field name="issue_days"/>
+					<field name="date"/>
+					<field name="active"/>
+			   </group>
+               </form>
+           </field>
+        </record>
+
+        <!--
+        =====================
+        master Tree view
+        =====================
+        -->
+        <record id="view_kg_dep_standard_entry_tree" model="ir.ui.view">
+            <field name="name">kg.dep.standard.entry.tree.view</field>
+            <field name="model">kg.dep.standard.entry</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Standard Entry">
+                    <field name="name"/>
+                    <field name="dep_name"/>
+                    <field name="issue_days"/>
+                  
+                </tree> 
+            </field>
+        </record>
+       
+       <!--
+        =====================
+        master Form Action
+        ===================== -->
+
+
+	<record id="action_kg_dep_standard_entry_form" model="ir.actions.act_window">
+			<field name="name">Standard Entry</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">kg.dep.standard.entry</field>
+			<field name="view_type">form</field>
+			<field name="view_id" ref="view_kg_dep_standard_entry_tree"/>
+	</record>
+        <!--
+        =====================
+        master Menu Item
+        =====================
+        -->
+	<menuitem 
+            id="kg_dep_standard_entry" 
+            name="Standard Entry" 
+            parent="kg_depmaster.kg_depmaster_parent_menu"
+            sequence="10"
+            action="action_kg_dep_standard_entry_form"/>
+    </data>
+</openerp>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="leave_balance_report" model="ir.ui.view">
+            <field name="name">Leave Balance</field>
+            <field name="model">kg.leave.balance</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+            <form string="Leave Balance">
+				<separator string="Leave Balance" colspan="4"/>                   
+					<notebook tabpos="up" colspan="4">
+						<page string="Filters" name="filters">
+							<field name="filter" colspan="4"/>
+							<separator string="Date" colspan="4"/>
+							<field name="date_from" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}" colspan="4"/>
+						    <field name="date_to" attrs="{'readonly':[('filter', '!=', 'filter_date')], 'required':[('filter', '=', 'filter_date')]}"  colspan="4"/>
+						    <field name="leave_type" />
+						</page>
+						<page string="Department Wise">
+							<field name="dep_id" />
+						</page>	
+						<page string="Employee Wise">
+							<field name="employee" />
+						</page>							   
+					</notebook> 
+					         
+                    <separator colspan="4"/>
+						<group col="4" colspan="4">
+							<button icon="gtk-print" name="check_report" string="Print" type="object" colspan="2" default_focus="1" />
+							<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+						</group>
+			</form>
+            </field>
+        </record>
+
+        <record id="action_leave_balance" model="ir.actions.act_window">  
+            <field name="name">Leave Balance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">kg.leave.balance</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record> 
+        
+        <menuitem
+            
+            name="Leave Balance"
+            parent="kg_payslip.menu_kg_hrm_reports" sequence = "75" 
+            action="action_leave_balance"
+            id="menu_kg_leave_balance"
+            />
+          
+    </data>
+</openerp>
